@@ -1,0 +1,233 @@
+div{
+	-webkit-user-select:none;
+	-webkit-touch-callout:none;
+	-khtml-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	user-select:none;
+}
+.aui-text-center{
+	text-align: center;
+}
+.aui-text-right{
+	text-align: right;
+}
+.aui-preloader-content{
+	text-align: center;
+	padding-top:15px;
+}
+
+.tabbar.tabbar-hidden, .tabbar.toolbar-hidden, .toolbar.tabbar-hidden, .toolbar.toolbar-hidden{
+	display: none;
+}
+.card{
+	margin: 5px;
+}
+.card-content-inner{
+	padding: 15px 5px;
+}
+.list-block{
+	margin: 1px auto;
+}
+.list-block .item-title{
+	font-size:14px;
+}
+.list-block .item-subtitle{
+	font-size:14px;
+}
+
+
+.login-screen-content .login-screen-title{
+	margin:60px auto 40px auto;
+	max-width: 100%;
+}
+.login-screen-content .login-screen-hedtitle{
+	text-align:center;
+	font-size: 20px;
+	font-weight: bold;
+}
+.login-screen-content .login-screen-subtitle{
+	font-size: 14px;
+	text-align:center;
+}
+.login-screen-content .list-block{
+	margin:25px 15px;
+	max-width: 100%;
+}
+.login-screen-content .list-block.inset{
+	background: #FAFAFA;
+}
+.login-screen-content .submit-login-button{
+	margin-top:35px;
+}
+
+
+.bigdata-page .chip-media{
+	width:32px;
+	height: 32px;
+}
+
+
+.bigdata-unitimg-page .page-content{
+	background: #97CDE9;
+}
+.bigdata-unitimg-page ul{
+	padding:0px;margin:0px;
+}
+.bigdata-unitimg-page .text-center{
+	text-align:center;
+}
+.bigdata-unitimg-page h5{
+	color:#FFF;text-decoration: underline;margin:5px 0px;
+}
+.bigdata-unitimg-page h6{
+	margin:5px 0px;
+}
+.bigdata-unitimg-page .big-data-top-head{
+	padding-top:10px;font-size:16px;color:#002060;font-weight:bold;min-width:370px;
+}
+.bigdata-unitimg-page .big-data-top-col{
+	margin:auto;color:#FFFFFF;background: #97CDE9;
+}
+.bigdata-unitimg-page .big-data-top-col *{
+	color:#FFFFFF;
+}
+.bigdata-unitimg-page .big-data-bbox{
+	margin:30px 10px 15px 10px;background:#45A0CD;border:1px dashed #FFFFFF;border-radius:10px;
+}
+.bigdata-unitimg-page .big-data-icon{
+	width:35px;height:35px;margin:-37px 0px 0px 27px;
+	background:#007ECA;border-radius:25px;border:3px solid #3299D4;color:#65B2DE;
+	font-size:20px;font-weight:bold;
+}
+.bigdata-unitimg-page .big-data-icon-img{
+	width:28px;height:28px;
+	background:url('../images/work/bigdata/iconfont-youhuiquan.png') no-repeat;
+	background-size:28px 28px;
+	margin-top:3px;
+	margin-left:3px;
+}
+.bigdata-unitimg-page .big-data-head{
+	height:35px;background:#FFFFFF;border-radius:20px;margin-top:-17px;margin-left:28px;margin-right:28px;
+}
+.bigdata-unitimg-page .big-data-title{
+	color:#4E98D7;font-size:16px;padding-top:7px;text-align:center;font-weight:bold;
+}
+.bigdata-unitimg-page .big-data-content{
+	padding:5px 10px;
+}
+.bigdata-unitimg-page .big-data-content span{
+	font-size:14px;color:#FFDF35;font-weight:bold;
+}
+.bigdata-unitimg-page .big-data-message{
+	background:#82C5DF;border-radius:10px;padding:5px 5px 5px 110px;line-height:180%;min-height: 65px;
+}
+.bigdata-unitimg-page .big-data-vice-box{
+	margin:15px 0px;
+}
+.bigdata-unitimg-page .big-data-vice-icon{
+	width:15px;height:15px;
+	float:left;background:#98DFFD;border-radius:15px;padding:0px 0px 0px 5px;margin:1px 5px 0px 0px;
+}
+.bigdata-unitimg-page .big-data-vice-head{}
+
+.bigdata-unitimg-page .big-data-unitinfo .big-data-content{
+	background:url('../images/work/bigdata/shuju_2.png') no-repeat 100% 15%;
+}
+.bigdata-unitimg-page .big-data-unitinfo .big-data-content .big-data-unitinfo-h6{
+	padding:8px 0px 8px 28px;
+}
+.bigdata-unitimg-page .big-data-content .big-data-item-h6{
+	padding:8px 0px;
+}
+.bigdata-unitimg-page .big-echart-head{
+	padding:10px 5px 5px 10px;
+}
+.bigdata-unitimg-page .big-echart-rect-icon{
+	width:25px;height:13px;background:#FFDF36;display:inline-block;
+}
+.bigdata-unitimg-page .unit_order_product_item{
+	width:32%;display:inline-block;text-align:center;padding:0px;margin:15px auto;
+}
+.bigdata-unitimg-page .unit_order_product_item_icon_1{
+	margin:0px auto;width:48px;height:48px;background:url('../images/work/bigdata/ooopic_1499847644.png');
+}
+.bigdata-unitimg-page .unit_order_product_item_icon_2{
+	margin:0px auto;width:48px;height:48px;background:url('../images/work/bigdata/ooopic_1499847632.png');
+}
+.bigdata-unitimg-page .unit_order_product_item_icon_3{
+	margin:0px auto;width:48px;height:48px;background:url('../images/work/bigdata/ooopic_1499847634.png');
+}
+.bigdata-unitimg-page .unit_order_product_item_icon_4{
+	margin:0px auto;width:48px;height:48px;background:url('../images/work/bigdata/ooopic_1499847638.png');
+}
+.bigdata-unitimg-page .unit_order_product_item_icon_5{
+	margin:0px auto;width:48px;height:48px;background:url('../images/work/bigdata/ooopic_1499847631.png');
+}
+.bigdata-unitimg-page .unit_product_index_item{
+	width:48.5%;display:inline-block;text-align:center;
+	border:1px solid #BBB;margin-top:3px;
+	padding:8px 0px;
+}
+.bigdata-unitimg-page .unit_product_money_index{
+	background:url('../images/work/bigdata/unit_product_money_index.png') no-repeat;
+	background-position:8px 50%;background-size:30px 30px; 
+}
+.bigdata-unitimg-page .unit_product_owefee_index{
+	background:url('../images/work/bigdata/unit_product_owefee_index.png') no-repeat;
+	background-position:8px 50%;background-size:30px 30px; 
+}
+.bigdata-unitimg-page .unit_product_price_index{
+	background:url('../images/work/bigdata/unit_product_price_index.png') no-repeat;
+	background-position:8px 50%;background-size:30px 30px; 
+}
+.bigdata-unitimg-page .unit_product_amount_index{
+	background:url('../images/work/bigdata/unit_product_amount_index.png') no-repeat;
+	background-position:8px 50%;background-size:30px 30px; 
+}
+.bigdata-unitimg-page .unit_product_send_index{
+	background:url('../images/work/bigdata/unit_product_send_index.png') no-repeat;
+	background-position:8px 50%;background-size:30px 30px; 
+}
+.bigdata-unitimg-page .shuju_3{
+	background:url('../images/work/bigdata/shuju_3.png') no-repeat center left;
+}
+.bigdata-unitimg-page .shuju_4{
+	background:url('../images/work/bigdata/shuju_4.png') no-repeat center left;
+}
+.bigdata-unitimg-page .shuju_5{
+	background:url('../images/work/bigdata/shuju_5.png') no-repeat center left;
+}
+.bigdata-unitimg-page .shuju_6{
+	background:url('../images/work/bigdata/shuju_6.png') no-repeat center left;
+}
+.bigdata-unitimg-page .shuju_10{
+	background-image:url('../images/work/bigdata/shuju_10.png');
+	background-repeat: no-repeat;
+	background-position: 25px 50%;
+}
+.bigdata-unitimg-page .shuju_11{
+	background-image:url('../images/work/bigdata/shuju_11.png');
+	background-repeat: no-repeat;
+	background-position: 25px 50%;
+}
+.bigdata-unitimg-page .shuju_14{
+	background-image:url('../images/work/bigdata/shuju_14.png');
+	background-repeat: no-repeat;
+	background-position: 25px 50%;
+}
+.bigdata-unitimg-page .shuju_15{
+	background-image:url('../images/work/bigdata/shuju_15.png');
+	background-repeat: no-repeat;
+	background-position: bottom right;
+}
+.bigdata-unitimg-page .shuju_29{
+	background-image:url('../images/work/bigdata/shuju_29.png');
+	background-repeat: no-repeat;
+	background-position: 25px 50%;
+}
+.bigdata-unitimg-page .shuju_31{
+	background: url('../images/work/bigdata/shuju_31.png');
+	background-repeat: no-repeat;
+	background-position: bottom center;
+}
