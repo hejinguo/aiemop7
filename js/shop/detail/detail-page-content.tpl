@@ -1,0 +1,1 @@
+{{js "JSON.stringify(this)"}}
