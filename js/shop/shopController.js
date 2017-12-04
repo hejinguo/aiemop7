@@ -1,4 +1,4 @@
-define(['app','tool','bigdata/bigdataView'],function(app,tool,bigdataView){
+define(['app','tool','shop/shopView'],function(app,tool,shopView){
 	var $$ = Dom7;
 	var loading = false;
 	var param = {unitIdName:'',pageNum:1,pageSize:10};
@@ -17,8 +17,8 @@ define(['app','tool','bigdata/bigdataView'],function(app,tool,bigdataView){
 	}];
 	
 	function init(){
-		bigdataView.render(bindings);
-		_pullupRefresh(1);
+		//bigdataView.render(bindings);
+		//_pullupRefresh(1);
 	}
 	
 	function searchUnitItem(){
