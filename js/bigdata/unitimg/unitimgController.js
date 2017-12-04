@@ -19,7 +19,7 @@ define(['tool'],function(tool){
 		},function(){
 			
 		},function(){
-//				app.f7.hideIndicator();
+//			app.f7.hideIndicator();
 		});
 	}
 	

@@ -57,8 +57,8 @@ define(['app','tool','login/loginView'],function(app,tool,LoginView) {
 				if(data.state){
 					tool.setUser(data.info);
 					app.router.load('bigdata');
-//					app.router.load('home');
-//					app.router.load('client');
+					app.router.load('home');
+					app.router.load('shop');
 					app.f7.closeModal('.login-screen');
 //					plus.navigator.setStatusBarBackground("0085D0");//登陆后的系统主界面状态栏颜色
 				}else if('USERCODE_OR_PASSWORD_ERROR' == data.code){

@@ -57,22 +57,33 @@
 				</div>
 			</div>
 			<!-- Second view (for second wrap)-->
-			<div id="client-view" class="view tab active">
+			<div id="shop-view" class="view tab active">
 				<!-- We can make with view with navigation, let's add Top Navbar-->
 				<div class="navbar">
 					<div class="navbar-inner">
-						<div class="center sliding">客户管理</div>
+						<div class="center sliding">商铺管理</div>
 					</div>
 				</div>
 				<div class="pages navbar-through">
-					<div data-page="client" class="page client-page">
-						<div class="page-content pull-to-refresh-content" data-ptr-distance="55">
+					<div data-page="shop" class="page shop-page">
+						<!-- Search Bar -->
+					    <form action="." class="searchbar searchbar-init">
+					        <div class="searchbar-input">
+					            <input type="search" placeholder="请输入商铺编码或名称搜索">
+					            <a href="#" class="searchbar-clear"></a>
+					        </div>
+					        <!--<a href="#" class="searchbar-cancel">Cancel</a>-->
+					    </form>
+					    <!-- Search Bar overlay-->
+					    <div class="searchbar-overlay"></div>
+						<!-- Page content -->
+						<div class="page-content pull-to-refresh-content infinite-scroll" data-ptr-distance="55" data-distance="50">
 							<!-- Default pull to refresh layer-->
 							<div class="pull-to-refresh-layer">
 								<div class="preloader"></div>
 								<div class="pull-to-refresh-arrow"></div>
 							</div>
-							<div class="page-pull-content">
+							<div class="page-pull-content list-block media-list">
 								<div class="aui-preloader-content"><span class="preloader"></span></div>
 							</div>
 						</div>
@@ -121,7 +132,7 @@
 							</div>
 						</div>
 						<div class="page-content">
-							<div class="list-block">
+							<!--<div class="list-block">
 								<ul>
 									<li>
 										<div class="item-content">
@@ -135,7 +146,7 @@
 										</div>
 									</li>
 								</ul>
-							</div>
+							</div>-->
 							<div class="content-block">
 								<p>Mauris commodo lacus at nisl lacinia, nec facilisis erat rhoncus. Sed eget pharetra nunc. Aenean vitae vehicula massa, sed sagittis ante. Quisque luctus nec velit dictum convallis. Nulla facilisi. Ut sed erat nisi. Donec non dolor massa. Mauris malesuada dolor velit, in suscipit leo consectetur vitae. Duis tempus ligula non eros pretium condimentum. Cras sed dolor odio.</p>
 							</div>
@@ -150,9 +161,9 @@
 						<i class="f7-icons">home</i>
 						<span class="tabbar-label">首页</span>
 					</a>
-					<a href="#client-view" class="tab-link active" data-target-page="client">
+					<a href="#shop-view" class="tab-link active" data-target-page="shop">
 						<i class="f7-icons">tabs</i>
-						<span class="tabbar-label">客户管理</span>
+						<span class="tabbar-label">商铺管理</span>
 					</a>
 					<a href="#bigdata-view" class="tab-link" data-target-page="bigdata">
 						<i class="f7-icons">data</i>

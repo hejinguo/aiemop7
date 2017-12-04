@@ -30,10 +30,10 @@ div{
 	margin: 1px auto;
 }
 .list-block .item-title{
-	font-size:14px;
+	font-size:15px;
 }
-.list-block .item-subtitle{
-	font-size:14px;
+.list-block .item-after,.list-block .item-subtitle,.list-block .item-text{
+	font-size:13px;
 }
 
 
@@ -62,12 +62,16 @@ div{
 }
 
 
-.bigdata-page .chip-media{
-	width:32px;
-	height: 32px;
+.shop-page .list-block .item-text{
+   -webkit-box-orient:horizontal;
+   overflow:auto;
+   height: auto;
 }
 
 
+.bigdata-page .chip-media{
+	width:32px;height: 32px;
+}
 .bigdata-unitimg-page .page-content{
 	background: #97CDE9;
 }

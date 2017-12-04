@@ -6,13 +6,13 @@ define(['app','text!shop/shop-page-content.tpl'], function(app,template) {
 	}
 	
 	function refresh(model) {
-		$$('.bigdata-page .page-pull-content').html('<ul></ul>');
-		$$('.bigdata-page .page-pull-content').scrollTop();
-		$$('.bigdata-page .page-pull-content ul').html(Template7.compile(template)(model));
+		$$('.shop-page .page-pull-content').html('<ul></ul>');
+		$$('.shop-page .page-pull-content').scrollTop();
+		$$('.shop-page .page-pull-content ul').html(Template7.compile(template)(model));
 	}
 	
 	function append(model){
-		$$('.bigdata-page .page-pull-content ul').append(Template7.compile(template)(model));
+		$$('.shop-page .page-pull-content ul').append(Template7.compile(template)(model));
 	}
 
 	function bindEvents(bindings) {
