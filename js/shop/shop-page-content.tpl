@@ -2,20 +2,22 @@
 	<li>
 		<a href="pages/shop/shop-detail.html?entCode={{ENT_CODE}}&entName={{ENT_NAME}}" class="item-link item-content">
 			<div class="item-media">
-				<div class="chip-media color-pink">
-					<b>{{js "this.ENT_STATE == 2 ? '已拓展' : (this.ENT_STATE == 1 ? '未拓展' : '未管理')"}}</b>
-				</div>
+				<div class="chip-media {{js "this.ENT_IMAGE ? 'bg-pink' : 'bg-gray'"}}"><i class="f7-icons" style="font-size: 20px">images_fill</i></div>
 			</div>
 			<div class="item-inner">
 				<div class="item-title-row">
 					<div class="item-title">{{ENT_NAME}}</div><!--ENT_IMGTYPE-->
-					<div class="item-after">{{ENT_CODE}}</div>
+					<div class="item-after">
+						<div class="chip {{js "this.ENT_STATE == 2 ? 'bg-green' : (this.ENT_STATE == 1 ? 'bg-yellow' : 'bg-red')"}}">
+							<div class="chip-label">{{js "this.ENT_STATE == 2 ? '已拓展' : (this.ENT_STATE == 1 ? '未拓展' : '未管理')"}}</div>
+						</div>
+					</div>
 				</div>
 				<!--<div class="item-subtitle">Beatles</div>-->
 				<div class="item-text">
 					<div class="row">
-						<div class="col-50">归属：{{CITY_CODE}}{{COUNTY_CODE}}</div>
-						<div class="col-50">行业：{{TYPE_ID}}</div>
+						<div class="col-55">归属：{{CITY_CODE}}{{COUNTY_CODE}}</div>
+						<div class="col-45">行业：{{TYPE_ID}}</div>
 						<div class="col-100">街道：{{js "this.STREET ? this.STREET : '不详'"}}</div>
 						<div class="col-100">地址：{{js "this.ADDRESS ? this.ADDRESS : '不详'"}}</div>
 						<div class="col-100">联系电话：{{js "this.TEL1 ? this.TEL1 : ''"}}、{{js "this.TEL2 ? this.TEL2 : ''"}}</div>

@@ -17,6 +17,7 @@ div{
 	padding-top:15px;
 }
 
+/*覆盖framework7样式*/
 .tabbar.tabbar-hidden, .tabbar.toolbar-hidden, .toolbar.tabbar-hidden, .toolbar.toolbar-hidden{
 	display: none;
 }
@@ -29,14 +30,14 @@ div{
 .list-block{
 	margin: 1px auto;
 }
-.list-block .item-title{
+.list-block .item-title,.card-header{
 	font-size:15px;
 }
-.list-block .item-after,.list-block .item-subtitle,.list-block .item-text{
+.list-block .item-after,.list-block .item-subtitle,.list-block .item-text,.card{
 	font-size:13px;
 }
 
-
+/*登陆页面样式*/
 .login-screen-content .login-screen-title{
 	margin:60px auto 40px auto;
 	max-width: 100%;
@@ -61,15 +62,16 @@ div{
 	margin-top:35px;
 }
 
-
+/*商铺管理页面样式 */
 .shop-page .list-block .item-text{
-   -webkit-box-orient:horizontal;
-   overflow:auto;
-   height: auto;
+   -webkit-box-orient:horizontal;overflow:auto;height: auto;
 }
 
-
-.bigdata-page .chip-media{
+/*大数据报告页面样式*/
+.shop-page .list-block .item-media+.item-inner,.bigdata-page .list-block .item-media+.item-inner{
+	margin-left: 10px;
+}
+.shop-page .chip-media,.bigdata-page .chip-media{
 	width:32px;height: 32px;
 }
 .bigdata-unitimg-page .page-content{

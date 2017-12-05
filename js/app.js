@@ -1,8 +1,10 @@
 require.config({
 	paths: {
-		text: '../lib/text',
 		base64: '../lib/base64',
-		echarts:'../lib/echarts/echarts.common.min'
+		text: '../lib/requirejs-plugins/text',
+		async: '../lib/requirejs-plugins/async',
+		echarts: '../lib/echarts/echarts.common.min',
+		BMap: 'http://api.map.baidu.com/api?v=2.0&ak=sBRRXwEWp4MoUmugUZ5tBfVe1hrQyyZg'
 	},
 	shim: {
 		base64: {
@@ -41,21 +43,10 @@ define(['router'], function(Router) {
 	console.log("初始化View结束");
 	console.log("初始化APP过程结束");
 	
-	// Show/hide preloader for remote ajax loaded pages
-	// Probably should be removed on a production/local app
-//	$$(document).on('ajaxStart', function (e) {
-//	    f7.showIndicator();
-//	});
-//	$$(document).on('ajaxComplete', function (e) {
-//	    f7.hideIndicator();
-//	});
-
-	var toast = f7.toast('', '', {duration:2000});
-	
 	return {
 		f7: f7,
 		views: views,
 		router: Router,
-		toast: toast
+		toast: f7.toast('', '', {duration:2000})
 	};
 });
