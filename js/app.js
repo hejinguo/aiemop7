@@ -37,7 +37,7 @@ define(['router'], function(router) {
 	// Add views
 	var views = new Array();
 	views.push(f7.addView('#home-view',{dynamicNavbar: true}));
-	views.push(f7.addView('#shop-view',{dynamicNavbar: true}));
+	views.push(f7.addView('#shop-view',{dynamicNavbar: true,domCache: true}));
 	views.push(f7.addView('#bigdata-view',{dynamicNavbar: true}));
 	views.push(f7.addView('#tool-view'));
 	console.log("初始化View结束");
