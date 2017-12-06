@@ -1,6 +1,6 @@
 {{#each this}}
 	<li>
-		<a href="pages/shop/shop-detail.html?entCode={{ENT_CODE}}&entName={{ENT_NAME}}" class="item-link item-content">
+		<a href="pages/shop/shop-detail.html?entCode={{ENT_CODE}}&entName={{ENT_NAME}}&editFlag={{EDIT_FLAG}}" class="item-link item-content">
 			<div class="item-media">
 				<div class="chip-media {{js "this.ENT_IMAGE ? 'bg-pink' : 'bg-gray'"}}"><i class="f7-icons" style="font-size: 20px">images_fill</i></div>
 			</div>

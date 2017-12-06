@@ -13,12 +13,12 @@ require.config({
 	}
 });
 
-define(['router'], function(Router) {
+define(['router'], function(router) {
 	var $$ = Dom7;
 	
 	console.log("初始化APP过程启动");
 	console.log("初始化APP路由启动");
-	Router.init();
+	router.init();
 	console.log("初始化APP路由结束");
 	var f7 = new Framework7({
 		modalTitle: '消息',
@@ -46,7 +46,7 @@ define(['router'], function(Router) {
 	return {
 		f7: f7,
 		views: views,
-		router: Router,
+		router: router,
 		toast: f7.toast('', '', {duration:2000})
 	};
 });

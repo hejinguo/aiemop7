@@ -9,6 +9,7 @@ define(['base64'],function(base64) {
 //  	sessionStorage.removeItem("_USER_BASE_INFO");
     	//界面核心框架加载成功后渲染后台数据到页面
 		$$(document).on('page:beforeinit', function (e) {
+			console.log(".....");
 			var page = e.detail.page;
 			//验证用户是否已经登录
 			var user = JSON.parse(base64.decode(sessionStorage.getItem("_USER_BASE_INFO")||'')||'{}');
@@ -19,10 +20,6 @@ define(['base64'],function(base64) {
 				load(page.name, page.query);
 			}
 		});
-//		$$('.views .toolbar .tab-link').on('click', function (e) {
-//			load($$(this)[0].dataset.targetPage);
-//			//$$('.view-main .center').html($$(this).children('.tabbar-label').text());//tabbar-label
-//		});
     }
 
 	/**

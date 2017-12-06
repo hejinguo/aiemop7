@@ -63,10 +63,21 @@
 	<div class="card-content">
 		<div class="card-content-inner" style="padding:5px;">
 			{{#js_if "this.LATITUDE && this.LONGITUDE"}}
-				<div style="width:100%;height:250px;"></div>
+				<div style="width:100%;height:230px;"></div>
 			{{else}}
 				<div style="padding:10px 0px;">经纬度不明确</div>
 			{{/js_if}}
 		</div>
 	</div>
 </div>
+
+<a href="#" class="button button-fill color-red delete-shop-button" style="margin:10px;">删除商铺</a>
+
+<!--<div class="card">
+	<div class="card-content">
+		<div class="card-content-inner" style="padding:5px;">
+			<a href="#" class="button button-fill color-yellow">编辑商铺</a>
+			<a href="#" class="button button-fill color-red" style="margin-top:10px;">删除商铺</a>
+		</div>
+	</div>
+</div>-->

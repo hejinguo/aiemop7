@@ -21,9 +21,9 @@ define(['app','text!shop/detail/detail-page-content.tpl'], function(app,template
 	
 	function bindEvents(bindings) {
 		for (var i in bindings) {
-//			$$(bindings[i].element).off(bindings[i].event);
-//			$$(bindings[i].element).on(bindings[i].event, bindings[i].handler);
-			$$(document).on(bindings[i].event,bindings[i].element,bindings[i].handler);
+			$$(bindings[i].element).off(bindings[i].event);
+			$$(bindings[i].element).on(bindings[i].event, bindings[i].handler);
+//			$$(document).on(bindings[i].event,bindings[i].element,bindings[i].handler);
 		}
 	}
 	

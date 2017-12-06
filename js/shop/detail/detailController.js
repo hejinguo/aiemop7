@@ -1,10 +1,22 @@
 //define(['app','tool','bigdata/unitimg/unitimgView'],function(app,tool,unitimgView){
-define(['tool'],function(tool){
+define(['app','tool'],function(app,tool){
 	var $$ = Dom7;
+	var bindings = [{
+		element: '.shop-detail-page-navbar-inner .right a',
+		event: 'click',
+		handler: clickModifyShopItem
+	},{
+		element: '.shop-detail-page .delete-shop-button',
+		event: 'click',
+		handler: clickDeleteShopItem
+		
+	}];
+	var shopCache = null;
 	
 	function init(query){
 		$$('.shop-detail-page-navbar-inner .center').html(query.entName);
 		setTimeout(function(){
+			shopCache = query;
 			loadShopDetailInfo(query);
 		},500);
 	}
@@ -16,10 +28,25 @@ define(['tool'],function(tool){
 					if(data.info[0].ENT_IMAGE){
 						data.info[0].ENT_IMAGE = tool.appPath.emop + 'cust/getShopImage?entCode=' + data.info[0].ENT_IMAGE;
 					}
-					detailView.render({model:data.info[0],callback:loadShopIndividualInfo});
+					detailView.render({model:data.info[0],bindings:bindings,callback:loadShopIndividualInfo});
 				});
 			}
 		});
+	}
+	
+	function clickModifyShopItem(){
+		app.f7.alert('大家都可以编辑,entCode = '+shopCache.entCode);
+//		app.views[1].router.load({url:'pages/shop/shop-modify.html'});
+//		app.views[1].router.reloadPage('pages/shop/shop-modify.html')
+//		app.views[1].router.refreshPage();
+	}
+	
+	function clickDeleteShopItem(){
+		if(shopCache.editFlag && shopCache.editFlag == 1){
+			app.f7.alert('您可以删除操作,entCode = '+shopCache.entCode);
+		}else{
+			app.f7.alert('对不起,您无权执行删除操作.');
+		}
 	}
 	
 	function loadShopIndividualInfo(entCode,typeCode){
