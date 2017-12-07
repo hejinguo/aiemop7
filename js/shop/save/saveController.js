@@ -29,8 +29,8 @@ define(['app','tool'],function(app,tool){
 	
 	function clickSaveShopItem(){
 		
-		console.log(app.f7.formToData($$('.shop-save-page form')));
-		alert(JSON.stringify(app.f7.formToData($$('.shop-save-page form'))));
+//		console.log(app.f7.formToData($$('.shop-save-page form')));
+		app.f7.alert(JSON.stringify(app.f7.formToData($$('.shop-save-page form'))));
 		
 	}
 	
