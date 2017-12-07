@@ -1,0 +1,269 @@
+<!-- Top Navbar-->
+<div class="navbar">
+	<div class="navbar-inner shop-save-page-navbar-inner">
+		<div class="left">
+			<a href="#" class="back link"> <i class="icon icon-back"></i><span>返回</span></a>
+		</div>
+		<!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+		<div class="center sliding">维护商铺</div>
+		<div class="right">
+			<a href="#" class="link"><i class="f7-icons">collection</i><span>保存</span></a>
+		</div>
+	</div>
+</div>
+<!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+<div class="pages navbar-through">
+	<!-- Page, "data-page" contains page name -->
+	<div data-page="shop-save" class="page shop-save-page no-tabbar no-toolbar">
+		<!-- Scrollable page content -->
+		<div class="page-content">
+			<form>
+				<input type="text" name="ENT_CODE" />
+				<div class="content-block-title">基础信息</div>
+				<div class="list-block">
+					<ul>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">商铺名称</div>
+									<div class="item-input">
+										<input type="text" name="ENT_NAME" placeholder="请填写商铺名称">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">归属地市</div>
+									<div class="item-input">
+										<input type="text" name="CITY_CODE" placeholder="请选择归属地市">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">归属区县</div>
+									<div class="item-input">
+										<input type="text" name="COUNTY_CODE" placeholder="请选择归属区县">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<a href="#" class="item-link smart-select" data-open-in="picker"><!-- page popup picker -->
+								<!-- select -->
+								<select name="TYPE_ID"><!--onchange="alert(112233)"-->
+									<option value="餐饮娱乐">餐饮娱乐</option>
+									<option value="宾馆酒店">宾馆酒店</option>
+									<option value="快递物流">快递物流</option>
+									<option value="批发零售">批发零售</option>
+									<option value="药品药业">药品药业</option>
+									<option value="聚类市场">聚类市场</option>
+									<option value="楼宇市场">楼宇市场</option>
+									<option value="园区市场">园区市场</option>
+								</select>
+								<div class="item-content">
+									<div class="item-inner">
+										<!-- Select label -->
+										<div class="item-title">商铺类型</div>
+										<!-- Selected value, not required -->
+										<!--<div class="item-after">批发零售</div>-->
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<div class="item-content disabled">
+								<div class="item-inner">
+									<div class="item-title label">三大市场名称</div>
+									<div class="item-input">
+										<input type="text" name="MARKET_NAME" placeholder="请填写三大市场名称">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">街道</div>
+									<div class="item-input">
+										<input type="text" name="STREET" placeholder="请填写街道">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">地址</div>
+									<div class="item-input">
+										<input type="text" name="ADDRESS" placeholder="请填写地址">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">联系人</div>
+									<div class="item-input">
+										<input type="text" name="TEL_NAME" placeholder="请填写联系人姓名">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">联系电话1</div>
+									<div class="item-input">
+										<input type="text" name="TEL1" placeholder="请填写联系电话">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">联系电话2</div>
+									<div class="item-input">
+										<input type="text" name="TEL2" placeholder="请填写联系电话">
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="content-block-title">扩展信息</div>
+				<div class="list-block">
+					<ul>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">完成集团组网</div>
+									<div class="item-input">
+										<label class="label-switch">
+											<input type="checkbox" name="ENT_NETWORK" value="Y"/>
+											<div class="checkbox"></div>
+										</label>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">宽带资源覆盖</div>
+									<div class="item-input">
+										<label class="label-switch">
+											<input type="checkbox" name="BROADBAND" value="Y"/>
+											<div class="checkbox"></div>
+										</label>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">是否维护</div>
+									<div class="item-input">
+										<label class="label-switch">
+											<input type="checkbox" name="FLAG" value="Y"/>
+											<div class="checkbox"></div>
+										</label>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">集团编码</div>
+									<div class="item-input">
+										<input type="text" name="ENT_280" placeholder="请填写集团编码">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">集团成员数</div>
+									<div class="item-input">
+										<input type="text" name="ENT_MEMBERS" placeholder="请填写集团成员数">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">宽带号码</div>
+									<div class="item-input">
+										<input type="text" name="BROADBAND_NUMBER" placeholder="请填写宽带号码">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">商务动力座机</div>
+									<div class="item-input">
+										<input type="text" name="BUSINESS_TEL" placeholder="请填写商务动力座机">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">网格编码</div>
+									<div class="item-input">
+										<input type="text" name="GRID_CODE" placeholder="请填写网格编码">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">网格名称</div>
+									<div class="item-input">
+										<input type="text" name="GRID_NAME" placeholder="请填写网格名称">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">备注</div>
+									<div class="item-input">
+										<input type="text" name="REMARK" placeholder="请填写备注">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">门头照</div>
+									<div class="item-input">
+										<input type="file" accept="image/*">
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				
+				<!--<div class="aui-preloader-content"><span class="preloader"></span></div>-->
+			</form>
+		</div>
+	</div>
+</div>

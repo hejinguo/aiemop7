@@ -27,6 +27,11 @@ define(['base64'],function(base64) {
 	 * @param query
 	 */
 	function load(pageName, query) {
+		if(pageName.substring(0,pageName.lastIndexOf("-")) == 'smart-select-radio'){
+			console.log('忽略 '+pageName+' 页面数据逻辑')
+			return;
+		}
+		
 		console.log("加载 "+pageName +" 页面数据逻辑");
 		
 		var controllerName = "";

@@ -36,7 +36,7 @@ define(['app','tool'],function(app,tool){
 	
 	function clickModifyShopItem(){
 //		app.f7.alert('大家都可以编辑,entCode = '+shopCache.entCode);
-		app.views[1].router.load({url:'pages/shop/shop-modify.html?entCode='+shopCache.entCode+'&entName='+shopCache.entName});
+		app.views[1].router.load({url:'pages/shop/shop-save.html?entCode='+shopCache.entCode+'&entName='+shopCache.entName});
 	}
 	
 	function clickDeleteShopItem(){

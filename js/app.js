@@ -14,8 +14,15 @@ require.config({
 });
 
 define(['router'], function(router) {
+	/*
+	var isAndroid = Framework7.prototype.device.android === true;
+	var isIos = Framework7.prototype.device.ios === true;
+	Template7.global = {
+	    android: isAndroid,
+	    ios: isIos
+	};
+	*/
 	var $$ = Dom7;
-	
 	console.log("初始化APP过程启动");
 	console.log("初始化APP路由启动");
 	router.init();
@@ -24,6 +31,8 @@ define(['router'], function(router) {
 		modalTitle: '消息',
 		animateNavBackIcon: true,
 		pushState:true,
+//		pushStateNoAnimation:true,
+		smartSelectPickerCloseText:'关闭',
 		onAjaxStart: function (xhr) {
 			console.log("load page onAjaxStart");
 	        f7.showIndicator();

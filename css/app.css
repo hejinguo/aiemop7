@@ -30,12 +30,12 @@ div{
 .list-block{
 	margin: 1px auto;
 }
-.list-block .item-title,.card-header{
+/*.list-block .item-title,.card-header{
 	font-size:15px;
 }
 .list-block .item-after,.list-block .item-subtitle,.list-block .item-text,.card{
 	font-size:13px;
-}
+}*/
 
 /*登陆页面样式*/
 .login-screen-content .login-screen-title{
