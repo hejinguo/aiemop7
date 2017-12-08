@@ -33,6 +33,7 @@ define(['app','tool'],function(app,tool){
 	function init(query){
 		tool.appAjax(tool.appPath.emopPro+'shop/getShopManageAuth',{},function(data){
 			if(data.state){
+				cacheData.allCountyList = data.info.allCountyList;
 				$$('.shop-save-page form [name="CITY_CODE"]').html('');
 				$$.each(data.info.shopCityList,function(i,n){
 					app.f7.smartSelectAddOption('.shop-save-page form [name="CITY_CODE"]', '<option value="'+n.cityName+'">'+n.cityName+'</option>');
@@ -40,16 +41,15 @@ define(['app','tool'],function(app,tool){
 				$$.each(data.info.shopTypeList,function(i,n){
 					app.f7.smartSelectAddOption('.shop-save-page form [name="TYPE_ID"]', '<option value="'+n.typeName+'">'+n.typeName+'</option>');
 				});
-				cacheData.allCountyList = data.info.allCountyList;
+				if(query.entCode){
+					$$('.shop-save-page-navbar-inner .center').html('编辑商铺('+query.entName+')');
+					loadShopDetailInfo(query);
+				}else{
+					$$('.shop-save-page-navbar-inner .center').html('添加商铺');
+					$$('.shop-save-page form [name="CITY_CODE"]').change();
+				}
 			}
 		});
-		
-		if(query.entCode){
-			$$('.shop-save-page-navbar-inner .center').html('编辑商铺('+query.entName+')');
-			loadShopDetailInfo(query);
-		}else{
-			$$('.shop-save-page-navbar-inner .center').html('添加商铺');
-		}
 		require(['shop/save/saveView'], function(saveView) {
 			saveView.render({bindings:bindings});
 		});
