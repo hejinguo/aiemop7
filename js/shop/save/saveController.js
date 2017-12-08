@@ -22,8 +22,7 @@ define(['app','tool'],function(app,tool){
 			var countyList = cacheData.allCountyList.filter(function(county){
 				return county.cityName == $$('.shop-save-page form [name="CITY_CODE"]').val();
 			});
-//			console.log($$('.shop-save-page form [name="CITY_CODE"]').val()+"    ");
-//			console.log(xx);
+			$$('.shop-save-page form [name="COUNTY_CODE"]').html('');
 			$$.each(countyList,function(i,n){
 				app.f7.smartSelectAddOption('.shop-save-page form [name="COUNTY_CODE"]', '<option value="'+n.countyName+'">'+n.countyName+'</option>');
 			});
@@ -34,6 +33,7 @@ define(['app','tool'],function(app,tool){
 	function init(query){
 		tool.appAjax(tool.appPath.emopPro+'shop/getShopManageAuth',{},function(data){
 			if(data.state){
+				$$('.shop-save-page form [name="CITY_CODE"]').html('');
 				$$.each(data.info.shopCityList,function(i,n){
 					app.f7.smartSelectAddOption('.shop-save-page form [name="CITY_CODE"]', '<option value="'+n.cityName+'">'+n.cityName+'</option>');
 				});
