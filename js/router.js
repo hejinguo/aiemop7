@@ -27,7 +27,8 @@ define(['base64'],function(base64) {
 	 * @param query
 	 */
 	function load(pageName, query) {
-		if(pageName.substring(0,pageName.lastIndexOf("-")) == 'smart-select-radio'){
+//		console.log(pageName.match(/smart-select-radio/gi);
+		if(pageName.indexOf('smart-select-radio') >= 0){
 			console.log('忽略 '+pageName+' 页面数据逻辑')
 			return;
 		}

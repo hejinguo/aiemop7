@@ -18,7 +18,7 @@
 		<!-- Scrollable page content -->
 		<div class="page-content">
 			<form>
-				<input type="text" name="ENT_CODE" />
+				<!--<input type="text" name="ENT_CODE" />-->
 				<div class="content-block-title">基础信息</div>
 				<div class="list-block">
 					<ul>
@@ -33,38 +33,38 @@
 							</div>
 						</li>
 						<li>
-							<div class="item-content">
-								<div class="item-inner">
-									<div class="item-title label">归属地市</div>
-									<div class="item-input">
-										<input type="text" name="CITY_CODE" placeholder="请选择归属地市">
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="item-content">
-								<div class="item-inner">
-									<div class="item-title label">归属区县</div>
-									<div class="item-input">
-										<input type="text" name="COUNTY_CODE" placeholder="请选择归属区县">
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<a href="#" class="item-link smart-select"><!-- data-open-in="picker" popup picker -->
+							<a href="#" class="smart-select" data-page-title="选择归属地市" data-back-text="返回" style="color:inherit;">
 								<!-- select -->
-								<select name="TYPE_ID"><!--onchange="alert(112233)"-->
-									<option value="餐饮娱乐">餐饮娱乐</option>
-									<option value="宾馆酒店">宾馆酒店</option>
-									<option value="快递物流">快递物流</option>
-									<option value="批发零售">批发零售</option>
-									<option value="药品药业">药品药业</option>
-									<option value="聚类市场">聚类市场</option>
-									<option value="楼宇市场">楼宇市场</option>
-									<option value="园区市场">园区市场</option>
-								</select>
+								<select name="CITY_CODE"></select>
+								<div class="item-content">
+									<div class="item-inner">
+										<!-- Select label -->
+										<div class="item-title">归属地市</div>
+										<!-- Selected value, not required -->
+										<!--<div class="item-after">批发零售</div>-->
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="smart-select" data-page-title="选择归属区县" data-back-text="返回" style="color:inherit;">
+								<!-- select -->
+								<select name="COUNTY_CODE"></select>
+								<div class="item-content">
+									<div class="item-inner">
+										<!-- Select label -->
+										<div class="item-title">归属区县</div>
+										<!-- Selected value, not required -->
+										<!--<div class="item-after">批发零售</div>-->
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="smart-select" data-page-title="选择商铺类型" data-back-text="返回"
+								style="color:inherit;"><!-- data-open-in="popup" data-popup-close-text="Close Cars" -->
+								<!-- select -->
+								<select name="TYPE_ID"></select>
 								<div class="item-content">
 									<div class="item-inner">
 										<!-- Select label -->
@@ -252,16 +252,27 @@
 						<li>
 							<div class="item-content">
 								<div class="item-inner">
-									<div class="item-title label">门头照</div>
+									<div class="item-title label">商铺门头照</div>
 									<div class="item-input">
-										<input type="file" accept="image/*">
+										<img style="width:100%;margin-top:5px;" alt="请选择商铺的门头照" border="0"/>
+										<input type="file" accept="image/*" style="display: none;">
 									</div>
 								</div>
 							</div>
 						</li>
 					</ul>
 				</div>
-				
+				<!--<div class="content-block-title">商铺门头照</div>
+				<div class="list-block">
+					<ul>
+						<li>
+							<div class="aui-text-center">
+								<img style="width:100%;" alt="请选择商铺的门头照"/>
+								<input type="file" name="PHOTO" accept="image/*" style="display: none;">
+							</div>
+						</li>
+					</ul>
+				</div>-->
 				<!--<div class="aui-preloader-content"><span class="preloader"></span></div>-->
 			</form>
 		</div>

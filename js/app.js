@@ -32,7 +32,8 @@ define(['router'], function(router) {
 		animateNavBackIcon: true,
 		pushState:true,
 //		pushStateNoAnimation:true,
-		smartSelectBackText:'返回',
+		cache:false,
+//		smartSelectBackText:'返回',
 		onAjaxStart: function (xhr) {
 			console.log("load page onAjaxStart");
 	        f7.showIndicator();

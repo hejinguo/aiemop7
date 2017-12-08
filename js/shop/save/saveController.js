@@ -5,9 +5,45 @@ define(['app','tool'],function(app,tool){
 		element: '.shop-save-page-navbar-inner .right a',
 		event: 'click',
 		handler: clickSaveShopItem
+	},{
+		element: '.shop-save-page form [type="file"]',
+		event: 'change',
+		handler: selectShopPhoto
+	},{
+		element: '.shop-save-page form img',
+		event: 'click',
+		handler: function(){
+			$$('.shop-save-page form [type="file"]').click();
+		}
+	},{
+		element: '.shop-save-page form [name="CITY_CODE"]',
+		event: 'change',
+		handler: function(){
+			var countyList = cacheData.allCountyList.filter(function(county){
+				return county.cityName == $$('.shop-save-page form [name="CITY_CODE"]').val();
+			});
+//			console.log($$('.shop-save-page form [name="CITY_CODE"]').val()+"    ");
+//			console.log(xx);
+			$$.each(countyList,function(i,n){
+				app.f7.smartSelectAddOption('.shop-save-page form [name="COUNTY_CODE"]', '<option value="'+n.countyName+'">'+n.countyName+'</option>');
+			});
+		}
 	}];
+	var cacheData = {};
 	
 	function init(query){
+		tool.appAjax(tool.appPath.emopPro+'shop/getShopManageAuth',{},function(data){
+			if(data.state){
+				$$.each(data.info.shopCityList,function(i,n){
+					app.f7.smartSelectAddOption('.shop-save-page form [name="CITY_CODE"]', '<option value="'+n.cityName+'">'+n.cityName+'</option>');
+				});
+				$$.each(data.info.shopTypeList,function(i,n){
+					app.f7.smartSelectAddOption('.shop-save-page form [name="TYPE_ID"]', '<option value="'+n.typeName+'">'+n.typeName+'</option>');
+				});
+				cacheData.allCountyList = data.info.allCountyList;
+			}
+		});
+		
 		if(query.entCode){
 			$$('.shop-save-page-navbar-inner .center').html('编辑商铺('+query.entName+')');
 			loadShopDetailInfo(query);
@@ -28,10 +64,44 @@ define(['app','tool'],function(app,tool){
 	}
 	
 	function clickSaveShopItem(){
-		
-//		console.log(app.f7.formToData($$('.shop-save-page form')));
-		app.f7.alert(JSON.stringify(app.f7.formToData($$('.shop-save-page form'))));
-		
+		var _this = $$('.shop-save-page form [type="file"]')[0];
+		var photo = _this.files && _this.files.length > 0 ? _this.files[0] : null;
+		if(photo){
+			console.log(photo.size+"   "+(photo.size/1024)+"    "+photo.type);
+			if(photo.size/1024 > 1024){//大于1M的门头照需要进行提醒
+				app.f7.alert('对不起,门头照暂不允许大于1M的图片.');
+				return;
+			}else{
+				var formData = app.f7.formToData($$('.shop-save-page form'));
+				var reader = new FileReader();
+				reader.readAsDataURL(photo);
+				reader.onload = function() {
+			    	var dataURL = reader.result;
+			    	formData.ent_image = dataURL;
+			    	formData.ent_imgtype = photo.type;
+			    };
+			}
+		}
+		app.f7.alert('保存方法我还在揣摩');
+//		console.log(new FormData($$('.shop-save-page form')[0]));
+//		app.f7.alert(JSON.stringify(app.f7.formToData($$('.shop-save-page form'))));
+		console.log(app.f7.formToData($$('.shop-save-page form')));
+		console.log(formData);
+//		new FormData($$('.shop-save-page form')[0]),
+	}
+	
+	function selectShopPhoto(){
+		var _this = this;
+		var photo = _this.files && _this.files.length > 0 ? _this.files[0] : null;
+		if(photo){
+			console.log(photo.size+"   "+(photo.size/1024)+"    "+photo.type);
+			$$('.shop-save-page form img').attr('src',window.URL.createObjectURL(photo));
+			if(photo.size/1024 > 1024){//大于1M的门头照需要进行提醒
+				app.toast.show('对不起,门头照暂不允许大于1M的图片.');
+			}
+		}else{
+			$$('.shop-save-page form img').removeAttr('src');
+		}
 	}
 	
 	function loadShopIndividualInfo(entCode,typeCode){

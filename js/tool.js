@@ -14,6 +14,10 @@ define(['app','base64'],function(app,base64) {
 		return JSON.parse(base64.decode(sessionStorage.getItem("_USER_BASE_INFO")||'')||'{}')
 	}
 	
+	function delUser(){
+		sessionStorage.removeItem("_USER_BASE_INFO");
+	}
+	
 	function encode(content){
 		return base64.encode(content);
 	}
@@ -70,6 +74,7 @@ define(['app','base64'],function(app,base64) {
 					onError();
 				}else if(!data.state && data.code == "NOT_LOGINED"){
 					app.f7.alert('您尚未登陆或账号在其他终端上登陆导致本设备踢出.');
+					delUser();
 				}else{
 					onSuccess(data);
 				}
