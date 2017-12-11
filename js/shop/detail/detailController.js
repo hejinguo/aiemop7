@@ -26,7 +26,7 @@ define(['app','tool'],function(app,tool){
 			if(data.state){
 				require(['shop/detail/detailView'], function(detailView) {
 					if(data.info[0].ENT_IMAGE){
-						data.info[0].ENT_IMAGE = tool.appPath.emop + 'cust/getShopImage?entCode=' + data.info[0].ENT_IMAGE;
+						data.info[0].ENT_IMAGE = tool.appPath.emop + 'cust/getShopImage?entCode=' + data.info[0].ENT_IMAGE+"&k="+new Date().getTime();
 					}
 					detailView.render({model:data.info[0],bindings:bindings,callback:loadShopIndividualInfo});
 				});
@@ -36,7 +36,7 @@ define(['app','tool'],function(app,tool){
 	
 	function clickModifyShopItem(){
 //		app.f7.alert('大家都可以编辑,entCode = '+shopCache.entCode);
-		app.views[1].router.load({url:'pages/shop/shop-save.html?entCode='+shopCache.entCode+'&entName='+shopCache.entName});
+		app.views[1].router.load({url:'pages/shop/shop-save.html?entCode='+shopCache.entCode+'&entName='+shopCache.entName+'&editFlag='+shopCache.editFlag});
 	}
 	
 	function clickDeleteShopItem(){

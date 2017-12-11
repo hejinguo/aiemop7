@@ -18,6 +18,7 @@ define(['app','tool','shop/shopView'],function(app,tool,shopView){
 	}];
 	
 	function init(){
+		param.pageNo = 1;
 		shopView.render(bindings);
 		_pullupRefresh(1);
 	}

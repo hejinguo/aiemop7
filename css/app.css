@@ -26,6 +26,7 @@ div{
 }
 .card-content-inner{
 	padding: 15px 5px;
+	line-height: 160%;
 }
 .list-block{
 	margin: 1px auto;
