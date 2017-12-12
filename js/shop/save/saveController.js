@@ -28,6 +28,10 @@ define(['app','tool'],function(app,tool){
 		});
 	}
 	
+	/**
+	 * 加载页面选择器的基础数据
+	 * @param {Object} query
+	 */
 	function loadShopSelectInfo(query){
 		tool.appAjax(tool.appPath.emopPro+'shop/getShopManageAuth',{},function(data){
 			if(data.state){
@@ -40,13 +44,12 @@ define(['app','tool'],function(app,tool){
 					app.f7.smartSelectAddOption('.shop-save-page form [name="TYPE_ID"]', '<option value="'+n.typeName+'">'+n.typeName+'</option>');
 				});
 				if(query.entCode){
-					$$('.shop-save-page-navbar-inner .center').html('编辑商铺('+query.entName+')');
+					$$('.shop-save-page-navbar-inner .center').html('编辑商铺');
 					loadShopDetailInfo(query);
 				}else{
 					$$('.shop-save-page-navbar-inner .center').html('添加商铺');
 					$$('.shop-save-page form [name="CITY_CODE"]').change();
-					
-					require(['async!BMap'], function() {
+					/*require(['async!BMap'], function() {
 						var geolocation = new BMap.Geolocation();
 						geolocation.getCurrentPosition(function(r){
 							console.log(BMAP_STATUS_SUCCESS);
@@ -64,23 +67,109 @@ define(['app','tool'],function(app,tool){
 								console.log('failed'+this.getStatus());
 							}        
 						});
-					});
-					
+					});*/
 				}
 			}
 		});
 	}
 	
+	/**
+	 * 编辑时加载商铺具体信息
+	 * @param {Object} query
+	 */
 	function loadShopDetailInfo(query){
 		tool.appAjax('cust/getShopInfoByCode',{shopCode:query.entCode},function(data){
 			if(data.state){
-				app.f7.formFromData($$('.shop-save-page form'),data.info[0])
+				app.f7.formFromData($$('.shop-save-page form'),data.info[0]);
+				if(data.info[0].ENT_IMAGE){
+					$$('.shop-save-page form img').attr('src',tool.appPath.emop + 'cust/getShopImage?entCode=' + data.info[0].ENT_IMAGE+"&k="+new Date().getTime());
+				}
+				loadShopIndividualInfo(data.info[0].ENT_CODE,data.info[0].TYPE_CODE);
 			}
 		});
 	}
 	
+	/**
+	 * 封装保存逻辑前验证
+	 */
 	function clickSaveShopItem(){
 		var formData = app.f7.formToData($$('.shop-save-page form'));
+		var shopInfo = privatePackDataObject(formData);
+		if(!shopInfo.ent_name || !shopInfo.city || !shopInfo.county || !shopInfo.typeid){
+			app.f7.alert('对不起,商铺名称必须填写.');
+			return;
+		}
+		
+		var _this = $$('.shop-save-page form [type="file"]')[0];
+		var photo = _this.files && _this.files.length > 0 ? _this.files[0] : null;
+		if(photo && /image\/\w+/.test(photo.type)){
+			tool.dealImage(window.URL.createObjectURL(photo), {width:300}, function(base) {
+				$$('.shop-save-page form img').attr('src',base);
+				shopInfo.ent_image = base;
+				shopInfo.ent_imgtype = photo.type;
+				console.log(photo.size/1024 +" 压缩后：" + base.length / 1024 + " ");
+				execSaveShopInfo(shopInfo);
+			});
+		}else{
+			execSaveShopInfo(shopInfo);
+		}
+	}
+	
+	/**
+	 * 执行具体的保存逻辑
+	 * @param {Object} shopInfo
+	 */
+	function execSaveShopInfo(shopInfo){
+		console.log(shopInfo);
+		
+		var url = shopInfo.ent_code ? 'cust/updateShopInfo' : 'cust/addShopInfo';
+		tool.appAjax(url,{shopInfo:JSON.stringify(shopInfo)},function(data){
+			if(shopInfo.ent_code){//编辑
+				app.views[1].router.back({pageName:'shop-detail'});
+				app.router.load('shop-detail',cacheQuery);
+			}else{//添加
+//				app.views[1].router.back({pageName:'shop'});
+//				app.views[1].router.reloadPage('pages/shop/shop-save.html?entCode=N65941');
+			}
+			app.router.load('shop');
+		});
+	}
+	
+	/**
+	 * 选择门头照触发事件
+	 */
+	function selectShopPhoto(){
+		var _this = this;
+		var photo = _this.files && _this.files.length > 0 ? _this.files[0] : null;
+		if(photo && /image\/\w+/.test(photo.type)){
+//			$$('.shop-save-page form img').attr('src',window.URL.createObjectURL(photo));
+			tool.dealImage(window.URL.createObjectURL(photo), {width: 300}, function(base) {
+				$$('.shop-save-page form img').attr('src',base);
+				console.log(photo.size/1024 +" 压缩后：" + base.length / 1024 + " ");
+			});
+		}else{
+			$$('.shop-save-page form img').removeAttr('src');
+		}
+	}
+	
+	/**
+	 * 归属地市选择触发事件
+	 */
+	function changeCityCodeSelect(){
+		var countyList = cacheData.allCountyList.filter(function(county){
+			return county.cityName == $$('.shop-save-page form [name="CITY_CODE"]').val();
+		});
+		$$('.shop-save-page form [name="COUNTY_CODE"]').html('');
+		$$.each(countyList,function(i,n){
+			app.f7.smartSelectAddOption('.shop-save-page form [name="COUNTY_CODE"]', '<option value="'+n.countyName+'">'+n.countyName+'</option>');
+		});
+	}
+	
+	/**
+	 * 封装提交的数据
+	 * @param {Object} formData
+	 */
+	function privatePackDataObject(formData){
 		var shopInfo = {};
 		shopInfo.ent_code = formData.ENT_CODE;
 		shopInfo.ent_name = formData.ENT_NAME;
@@ -108,81 +197,37 @@ define(['app','tool'],function(app,tool){
 		shopInfo.latitude='0';
 		shopInfo.ent_image='';
 		shopInfo.ent_imgtype='';
-		
-		if(!formData.ENT_NAME || !formData.CITY_CODE || !formData.COUNTY_CODE || !formData.TYPE_ID){
-			app.f7.alert('对不起,商铺名称必须填写.');
-			return;
-		}
-		
-		var _this = $$('.shop-save-page form [type="file"]')[0];
-		var photo = _this.files && _this.files.length > 0 ? _this.files[0] : null;
-		if(photo && /image\/\w+/.test(photo.type)){
-			tool.dealImage(window.URL.createObjectURL(photo), {width:300}, function(base) {
-				$$('.shop-save-page form img').attr('src',base);
-				shopInfo.ent_image = base;
-				shopInfo.ent_imgtype = photo.type;
-				console.log(photo.size/1024 +" 压缩后：" + base.length / 1024 + " ");
-				execSaveShopInfo(shopInfo);
-			});
-		}else{
-			execSaveShopInfo(shopInfo);
-		}
-	}
-	
-	function execSaveShopInfo(shopInfo){
-		console.log(shopInfo);
-		
-		cacheQuery.entName = shopInfo.ent_name;
-		var url = shopInfo.ent_code ? 'cust/updateShopInfo' : 'cust/addShopInfo';
-		tool.appAjax(url,{shopInfo:JSON.stringify(shopInfo)},function(data){
-			if(shopInfo.ent_code){//编辑
-				app.views[1].router.back({pageName:'shop-detail'});
-				app.router.load('shop-detail',cacheQuery);
-			}else{//添加
-//				app.views[1].router.back({pageName:'shop'});
-//				app.views[1].router.reloadPage('pages/shop/shop-save.html?entCode=N65941');
-			}
-			app.router.load('shop');
+		shopInfo.expandInfo=[];
+		$$('.shop-save-page form [k_id]').each(function(i,n){
+			shopInfo.expandInfo.push({KID:$$(n).attr('k_id'),KValue:$$(n).val()});
 		});
+		return shopInfo;
 	}
 	
-	function selectShopPhoto(){
-		var _this = this;
-		var photo = _this.files && _this.files.length > 0 ? _this.files[0] : null;
-		if(photo && /image\/\w+/.test(photo.type)){
-//			$$('.shop-save-page form img').attr('src',window.URL.createObjectURL(photo));
-			tool.dealImage(window.URL.createObjectURL(photo), {width: 300}, function(base) {
-				$$('.shop-save-page form img').attr('src',base);
-				console.log(photo.size/1024 +" 压缩后：" + base.length / 1024 + " ");
-			});
-		}else{
-			$$('.shop-save-page form img').removeAttr('src');
-		}
-	}
-	
-	function changeCityCodeSelect(){
-		var countyList = cacheData.allCountyList.filter(function(county){
-			return county.cityName == $$('.shop-save-page form [name="CITY_CODE"]').val();
-		});
-		$$('.shop-save-page form [name="COUNTY_CODE"]').html('');
-		$$.each(countyList,function(i,n){
-			app.f7.smartSelectAddOption('.shop-save-page form [name="COUNTY_CODE"]', '<option value="'+n.countyName+'">'+n.countyName+'</option>');
-		});
-	}
-	
+	/**
+	 * 加载扩展信息
+	 * @param {Object} entCode
+	 * @param {Object} typeCode
+	 */
 	function loadShopIndividualInfo(entCode,typeCode){
 		tool.appAjax('cust/getExpandShopInfo',{entCode:entCode,typeId:typeCode},function(data){
-			var individual = "";
+			var individual = "<div class=\"content-block-title\">个性化信息</div>";
+			individual += "<div class=\"list-block\"><ul>";
 			if(data.state && data.info.length > 0){
-				individual = "<div class=\"row\">";
 				$$.each(data.info, function (index, item) {
-					individual += "<div class=\"col-50\">"+item.K_NAME+"："+(item.K_VALUE ? item.K_VALUE : '不详')+"</div>";
+					individual += "<li>";
+					individual += "<div class=\"item-content\"><div class=\"item-inner\">";
+					individual += "<div class=\"item-title label\">"+item.K_NAME+"</div>";
+					individual += "<div class=\"item-input\">";
+					individual += "<input type=\"text\" k_id=\""+item.K_ID+"\" placeholder=\"请填写"+item.K_NAME+"\" value=\""+(item.K_VALUE ? item.K_VALUE : index)+"\">";
+					individual += "</div>";
+					individual += "</div></div>";
+					individual += "</li>";
 				});
-				individual += "</div>";
-			}else{
-				individual = "无个性化信息";
+//				div_html += '<input id="ent_' + item.K_ID + '" k_id="' + item.K_ID + '" type="text" value="' + (isNull(item.K_VALUE) ? '' : item.K_VALUE) + '" placeholder="请输入' + item.K_NAME + '"></div>';
 			}
-			$$('.shop-detail-individual-card .card-content-inner').html(individual);
+			individual += "</ul></div>";
+			$$('.shop-save-page form').append(individual);
 		});
 	}
 	

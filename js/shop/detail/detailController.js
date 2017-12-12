@@ -14,7 +14,6 @@ define(['app','tool'],function(app,tool){
 	var shopCache = null;
 	
 	function init(query){
-		$$('.shop-detail-page-navbar-inner .center').html(query.entName);
 		setTimeout(function(){
 			shopCache = query;
 			loadShopDetailInfo(query);
@@ -35,13 +34,20 @@ define(['app','tool'],function(app,tool){
 	}
 	
 	function clickModifyShopItem(){
-//		app.f7.alert('大家都可以编辑,entCode = '+shopCache.entCode);
-		app.views[1].router.load({url:'pages/shop/shop-save.html?entCode='+shopCache.entCode+'&entName='+shopCache.entName+'&editFlag='+shopCache.editFlag});
+		app.views[1].router.load({url:'pages/shop/shop-save.html?entCode='+shopCache.entCode+'&editFlag='+shopCache.editFlag});
 	}
 	
 	function clickDeleteShopItem(){
 		if(shopCache.editFlag && shopCache.editFlag == 1){
-			app.f7.alert('您可以删除操作,entCode = '+shopCache.entCode);
+			app.f7.confirm('您确定要删除该商铺吗?','删除',function () {
+		        tool.appAjax('cust/delShopInfo',{shopCode:shopCache.entCode},function(data){
+		        	if(data.state){
+						app.toast.show("删除商铺操作成功.");
+						app.views[1].router.back({pageName:'shop'});
+						app.router.load('shop');
+					}
+				});
+		    });
 		}else{
 			app.f7.alert('对不起,您无权执行删除操作.');
 		}

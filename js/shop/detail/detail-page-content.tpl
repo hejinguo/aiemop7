@@ -3,6 +3,7 @@
 	<div class="card-content">
 		<div class="card-content-inner">
 			<div class="row">
+				<div class="col-100">商铺名称：{{ENT_NAME}}</div>
 				<div class="col-50">商铺类型：{{TYPE_ID}}{{js "this.MARKET_NAME ? '('+this.MARKET_NAME+')' : ''"}}</div>
 				<div class="col-50">是否拓展：{{js "this.ENT_STATE == 2 ? '已拓展' : (this.ENT_STATE == 1 ? '未拓展' : '未管理')"}}</div>
 				<div class="col-50">归属地市：{{CITY_CODE}}</div>
@@ -22,8 +23,8 @@
 		<div class="card-content-inner">
 			<div class="row">
 				<div class="col-100">是否完成集团组网：{{js "this.ENT_NETWORK == 'Y' ? '是' : '否'"}}</div>
-				<div class="col-50">宽带资源是否覆盖：{{BROADBAND}}</div>
-				<div class="col-50">是否维护：{{FLAG}}</div>
+				<div class="col-50">宽带资源是否覆盖：{{js "this.BROADBAND == 'Y' ? '是' : '否'"}}</div>
+				<div class="col-50">是否维护：{{js "this.FLAG == 'Y' ? '是' : '否'"}}</div>
 				<div class="col-50">集团编码：{{js "this.ENT_280 ? this.ENT_280 : '无'"}}</div>
 				<div class="col-50">集团成员数：{{ENT_MEMBERS}}</div>
 				<div class="col-50">商务动力座机：{{BUSINESS_TEL}}</div>

@@ -18,6 +18,22 @@ div{
 }
 
 /*覆盖framework7样式*/
+.layout-asiainfo .navbar{
+	background-color: #4F8EFF;
+	color: #fff;
+}
+.theme-asiainfo .navbar a{
+	color:#fff;
+}
+.layout-asiainfo .login-screen-content{
+	background:-webkit-gradient(linear, 0 0, 0 bottom, from(#4F8EFF), to(#00d0ff));  
+}
+
+
+
+
+
+
 .tabbar.tabbar-hidden, .tabbar.toolbar-hidden, .toolbar.tabbar-hidden, .toolbar.toolbar-hidden{
 	display: none;
 }
@@ -64,7 +80,12 @@ div{
 	background: #FAFAFA;
 }
 .login-screen-content .submit-login-button{
-	margin-top:35px;
+	width:60%;
+	margin:35px auto;
+	border-radius: 30px;
+}
+.login-screen-content .send-mark-button{
+	color:#FFFFFF;
 }
 
 /*商铺管理页面样式 */
