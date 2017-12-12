@@ -100,9 +100,9 @@ div{
 	margin:35px auto;
 	border-radius: 30px;
 	background: #73D658;
-	height: 35px;
+	height: 40px;
 	font-size: 14px;
-	line-height: 35px;
+	line-height: 40px;
 }
 .login-screen-content .list-block .item-content{
 	padding-left: 0px;
@@ -113,16 +113,16 @@ div{
 }
 .login-screen-content .list-block .item-inner{
 	padding-right: 0px;
-	min-height: 35px;
+	/*min-height: 35px;*/
 }
 .login-screen-content .list-block .item-content{
-	min-height: 35px;
+	/*min-height: 35px;*/
 }
 .login-screen-content .list-block .item-inner .f7-icons{
 	color:#FFFFFF;
 	font-size: 15px;
     width: 35px;
-    padding:10px 0px;
+    padding:12px 0px 13px 0px;
     border-radius: 15px 0 0 15px;
     background: rgba(255,255,255,0.3);
 }
@@ -130,12 +130,12 @@ div{
 .login-screen-content .list-block input[type=number],
 .login-screen-content .list-block input[type=password]{
 	color: #FFFFFF;
-	height:35px;
+	height:40px;
 	background:rgba(255,255,255,0.3);
 	border-radius: 0 15px 15px 0;
 }
 .login-screen-content input::-webkit-input-placeholder{
-    color:rgba(255,255,255,1);
+    color:rgba(255,255,255,0.7);
 }
 
 
