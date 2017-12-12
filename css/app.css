@@ -19,16 +19,28 @@ div{
 
 /*覆盖framework7样式*/
 .layout-asiainfo .navbar{
-	background-color: #4F8EFF;
 	color: #fff;
+	background-image:-webkit-linear-gradient(315deg, #4F8EFF, #00d0ff);
 }
 .theme-asiainfo .navbar a{
 	color:#fff;
 }
 .layout-asiainfo .login-screen-content{
-	background:-webkit-gradient(linear, 0 0, 0 bottom, from(#4F8EFF), to(#00d0ff));  
+	/*background:-webkit-gradient(linear, 0 0, 0 bottom, from(#4F8EFF), to(#00d0ff));*/  
+	background-image:-webkit-linear-gradient(270deg, #4F8EFF, #00d0ff);
 }
-
+.theme-asiainfo .tabbar a.active{
+	color:#4F8EFF;
+}
+.theme-asiainfo .searchbar{
+	background: #F3F3F3;
+}
+.bg-gradient-blue{
+	background-image:-webkit-linear-gradient(315deg, #00d0ff, #4F8EFF);
+}
+.bg-light-gray{
+	background: #DCDFE5;
+}
 
 
 
@@ -46,6 +58,13 @@ div{
 }
 .list-block{
 	margin: 1px auto;
+}
+.list-block.media-list .item-title{
+	font-weight: bold;
+}
+.card-header{
+	text-align: center;
+	display: block;
 }
 .list-block .item-title,.card-header,
 .list-block input[type=date], .list-block input[type=datetime-local], .list-block input[type=email], 
@@ -72,21 +91,53 @@ div{
 	font-size: 14px;
 	text-align:center;
 }
-.login-screen-content .list-block{
-	margin:25px 15px;
-	max-width: 100%;
-}
-.login-screen-content .list-block.inset{
-	background: #FAFAFA;
+.login-screen-content .send-mark-button{
+	color:#FFFFFF;
+	font-size: 15px;
 }
 .login-screen-content .submit-login-button{
 	width:60%;
 	margin:35px auto;
 	border-radius: 30px;
+	background: #73D658;
+	height: 35px;
+	font-size: 14px;
+	line-height: 35px;
 }
-.login-screen-content .send-mark-button{
+.login-screen-content .list-block .item-content{
+	padding-left: 0px;
+	padding:5px 15px;
+}
+.login-screen-content .list-block .item-inner:after{
+	height:0px;
+}
+.login-screen-content .list-block .item-inner{
+	padding-right: 0px;
+	min-height: 35px;
+}
+.login-screen-content .list-block .item-content{
+	min-height: 35px;
+}
+.login-screen-content .list-block .item-inner .f7-icons{
 	color:#FFFFFF;
+	font-size: 15px;
+    width: 35px;
+    padding:10px 0px;
+    border-radius: 15px 0 0 15px;
+    background: rgba(255,255,255,0.3);
 }
+.login-screen-content .list-block input[type=text],
+.login-screen-content .list-block input[type=number],
+.login-screen-content .list-block input[type=password]{
+	color: #FFFFFF;
+	height:35px;
+	background:rgba(255,255,255,0.3);
+	border-radius: 0 15px 15px 0;
+}
+.login-screen-content input::-webkit-input-placeholder{
+    color:rgba(255,255,255,1);
+}
+
 
 /*商铺管理页面样式 */
 .shop-page .list-block .item-text{
