@@ -37,7 +37,7 @@
 		<!-- Views -->
 		<div class="views tabs toolbar-through">
 			<!-- Your first view, it is also a .tab and should have "active" class to make it visible by default-->
-			<div id="home-view" class="view tab">
+			<div id="home-view" class="view tab active">
 				<!-- We can make with view with navigation, let's add Top Navbar-->
 				<div class="navbar">
 					<div class="navbar-inner">
@@ -50,13 +50,15 @@
 					<div data-page="home" class="page home-page">
 						<!-- Scrollable page content-->
 						<div class="page-content">
-							<div class="aui-preloader-content"><span class="preloader"></span></div>
+							<div class="page-pull-content">
+								<div class="aui-preloader-content"><span class="preloader"></span></div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<!-- Second view (for second wrap)-->
-			<div id="shop-view" class="view view-main tab active">
+			<div id="shop-view" class="view view-main tab">
 				<!-- We can make with view with navigation, let's add Top Navbar-->
 				<div class="navbar">
 					<div class="navbar-inner shop-page-navbar-inner">
@@ -125,32 +127,17 @@
 					</div>
 				</div>
 			</div>
-			<div id="tool-view" class="view tab">
+			<div id="mms-view" class="view tab">
 				<div class="pages navbar-fixed">
-					<div data-page="tool" class="page tool-page">
+					<div data-page="mms" class="page mms-page">
 						<div class="navbar">
 							<div class="navbar-inner">
-								<div class="center">更多功能</div>
+								<div class="center">重点业务</div>
 							</div>
 						</div>
 						<div class="page-content">
-							<!--<div class="list-block">
-								<ul>
-									<li>
-										<div class="item-content">
-											<div class="item-media"><i class="icon icon-form-name"></i></div>
-											<div class="item-inner">
-												<div class="item-title label">Name</div>
-												<div class="item-input">
-													<input type="text" placeholder="Your name">
-												</div>
-											</div>
-										</div>
-									</li>
-								</ul>
-							</div>-->
-							<div class="content-block">
-								<p>Mauris commodo lacus at nisl lacinia, nec facilisis erat rhoncus. Sed eget pharetra nunc. Aenean vitae vehicula massa, sed sagittis ante. Quisque luctus nec velit dictum convallis. Nulla facilisi. Ut sed erat nisi. Donec non dolor massa. Mauris malesuada dolor velit, in suscipit leo consectetur vitae. Duis tempus ligula non eros pretium condimentum. Cras sed dolor odio.</p>
+							<div class="page-pull-content">
+								<div class="aui-preloader-content"><span class="preloader"></span></div>
 							</div>
 						</div>
 					</div>
@@ -159,11 +146,11 @@
 			<!-- Bottom Tabbar-->
 			<div class="toolbar tabbar tabbar-labels">
 				<div class="toolbar-inner">
-					<a href="#home-view" class="tab-link" data-target-page="home">
+					<a href="#home-view" class="tab-link active" data-target-page="home">
 						<i class="f7-icons">home</i>
 						<span class="tabbar-label">首页</span>
 					</a>
-					<a href="#shop-view" class="tab-link active" data-target-page="shop">
+					<a href="#shop-view" class="tab-link" data-target-page="shop">
 						<i class="f7-icons">tabs</i>
 						<span class="tabbar-label">商铺管理</span>
 					</a>
@@ -171,23 +158,21 @@
 						<i class="f7-icons">data</i>
 						<span class="tabbar-label">大数据报告</span>
 					</a>
-					<a href="#tool-view" class="tab-link" data-target-page="tool">
+					<a href="#mms-view" class="tab-link" data-target-page="mms">
 						<i class="f7-icons">briefcase</i>
-						<span class="tabbar-label">更多功能</span>
+						<span class="tabbar-label">重点业务</span>
 					</a>
 				</div>
 			</div>
 		</div>
 		
 		
-		
 		<div class="login-screen modal-in">
 			<div class="view">
 				<div class="page login-page" data-page="login">
 					<div class="page-content login-screen-content">
-						<div class="login-screen-title">
-							<div class="login-screen-hedtitle">智慧政企移动办公管家</div>
-							<div class="login-screen-subtitle">让您的办公更便捷</div>
+						<div class="aui-text-center">
+							<img src="images/base/login/top-banner.png" class="top-banner"/>
 						</div>
 						<form>
 							<div class="list-block">

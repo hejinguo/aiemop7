@@ -3,7 +3,6 @@ define(['tool'],function(tool){
 	var $$ = Dom7;
 	
 	function init(query){
-		$$('.bigdata-unit-img-navbar-inner .center').html(query.unitName);
 		setTimeout(function(){
 			loadUnitImgInfo(query);
 		},500);

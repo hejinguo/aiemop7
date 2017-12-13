@@ -1,5 +1,8 @@
 <div class="card">
-	<div class="card-header"><b>基础信息</b></div>
+	<div class="card-header">
+		<span class="bg-gradient-blue"><i class="f7-icons">data</i></span>
+		商铺基本信息
+	</div>
 	<div class="card-content">
 		<div class="card-content-inner">
 			<div class="row">
@@ -18,7 +21,10 @@
 </div>
 
 <div class="card">
-	<div class="card-header"><b>扩展信息</b></div>
+	<div class="card-header">
+		<span class="bg-gradient-blue"><i class="f7-icons">star_fill</i></span>
+		商铺扩展信息
+	</div>
 	<div class="card-content">
 		<div class="card-content-inner">
 			<div class="row">
@@ -38,7 +44,10 @@
 </div>
 
 <div class="card">
-	<div class="card-header"><b>门头照信息</b></div>
+	<div class="card-header">
+		<span class="bg-gradient-blue"><i class="f7-icons">camera_fill</i></span>
+		门&nbsp;头&nbsp;照&nbsp;信&nbsp;息
+	</div>
 	<div class="card-content">
 		<div class="card-content-inner" style="padding:5px;">
 			{{#js_if "this.ENT_IMAGE"}}
@@ -51,7 +60,10 @@
 </div>
 
 <div class="card shop-detail-individual-card">
-	<div class="card-header"><b>个性化信息</b></div>
+	<div class="card-header">
+		<span class="bg-gradient-blue"><i class="f7-icons">document_text_fill</i></span>
+		个&nbsp;性&nbsp;化&nbsp;信&nbsp;息
+	</div>
 	<div class="card-content">
 		<div class="card-content-inner">
 			<div class="aui-preloader-content"><span class="preloader"></span></div>
@@ -60,7 +72,10 @@
 </div>
 
 <div class="card shop-detail-map-card">
-	<div class="card-header"><b>地理位置信息</b>{{js "this.LATITUDE && this.LONGITUDE ? '('+this.LATITUDE+','+this.LONGITUDE+')' : ''"}}</div>
+	<div class="card-header">
+		<span class="bg-gradient-blue"><i class="f7-icons">world_fill</i></span>
+		经&nbsp;纬&nbsp;度&nbsp;坐&nbsp;标
+	</div>
 	<div class="card-content">
 		<div class="card-content-inner" style="padding:5px;">
 			{{#js_if "this.LATITUDE && this.LONGITUDE"}}
@@ -69,6 +84,9 @@
 				<div style="padding:10px 0px;">经纬度不明确</div>
 			{{/js_if}}
 		</div>
+	</div>
+	<div class="card-footer">
+		{{js "this.LATITUDE && this.LONGITUDE ? '('+this.LATITUDE+','+this.LONGITUDE+')' : ''"}}
 	</div>
 </div>
 

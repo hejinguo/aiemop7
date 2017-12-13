@@ -1,8 +1,8 @@
 {{#each this}}
 	<li>
-		<a href="pages/bigdata/unit-img.html?unitId={{unitId}}&unitName={{unitName}}" class="item-link item-content">
+		<a href="pages/bigdata/unit-img.html?unitId={{unitId}}" class="item-link item-content">
 			<div class="item-media">
-				<div class="chip-media bg-gradient-blue" style="font-size:14px">{{dynamicType}}</div>
+				<div class="chip-media bg-light-blue" style="font-size:14px">{{dynamicType}}</div>
 			</div>
 			<div class="item-inner">
 				<div class="item-title-row">

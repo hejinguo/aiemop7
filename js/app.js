@@ -49,7 +49,7 @@ define(['router'], function(router) {
 	views.push(f7.addView('#home-view',{dynamicNavbar: true}));
 	views.push(f7.addView('#shop-view',{dynamicNavbar: true,domCache: true}));
 	views.push(f7.addView('#bigdata-view',{dynamicNavbar: true}));
-	views.push(f7.addView('#tool-view'));
+	views.push(f7.addView('#mms-view'));
 	console.log("初始化View结束");
 	console.log("初始化APP过程结束");
 	

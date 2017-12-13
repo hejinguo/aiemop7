@@ -2,13 +2,13 @@
 	<li>
 		<a href="pages/shop/shop-detail.html?entCode={{ENT_CODE}}&editFlag={{EDIT_FLAG}}" class="item-link item-content">
 			<div class="item-media">
-				<div class="chip-media {{js "this.ENT_IMAGE ? 'bg-pink' : 'bg-light-gray'"}}"><i class="f7-icons" style="font-size: 20px">images_fill</i></div>
+				<div class="chip-media {{js "this.ENT_IMAGE ? 'bg-light-blue' : 'bg-light-gray'"}}"><i class="f7-icons" style="font-size: 20px">images_fill</i></div>
 			</div>
 			<div class="item-inner">
 				<div class="item-title-row">
 					<div class="item-title">{{ENT_NAME}}</div><!--ENT_IMGTYPE-->
 					<div class="item-after">
-						<div class="chip {{js "this.ENT_STATE == 2 ? 'bg-gradient-blue' : (this.ENT_STATE == 1 ? 'bg-yellow' : 'bg-red')"}}">
+						<div class="chip {{js "this.ENT_STATE == 2 ? 'bg-gradient-blue' : (this.ENT_STATE == 1 ? 'bg-gradient-yellow' : 'bg-gradient-red')"}}">
 							<div class="chip-label">{{js "this.ENT_STATE == 2 ? '已拓展' : (this.ENT_STATE == 1 ? '未拓展' : '未管理')"}}</div>
 						</div>
 					</div>

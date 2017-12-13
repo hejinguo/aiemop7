@@ -197,10 +197,10 @@ define(['app','tool'],function(app,tool){
 		shopInfo.latitude='0';
 		shopInfo.ent_image='';
 		shopInfo.ent_imgtype='';
-		shopInfo.expandInfo=[];
-		$$('.shop-save-page form [k_id]').each(function(i,n){
-			shopInfo.expandInfo.push({KID:$$(n).attr('k_id'),KValue:$$(n).val()});
-		});
+//		shopInfo.expandInfo=[];
+//		$$('.shop-save-page form [k_id]').each(function(i,n){
+//			shopInfo.expandInfo.push({KID:$$(n).attr('k_id'),KValue:$$(n).val()});
+//		});
 		return shopInfo;
 	}
 	
@@ -211,9 +211,9 @@ define(['app','tool'],function(app,tool){
 	 */
 	function loadShopIndividualInfo(entCode,typeCode){
 		tool.appAjax('cust/getExpandShopInfo',{entCode:entCode,typeId:typeCode},function(data){
-			var individual = "<div class=\"content-block-title\">个性化信息</div>";
-			individual += "<div class=\"list-block\"><ul>";
+			var individual = "<ul>";
 			if(data.state && data.info.length > 0){
+				$$('.shop-save-page .individual-info').removeClass('aui-hidden');
 				$$.each(data.info, function (index, item) {
 					individual += "<li>";
 					individual += "<div class=\"item-content\"><div class=\"item-inner\">";
@@ -224,10 +224,9 @@ define(['app','tool'],function(app,tool){
 					individual += "</div></div>";
 					individual += "</li>";
 				});
-//				div_html += '<input id="ent_' + item.K_ID + '" k_id="' + item.K_ID + '" type="text" value="' + (isNull(item.K_VALUE) ? '' : item.K_VALUE) + '" placeholder="请输入' + item.K_NAME + '"></div>';
 			}
-			individual += "</ul></div>";
-			$$('.shop-save-page form').append(individual);
+			individual += "</ul>";
+			$$('.shop-save-page .individual-info .list-block').html(individual);
 		});
 	}
 	
