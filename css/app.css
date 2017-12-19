@@ -9,6 +9,9 @@ div{
 .aui-hidden{
 	display: none;
 }
+.aui-text-left{
+	text-align: left;
+}
 .aui-text-center{
 	text-align: center;
 }
@@ -220,10 +223,58 @@ div{
 }
 
 /**
+ * data-page="home"
+ */
+[data-page="home"] .swiper-container{
+	height:200px;
+}
+[data-page="home"] .home-main-notice{
+	background: #FFF;
+	margin:5px auto;
+	padding-top:5px;
+	display: -webkit-flex;
+  	display: flex;
+}
+[data-page="home"] .home-main-entrance{
+	background: #FFF;
+}
+[data-page="home"] .home-main-entrance div.col-33 a{
+	display: block;
+	height: 70px;
+	padding-top:5px;
+	border-left:1px solid #efeff4;
+	border-bottom:1px solid #efeff4;
+	color:rgb(0,0,0);
+}
+[data-page="home"] .home-main-entrance div.col-33:nth-child(1),
+[data-page="home"] .home-main-entrance div.col-33:nth-child(4){
+	border-left:0px;
+}
+[data-page="home"] .home-main-entrance div.col-33:nth-child(4),
+[data-page="home"] .home-main-entrance div.col-33:nth-child(5),
+[data-page="home"] .home-main-entrance div.col-33:nth-child(6){
+	border-bottom:0px;
+}
+[data-page="home"] .home-main-entrance i.f7-icons{
+	font-size:22px;display:block;color:#FFF;margin:3px auto;
+	width:20px;height:20px;padding:10px;border-radius:20px;
+}
+
+
+
+
+
+
+
+
+/**
  * 地图首页
  */
-.home-page .page-content .page-pull-content{
-	position:absolute;top:44px;left:0px;right:0px;bottom:50px;
+.map-page .page-content .page-pull-content{
+	position:absolute;left:0px;right:0px;
+	bottom:0px;
+	top:0px;
+	/*bottom:50px;top:44px;*/
 }
 
 /*商铺管理页面样式 */

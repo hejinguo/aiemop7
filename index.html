@@ -35,141 +35,148 @@
 			</div>
 		</div>
 		<!-- Views -->
-		<div class="views tabs toolbar-through">
+		<div class="views">
 			<!-- Your first view, it is also a .tab and should have "active" class to make it visible by default-->
-			<div id="home-view" class="view tab active">
-				<!-- We can make with view with navigation, let's add Top Navbar-->
-				<div class="navbar">
-					<div class="navbar-inner">
-						<div class="center sliding">首页</div>
-					</div>
-				</div>
+			<div class="view view-main">
 				<!-- Pages-->
-				<div class="pages navbar-through">
+				<div class="pages">
 					<!-- Page, data-page contains page name-->
-					<div data-page="home" class="page home-page">
+					<div data-page="home" class="page home-page" data-page-title="政企营销">
 						<!-- Scrollable page content-->
 						<div class="page-content">
-							<div class="page-pull-content">
-								<div class="aui-preloader-content"><span class="preloader"></span></div>
+							<!-- Slider container -->
+							<div class="swiper-container swiper-init" data-pagination=".swiper-pagination"
+								data-speed="400" data-space-between="40">
+							    <!-- Slides wrapper -->
+							    <div class="swiper-wrapper">
+							        <!-- Slides -->
+							        <div class="swiper-slide" style="background:#4F8EFF;">智能推送的重点功能入口1-H5应用的介绍</div>
+							        <div class="swiper-slide" style="background:#E64A19;">智能推送的重点功能入口2-服务关怀移动化</div>
+							        <div class="swiper-slide" style="background:#F7C223;">智能推送的重点功能入口3-工作日志填写</div>
+							    </div>
+							    <!-- Pagination, if required -->
+							    <div class="swiper-pagination"></div>
+							</div>
+							
+							<div class="home-main-notice">
+								<div style="margin:0px 5px;">
+									<i class="f7-icons color-orange" style="font-size:14px;">volume_fill</i><!--系统公告-->
+								</div>
+								<div style="flex-grow:1;">
+									<marquee>
+										欢迎使用政企移动办公管家
+									</marquee>
+								</div>
+							</div>
+							
+							<div class="row no-gutter home-main-entrance">
+								<div class="col-33 aui-text-center">
+									<a href="pages/map/map.html">
+				    					<i class="f7-icons" style="background:#48BAFF;">world</i>
+				    					<span>我的集团</span>
+				    				</a>
+								</div>
+								<div class="col-33 aui-text-center">
+									<a href="pages/shop/shop.html">
+				    					<i class="f7-icons" style="background:#C3E345;">tabs</i>
+				    					<span>商铺管理</span>
+				    				</a>
+									
+								</div>
+								<div class="col-33 aui-text-center">
+									<a href="pages/bigdata/bigdata.html">
+				    					<i class="f7-icons" style="background:#FFA09D;">data</i>
+				    					<span>大数据报告</span>
+				    				</a>
+								</div>
+								<div class="col-33 aui-text-center">
+									<a href="pages/mms/mms.html">
+				    					<i class="f7-icons" style="background:#FFCF2A;">briefcase</i>
+				    					<span>重点业务</span>
+				    				</a>
+								</div>
+								<div class="col-33 aui-text-center">
+									<a href="pages/contact/contact.html">
+				    					<i class="f7-icons" style="background:#A1BEBC;">phone</i>
+				    					<span>通讯录</span>
+				    				</a>
+								</div>
+								<div class="col-33 aui-text-center">
+									<a href="javascript:alert('更多可定制的功能入口');">
+				    					<i class="f7-icons" style="background:#FFAC82;">more_round</i>
+				    					<span>更多</span>
+				    				</a>
+								</div>
+							</div>
+							
+							<div style="background:#FFF;margin-top:5px;padding:5px auto;padding:5px;border-bottom:1px solid #c8c7cc;">近期任务</div>
+							<div class="timeline" style="background:#FFF;margin:0px;"><!-- timeline-sides-->
+								<div class="timeline-item">
+									<div class="timeline-item-date">12月19</div>
+									<div class="timeline-item-divider" style="background:#48BAFF;"></div>
+								    <div class="timeline-item-content">
+								    	<div class="timeline-item-inner" style="background:#EFEFEF;">明天(20171219)是集团XXXXX成立10年,需要通过关怀短信跟进,并完成工作填报.</div>
+								    </div>
+								</div>
+								<div class="timeline-item">
+									<div class="timeline-item-date">12月20<!--22 <small>DEC</small>--></div>
+									<div class="timeline-item-divider" style="background:#48BAFF;"></div>
+								    <div class="timeline-item-content">
+								    	<div class="timeline-item-inner" style="background:#EFEFEF;">今天下午15:00有35个集团的1008688营销服务短信发出,请保持电话畅通,做好用户问题咨询准备.</div>
+								    </div>
+								</div>
+								<div class="timeline-item">
+									<div class="timeline-item-date">12月21</div>
+									<div class="timeline-item-divider" style="background:#48BAFF;"></div>
+								    <div class="timeline-item-content">
+								    	<div class="timeline-item-inner" style="background:#EFEFEF;">您添加了今日前往XXXXX集团进行拜访的计划,请别忘记啦.</div>
+								    </div>
+								</div>
+							</div>
+							
+							<div style="background:#FFF;margin-top:5px;padding:5px;">学习园地</div>
+							<div class="list-block">
+								<ul>
+									<li>
+										<a href="" class="item-link item-content">
+											<!--<div class="item-media"><i class="icon icon-f7"></i></div>-->
+											<div class="item-inner">
+												<div class="item-title">集团产品库</div>
+												<div class="item-after"><span class="badge">65</span></div>
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href="" class="item-link item-content">
+											<!--<div class="item-media"><i class="icon icon-f7"></i></div>-->
+											<div class="item-inner">
+												<div class="item-title">集团案例库</div>
+												<div class="item-after"><span class="badge">75</span></div>
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href="" class="item-link item-content">
+											<!--<div class="item-media"><i class="icon icon-f7"></i></div>-->
+											<div class="item-inner">
+												<div class="item-title">集团知识库</div>
+												<div class="item-after"><span class="badge bg-red">5</span></div>
+											</div>
+										</a>
+									</li>
+								</ul>
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-			<!-- Second view (for second wrap)-->
-			<div id="shop-view" class="view view-main tab">
-				<!-- We can make with view with navigation, let's add Top Navbar-->
-				<div class="navbar">
-					<div class="navbar-inner shop-page-navbar-inner">
-						<div class="center sliding">商铺管理</div>
-						<div class="right">
-							<a href="pages/shop/shop-save.html" class="link"><i class="f7-icons">add</i><span>添加</span></a>
-						</div>
-					</div>
-				</div>
-				<div class="pages navbar-through">
-					<div data-page="shop" class="page shop-page">
-						<!-- Search Bar -->
-					    <form action="." class="searchbar searchbar-init">
-					        <div class="searchbar-input">
-					            <input type="search" placeholder="请输入商铺编码或名称搜索">
-					            <a href="#" class="searchbar-clear"></a>
-					        </div>
-					        <!--<a href="#" class="searchbar-cancel">Cancel</a>-->
-					    </form>
-					    <!-- Search Bar overlay-->
-					    <div class="searchbar-overlay"></div>
-						<!-- Page content -->
-						<div class="page-content pull-to-refresh-content infinite-scroll" data-ptr-distance="55" data-distance="50">
-							<!-- Default pull to refresh layer-->
-							<div class="pull-to-refresh-layer">
-								<div class="preloader"></div>
-								<div class="pull-to-refresh-arrow"></div>
-							</div>
-							<div class="page-pull-content list-block media-list">
-								<div class="aui-preloader-content"><span class="preloader"></span></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div id="bigdata-view" class="view tab">
-				<!-- We can make with view with navigation, let's add Top Navbar-->
-				<div class="navbar">
-					<div class="navbar-inner">
-						<div class="center sliding">大数据报告</div>
-					</div>
-				</div>
-				<div class="pages navbar-through">
-					<div data-page="bigdata" class="page bigdata-page">
-						<!-- Search Bar -->
-					    <form action="." class="searchbar searchbar-init">
-					        <div class="searchbar-input">
-					            <input type="search" placeholder="请输入集团编码或名称搜索">
-					            <a href="#" class="searchbar-clear"></a>
-					        </div>
-					        <!--<a href="#" class="searchbar-cancel">Cancel</a>-->
-					    </form>
-					    <!-- Search Bar overlay-->
-					    <div class="searchbar-overlay"></div>
-						<!-- Page content -->
-						<div class="page-content pull-to-refresh-content infinite-scroll" data-ptr-distance="55" data-distance="50">
-							<!-- Default pull to refresh layer-->
-							<div class="pull-to-refresh-layer">
-								<div class="preloader"></div>
-								<div class="pull-to-refresh-arrow"></div>
-							</div>
-							<div class="page-pull-content list-block media-list">
-								<div class="aui-preloader-content"><span class="preloader"></span></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div id="mms-view" class="view tab">
-				<div class="pages navbar-fixed">
-					<div data-page="mms" class="page mms-page">
-						<div class="navbar">
-							<div class="navbar-inner">
-								<div class="center">重点业务</div>
-							</div>
-						</div>
-						<div class="page-content">
-							<div class="page-pull-content">
-								<div class="aui-preloader-content"><span class="preloader"></span></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Bottom Tabbar-->
-			<div class="toolbar tabbar tabbar-labels">
-				<div class="toolbar-inner">
-					<a href="#home-view" class="tab-link active" data-target-page="home">
-						<i class="f7-icons">home</i>
-						<span class="tabbar-label">首页</span>
-					</a>
-					<a href="#shop-view" class="tab-link" data-target-page="shop">
-						<i class="f7-icons">tabs</i>
-						<span class="tabbar-label">商铺管理</span>
-					</a>
-					<a href="#bigdata-view" class="tab-link" data-target-page="bigdata">
-						<i class="f7-icons">data</i>
-						<span class="tabbar-label">大数据报告</span>
-					</a>
-					<a href="#mms-view" class="tab-link" data-target-page="mms">
-						<i class="f7-icons">briefcase</i>
-						<span class="tabbar-label">重点业务</span>
-					</a>
 				</div>
 			</div>
 		</div>
 		
 		
+		
 		<div class="login-screen modal-in">
 			<div class="view">
-				<div class="page login-page" data-page="login">
+				<div class="page login-page" data-page="login" data-page-title="政企营销">
 					<div class="page-content login-screen-content">
 						<div class="aui-text-center">
 							<img src="images/base/login/top-banner.png" class="top-banner"/>

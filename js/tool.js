@@ -40,6 +40,26 @@ define(['app','base64'],function(app,base64) {
 	};
 	
 	/**
+	 * 动态修改浏览器标题栏
+	 * @param {Object} title
+	 */
+	function setDocumentTitle(title) {
+		document.title = title;
+		if(/ip(hone|od|ad)/i.test(navigator.userAgent)) {
+			var i = document.createElement('iframe');
+			i.id=new Date().getTime();
+			i.src = 'favicon.ico';
+			i.style.display = 'none';
+			i.onload = function() {
+				setTimeout(function() {
+					i.remove();
+				}, 9)
+			}
+			document.body.appendChild(i);
+		}
+	}
+
+	/**
 	 * 图片压缩，默认同比例压缩
 	 * @param {Object} path 
 	 *   pc端传入的路径可以为相对路径，但是在移动端上必须传入的路径是照相图片储存的绝对路径
@@ -100,7 +120,7 @@ define(['app','base64'],function(app,base64) {
 			data:param,
 			method:'POST',
 	        dataType:'json',
-	        timeout:10000,//超时时间设置为10秒
+	        timeout:15000,//超时时间设置为15秒
 	        contentType: contentType,
 	        crossDomain:true,
 	        headers:{'X-Requested-With':'XMLHttpRequest','AI-Requested-Way':'H5','AI-Login-Token':workToken},
@@ -122,6 +142,8 @@ define(['app','base64'],function(app,base64) {
 				}
 	        },
 	        error:function(xhr, status){
+	        	console.log(status);
+	            console.log(app);
 	            app.f7.alert("服务器处理过程发生问题,错误状态码："+status);
 	            onError();
 	        },
@@ -139,6 +161,7 @@ define(['app','base64'],function(app,base64) {
         appAjax:appAjax,
         appJson:appJson,
         appPath:appPath,
-        dealImage:dealImage
+        dealImage:dealImage,
+        setDocumentTitle:setDocumentTitle
     };
 });

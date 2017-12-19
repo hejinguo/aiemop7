@@ -1,8 +1,13 @@
-define(['app','home/homeView'],function(app,homeView) {
+define(['app'],function(app) {
 	var $$ = Dom7;
 
 	function init() {
-		homeView.render();
+//		var mySwiper = app.f7.swiper('.swiper-container', {
+//			pagination:'.swiper-pagination',
+//		    speed: 400,
+//		    spaceBetween: 100
+//		});   
+		//mapView.render();
 	}
 	
 	return {

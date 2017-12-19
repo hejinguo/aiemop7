@@ -1,0 +1,29 @@
+<div class="pages">
+	<div data-page="shop" class="page shop-page" data-page-title="商铺管理">
+		<!-- Search Bar -->
+	    <form action="." class="searchbar searchbar-init">
+	        <div class="searchbar-input">
+	            <input type="search" placeholder="请输入商铺编码或名称搜索">
+	            <a href="#" class="searchbar-clear"></a>
+	        </div>
+	        <a href="#" class="searchbar-cancel">
+	        	<a href="pages/shop/shop-save.html" class="link" style="width:40px;padding-left:10px">
+	        		<!--<i class="f7-icons">add</i>--><span>添加</span>
+	        	</a>
+	        </a>
+	    </form>
+	    <!-- Search Bar overlay-->
+	    <div class="searchbar-overlay"></div>
+		<!-- Page content -->
+		<div class="page-content pull-to-refresh-content infinite-scroll" data-ptr-distance="55" data-distance="50">
+			<!-- Default pull to refresh layer-->
+			<div class="pull-to-refresh-layer">
+				<div class="preloader"></div>
+				<div class="pull-to-refresh-arrow"></div>
+			</div>
+			<div class="page-pull-content list-block media-list">
+				<div class="aui-preloader-content"><span class="preloader"></span></div>
+			</div>
+		</div>
+	</div>
+</div>

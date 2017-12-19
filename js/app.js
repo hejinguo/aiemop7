@@ -29,7 +29,7 @@ define(['router'], function(router) {
 	console.log("初始化APP路由结束");
 	var f7 = new Framework7({
 		modalTitle: '消息',
-		animateNavBackIcon: true,
+//		animateNavBackIcon: true,
 		pushState:true,
 //		pushStateNoAnimation:true,
 		cache:false,
@@ -46,10 +46,10 @@ define(['router'], function(router) {
 	console.log("初始化View启动");
 	// Add views
 	var views = new Array();
-	views.push(f7.addView('#home-view',{dynamicNavbar: true}));
-	views.push(f7.addView('#shop-view',{dynamicNavbar: true,domCache: true}));
-	views.push(f7.addView('#bigdata-view',{dynamicNavbar: true}));
-	views.push(f7.addView('#mms-view'));
+	views.push(f7.addView('.view-main',{domCache: true}));
+//	views.push(f7.addView('#shop-view',{dynamicNavbar: true,domCache: true}));
+//	views.push(f7.addView('#bigdata-view',{dynamicNavbar: true,domCache: true}));
+//	views.push(f7.addView('#mms-view'));
 	console.log("初始化View结束");
 	console.log("初始化APP过程结束");
 	

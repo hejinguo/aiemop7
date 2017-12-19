@@ -1,4 +1,4 @@
-define(['base64'],function(base64) {
+define(['tool','base64'],function(tool,base64) {
 	var $$ = Dom7;
 
 	/**
@@ -9,6 +9,11 @@ define(['base64'],function(base64) {
 //  	sessionStorage.removeItem("_USER_BASE_INFO");
     	//界面核心框架加载成功后渲染后台数据到页面
 		$$(document).on('page:beforeinit', function (e) {
+//			console.log(111);
+			console.log($$("[data-page='"+e.detail.page.name+"']"));
+			console.log($$("[data-page='"+e.detail.page.name+"']")[1].dataset.pageTitle);
+//			tool.setDocumentTitle(e.detail.page.name);
+			tool.setDocumentTitle($$("[data-page='"+e.detail.page.name+"']")[1].dataset.pageTitle);
 			var page = e.detail.page;
 			//验证用户是否已经登录
 			var user = JSON.parse(base64.decode(sessionStorage.getItem("_USER_BASE_INFO")||'')||'{}');
@@ -18,6 +23,13 @@ define(['base64'],function(base64) {
 			if(user.lastLoginToken || page.name == 'login'){
 				load(page.name, page.query);
 			}
+		});
+		$$(document).on('page:reinit', function (e) {
+//			console.log(222);
+			console.log($$("[data-page='"+e.detail.page.name+"']"));
+			console.log($$("[data-page='"+e.detail.page.name+"']")[0].dataset.pageTitle);
+//			tool.setDocumentTitle(e.detail.page.name);
+			tool.setDocumentTitle($$("[data-page='"+e.detail.page.name+"']")[0].dataset.pageTitle);
 		});
     }
 
