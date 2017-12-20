@@ -142,8 +142,10 @@ define(['app','base64'],function(app,base64) {
 				}
 	        },
 	        error:function(xhr, status){
+	        	console.log(xhr);
 	        	console.log(status);
 	            console.log(app);
+	            console.log(app ? app.f7 : 'NO');
 	            app.f7.alert("服务器处理过程发生问题,错误状态码："+status);
 	            onError();
 	        },
