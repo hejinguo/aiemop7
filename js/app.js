@@ -44,18 +44,13 @@ define(['router'], function(router) {
 	    }
 	});
 	console.log("初始化View启动");
-	// Add views
-	var views = new Array();
-	views.push(f7.addView('.view-main',{domCache: true}));
-//	views.push(f7.addView('#shop-view',{dynamicNavbar: true,domCache: true}));
-//	views.push(f7.addView('#bigdata-view',{dynamicNavbar: true,domCache: true}));
-//	views.push(f7.addView('#mms-view'));
+	var view = f7.addView('.view-main',{domCache: true});
 	console.log("初始化View结束");
 	console.log("初始化APP过程结束");
 	
 	return {
 		f7: f7,
-		views: views,
+		view: view,
 		router: router,
 		toast: f7.toast('', '', {duration:2000})
 	};

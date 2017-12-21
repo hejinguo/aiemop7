@@ -91,7 +91,7 @@
 </div>
 
 <a href="pages/shop/shop-save.html?entCode={{ENT_CODE}}" class="button button-fill color-orange" style="margin:10px;">编辑商铺</a>
-<a href="#" class="button button-fill color-red delete-shop-button" disabled="disabled" style="margin:10px;">删除商铺</a>
+<a href="#" class="button button-fill color-red disabled delete-shop-button" style="margin:10px;">删除商铺</a>
 
 <!--<div class="card">
 	<div class="card-content">

@@ -1,7 +1,7 @@
 define(['app','tool'],function(app,tool){
 	var $$ = Dom7;
 	var bindings = [{
-		element: '.shop-save-page-navbar-inner .right a',
+		element: '.shop-save-page .save-shop-button',
 		event: 'click',
 		handler: clickSaveShopItem
 	},{
@@ -44,10 +44,10 @@ define(['app','tool'],function(app,tool){
 					app.f7.smartSelectAddOption('.shop-save-page form [name="TYPE_ID"]', '<option value="'+n.typeName+'">'+n.typeName+'</option>');
 				});
 				if(query.entCode){
-					$$('.shop-save-page-navbar-inner .center').html('编辑商铺');
+					$$('.shop-save-page .save-shop-button').html('编辑商铺');
 					loadShopDetailInfo(query);
 				}else{
-					$$('.shop-save-page-navbar-inner .center').html('添加商铺');
+					$$('.shop-save-page .save-shop-button').html('添加商铺');
 					$$('.shop-save-page form [name="CITY_CODE"]').change();
 					/*require(['async!BMap'], function() {
 						var geolocation = new BMap.Geolocation();
@@ -69,6 +69,7 @@ define(['app','tool'],function(app,tool){
 						});
 					});*/
 				}
+				$$('.shop-save-page .save-shop-button').removeClass('disabled');
 			}
 		});
 	}
@@ -125,11 +126,11 @@ define(['app','tool'],function(app,tool){
 		var url = shopInfo.ent_code ? 'cust/updateShopInfo' : 'cust/addShopInfo';
 		tool.appAjax(url,{shopInfo:JSON.stringify(shopInfo)},function(data){
 			if(shopInfo.ent_code){//编辑
-				app.views[1].router.back({pageName:'shop-detail'});
+				app.view.router.back({pageName:'shop-detail'});
 				app.router.load('shop-detail',cacheQuery);
 			}else{//添加
-//				app.views[1].router.back({pageName:'shop'});
-//				app.views[1].router.reloadPage('pages/shop/shop-save.html?entCode=N65941');
+//				app.view.router.back({pageName:'shop'});
+//				app.view.router.reloadPage('pages/shop/shop-save.html?entCode=N65941');
 			}
 			app.router.load('shop');
 		});

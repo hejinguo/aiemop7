@@ -237,34 +237,34 @@ div{
 [data-page="home"] .home-main-notice{
 	background: #FFF;
 	margin:5px auto;
-	padding-top:5px;
 	display: -webkit-flex;
   	display: flex;
-  	padding-bottom:5px;
+}
+[data-page="home"] .home-main-notice>div{
+	padding:5px;
+}
+[data-page="home"] .home-main-notice .f7-icons{
+	font-size:14px;
+	margin:2px auto;
 }
 [data-page="home"] .home-main-entrance{
 	background: #FFF;
 }
-[data-page="home"] .home-main-entrance div.col-33 a{
+[data-page="home"] .home-main-entrance a{
 	display: block;
-	height: 70px;
-	padding-top:5px;
 	color:rgb(0,0,0);
-	/*border-left:1px solid #efeff4;
-	border-bottom:1px solid #efeff4;*/
+	height:60px;
+	border-bottom:1px solid #EEEEEE;
+	border-right: 1px solid #EEEEEE;
+	/*padding-top:10px;*/
+	/*padding:10px auto;*/
+	padding-top:10px;
 }
-/*[data-page="home"] .home-main-entrance div.col-33:nth-child(1),
-[data-page="home"] .home-main-entrance div.col-33:nth-child(4){
-	border-left:0px;
-}
-[data-page="home"] .home-main-entrance div.col-33:nth-child(4),
-[data-page="home"] .home-main-entrance div.col-33:nth-child(5),
-[data-page="home"] .home-main-entrance div.col-33:nth-child(6){
-	border-bottom:0px;
-}*/
 [data-page="home"] .home-main-entrance i.f7-icons{
-	font-size:22px;display:block;color:#FFF;margin:3px auto;
-	width:20px;height:20px;padding:10px;border-radius:20px;
+	display:block;color:#FFF;
+	margin:0px auto;
+	border-radius:20px;font-size:18px;
+	width:20px;height:20px;padding:8px;
 }
 html.ios-gt-8 [data-page="home"] .list-block.media-list .item-title,
 [data-page="home"] .list-block.media-list .item-title{

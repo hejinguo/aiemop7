@@ -9,9 +9,10 @@ define(['tool','base64'],function(tool,base64) {
 //  	sessionStorage.removeItem("_USER_BASE_INFO");
     	//界面核心框架加载成功后渲染后台数据到页面
 		$$(document).on('page:beforeinit', function (e) {
-//			console.log(111);
-			console.log($$("[data-page='"+e.detail.page.name+"']"));
-			console.log($$("[data-page='"+e.detail.page.name+"']")[1].dataset.pageTitle);
+			if(e.detail.page.name.indexOf('smart-select-radio') >= 0){
+				console.log('忽略 '+e.detail.page.name+' 页面标题更新')
+				return;
+			}
 //			tool.setDocumentTitle(e.detail.page.name);
 			tool.setDocumentTitle($$("[data-page='"+e.detail.page.name+"']")[1].dataset.pageTitle);
 			var page = e.detail.page;
@@ -25,9 +26,10 @@ define(['tool','base64'],function(tool,base64) {
 			}
 		});
 		$$(document).on('page:reinit', function (e) {
-//			console.log(222);
-			console.log($$("[data-page='"+e.detail.page.name+"']"));
-			console.log($$("[data-page='"+e.detail.page.name+"']")[0].dataset.pageTitle);
+			if(e.detail.page.name.indexOf('smart-select-radio') >= 0){
+				console.log('忽略 '+e.detail.page.name+' 页面标题更新')
+				return;
+			}
 //			tool.setDocumentTitle(e.detail.page.name);
 			tool.setDocumentTitle($$("[data-page='"+e.detail.page.name+"']")[0].dataset.pageTitle);
 		});
@@ -39,7 +41,6 @@ define(['tool','base64'],function(tool,base64) {
 	 * @param query
 	 */
 	function load(pageName, query) {
-//		console.log(pageName.match(/smart-select-radio/gi);
 		if(pageName.indexOf('smart-select-radio') >= 0){
 			console.log('忽略 '+pageName+' 页面数据逻辑')
 			return;

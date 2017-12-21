@@ -49,6 +49,7 @@ define(['app','base64'],function(app,base64) {
 			var i = document.createElement('iframe');
 			i.id=new Date().getTime();
 			i.src = 'favicon.ico';
+//			i.src = 'http://www.10086.cn/favicon.ico';
 			i.style.display = 'none';
 			i.onload = function() {
 				setTimeout(function() {
