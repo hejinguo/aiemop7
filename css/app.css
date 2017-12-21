@@ -77,13 +77,13 @@ div{
 }
 
 /*覆盖framework7样式*/
-.layout-asiainfo .navbar{
+/*.layout-asiainfo .navbar{
 	color: #fff;
 	background-image:-webkit-linear-gradient(315deg, #4F8EFF, #00d0ff);
 }
 .theme-asiainfo .navbar a{
 	color:#fff;
-}
+}*/
 .layout-asiainfo .login-screen-content{
 	/*background-image:-webkit-linear-gradient(270deg, #4F8EFF, #00d0ff);*/
 	background: #1D8DD9;
@@ -132,8 +132,6 @@ div{
 }
 
 
-
-/*.navbar:after{}*/
 .tabbar.tabbar-hidden, .tabbar.toolbar-hidden, .toolbar.tabbar-hidden, .toolbar.toolbar-hidden{
 	display: none;
 }
@@ -277,12 +275,6 @@ html.ios-gt-8 [data-page="home"] .list-block.media-list .item-title,
 [data-page="home"] .list-block.media-list .item-link .item-inner{
 	padding-right: 10px;
 }
-
-
-
-
-
-
 
 
 /**
