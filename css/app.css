@@ -75,7 +75,6 @@ div{
 	border-top:6px solid #49CB9D;
 	border-right:6px solid #49CB9D;
 }
-
 /*覆盖framework7样式*/
 /*.layout-asiainfo .navbar{
 	color: #fff;
@@ -109,6 +108,18 @@ div{
 }
 .theme-asiainfo a{
 	color:#25C6FC;
+}
+.theme-asiainfo .buttons-row .button{
+	border: 1px solid #25C6FC;
+}
+.theme-asiainfo .buttons-row .button.active{
+	background: #25C6FC;
+}
+.theme-asiainfo .marquee-notice-list{
+	height:18px; overflow:hidden;
+}
+.theme-asiainfo .marquee-notice-list a{
+	color:#C00; text-decoration:none; height: 18px; display: block;color:#444444;overflow:hidden;
 }
 .bg-gradient-blue{
 	background-image:-webkit-linear-gradient(315deg, #00d0ff, #4F8EFF);
