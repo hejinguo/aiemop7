@@ -50,11 +50,11 @@
 							    <!-- Slides wrapper -->
 							    <div class="swiper-wrapper">
 							        <!-- Slides -->
-							        <div class="swiper-slide" style="background:#d3061c;">
-							        	<img src="images/temp/20171208165107331x8G.png"/>
-							        </div>
 							        <div class="swiper-slide" style="background:#4a1ea8;">
 							        	<img src="images/temp/20171215171025953v2L.jpg"/>
+							        </div>
+							        <div class="swiper-slide" style="background:#d3061c;">
+							        	<img src="images/temp/20171208165107331x8G.png"/>
 							        </div>
 							        <div class="swiper-slide" style="background:#e04028;">
 							        	<img src="images/temp/2017121423431572442a.jpg"/>
@@ -75,153 +75,169 @@
 							
 							<div class="home-main-notice">
 								<div>
-									<i class="f7-icons color-orange">volume_fill</i><!--系统公告-->
+									<i class="f7-icons color-lightblue">volume_fill</i><!--social_rss-->
 								</div>
 								<div style="flex-grow:1;">
 									欢迎使用政企移动办公管家
-									<!--<marquee>
-										欢迎使用政企移动办公管家
-									</marquee>-->
+								</div>
+								<div>
+									<a>更多</a>
 								</div>
 							</div>
 							
 							<div class="row no-gutter home-main-entrance">
 								<div class="col-33 aui-text-center">
 									<a href="pages/map/map.html">
-				    					<i class="f7-icons" style="background:#48BAFF;">world</i>
+				    					<i class="f7-icons" style="color:#B2D6F8;">world</i>
 				    					<span>我的集团</span>
 				    				</a>
 								</div>
 								<div class="col-33 aui-text-center">
 									<a href="pages/shop/shop.html">
-				    					<i class="f7-icons" style="background:#C3E345;">tabs</i>
+				    					<i class="f7-icons" style="color:#C3E345;">tabs</i>
 				    					<span>商铺管理</span>
 				    				</a>
 									
 								</div>
 								<div class="col-33 aui-text-center">
 									<a href="pages/bigdata/bigdata.html">
-				    					<i class="f7-icons" style="background:#FFA09D;">data</i>
+				    					<i class="f7-icons" style="color:#FFA09D;">data</i>
 				    					<span>大数据报告</span>
 				    				</a>
 								</div>
 								<div class="col-33 aui-text-center">
 									<a href="pages/mms/mms.html">
-				    					<i class="f7-icons" style="background:#FFCF2A;">briefcase</i>
+				    					<i class="f7-icons" style="color:#FFCF2A;">briefcase</i>
 				    					<span>业务通报</span>
 				    				</a>
 								</div>
 								<div class="col-33 aui-text-center">
 									<a href="pages/contact/contact.html">
-				    					<i class="f7-icons" style="background:#A1BEBC;">phone</i>
+				    					<i class="f7-icons" style="color:#A1BEBC;">phone</i>
 				    					<span>通讯录</span>
 				    				</a>
 								</div>
 								<div class="col-33 aui-text-center">
 									<a href="javascript:alert('更多可定制的功能入口');">
-				    					<i class="f7-icons" style="background:#FFAC82;">more_round</i>
+				    					<i class="f7-icons" style="color:#FFAC82;">more_round</i>
 				    					<span>更多</span>
 				    				</a>
 								</div>
 							</div>
 							
-							<div style="display:-webkit-flex;display:flex;margin:5px auto;background:#FFF;">
+							<div class="home-person-info">
 								<div>
-									<img src="images/temp/timg.jpg" style="display:block;width:50px;height:50px;margin:8px 5px;border-radius:25px;"/>
+									<img src="images/temp/timg.jpg" class="person-icon"/>
 								</div>
-								<div style="padding:5px 5px 5px 0px;">
-									何先生(ai_hejinguo)<br/>
+								<div style="flex-grow:1;padding:5px;">
+									<span>何先生(ai_hejinguo)</span><br/>
 									<span style="color:#888;font-size:12px;">成都市分公司_客户经理</span><br/>
 									<span style="color:#888;font-size:12px;">13548061219</span>
 								</div>
-								<div class="aui-text-right" style="flex-grow:1;padding:23px 10px;">
-									<a>立即签到</a>
+								<div class="aui-text-right" style="padding:20px 10px;">
+									<a href="#" class="button button-fill color-shallowblue">&nbsp;&nbsp;签&nbsp;&nbsp;到&nbsp;&nbsp;</a>
 								</div>
 							</div>
 							
-							<div class="aui-text-center" style="background:#FFF;padding:5px;font-weight:bold;">近期任务单</div>
-							<div class="list-block media-list">
-								<ul>
-									<li>
-										<a href="#" class="item-link item-content">
-											<div class="item-inner">
-												<div class="item-title-row">
-													<div class="item-title"><div>今日任务<span style="color:#888">(22/25)</span></div></div>
-													<!--<div class="item-after">17:14</div>-->
-												</div>
-												<div class="item-subtitle">
-													<div class="progressbar color-yellow" data-progress="22" style="background:#E1E1E1;border-radius:15px;height:10px;">
-													    <span></span><!-- class="progressbar-infinite"-->
+							<div class="lately-task">
+								<div class="header">近期任务</div>
+								<div class="list-block">
+									<ul style="background-color:inherit;">
+										<li style="border-left:3px solid #B2D6F8;">
+											<a href="#" class="item-link item-content">
+												<div class="item-inner">
+													<div class="item-title">
+														<div class="item-title-main">今日任务</div>
+														<div style="flex-grow:1;text-align:center;">
+															<div class="item-num" style="color:#B2D6F8;">50%</div>
+															<div class="item-progress" style="background:#E2CFD5;">
+																<div class="item-value" style="width:50%;background:#B2D6F8;">
+																	<span>22/99</span>
+																</div>
+															</div>
+														</div>
 													</div>
 												</div>
-											</div>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="item-link item-content">
-											<div class="item-inner">
-												<div class="item-title-row">
-													<div class="item-title"><div>明日任务<span style="color:#888">(0/10)</span></div></div>
-													<!--<div class="item-after">17:14</div>-->
-												</div>
-												<div class="item-subtitle">
-													<div class="progressbar" data-progress="0" style="background:#E1E1E1;border-radius:15px;height:10px;">
-													    <span></span><!-- class="progressbar-infinite"-->
+											</a>
+										</li>
+										<li style="border-left:3px solid #A1BEBC;">
+											<a href="#" class="item-link item-content">
+												<div class="item-inner">
+													<div class="item-title">
+														<div class="item-title-main">明日任务</div>
+														<div style="flex-grow:1;text-align:center;">
+															<div class="item-num" style="color:#A1BEBC;">30%</div>
+															<div class="item-progress" style="background:#E2CFD5;">
+																<div class="item-value" style="width:30%;background:#A1BEBC;">
+																	<span>22/99</span>
+																</div>
+															</div>
+														</div>
 													</div>
 												</div>
-											</div>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="item-link item-content">
-											<div class="item-inner">
-												<div class="item-title-row">
-													<div class="item-title"><div>本周任务<span style="color:#888">(29/99)</span></div></div>
-													<!--<div class="item-after">17:14</div>-->
-												</div>
-												<div class="item-subtitle">
-													<div class="progressbar color-orange" data-progress="29" style="background:#E1E1E1;border-radius:15px;height:10px;">
-													    <span></span><!-- class="progressbar-infinite"-->
+											</a>
+										</li>
+										<li style="border-left:3px solid #C2E243;">
+											<a href="#" class="item-link item-content">
+												<div class="item-inner">
+													<div class="item-title">
+														<div class="item-title-main">本周任务</div>
+														<div style="flex-grow:1;text-align:center;">
+															<div class="item-num" style="color:#C2E243;">80%</div>
+															<div class="item-progress" style="background:#E2CFD5;">
+																<div class="item-value" style="width:80%;background:#C2E243;">
+																	<span>22/99</span>
+																</div>
+															</div>
+														</div>
 													</div>
 												</div>
-											</div>
-										</a>
-									</li>
-									<li>
-										<a href="#" class="item-link item-content">
-											<div class="item-inner">
-												<div class="item-title-row">
-													<div class="item-title"><div>本月任务<span style="color:#888">(38/120)</span></div></div>
-													<!--<div class="item-after">17:14</div>-->
-												</div>
-												<div class="item-subtitle">
-													<div class="progressbar color-blue" data-progress="38" style="background:#E1E1E1;border-radius:15px;height:10px;">
-													    <span></span><!-- class="progressbar-infinite"-->
+											</a>
+										</li>
+										<li style="border-left:3px solid #FFAC82;">
+											<a href="#" class="item-link item-content">
+												<div class="item-inner">
+													<div class="item-title">
+														<div class="item-title-main">本月任务</div>
+														<div style="flex-grow:1;text-align:center;">
+															<div class="item-num" style="color:#FFAC82;">60%</div>
+															<div class="item-progress" style="background:#E2CFD5;">
+																<div class="item-value" style="width:60%;background:#FFAC82;">
+																	<span>22/99</span>
+																</div>
+															</div>
+														</div>
 													</div>
 												</div>
-											</div>
-										</a>
-									</li>
-								</ul>
+											</a>
+										</li>
+									</ul>
+								</div>
 							</div>
 							
-							<div class="aui-text-center" style="background:#FFF;margin-top:5px;padding:5px;border-bottom:1px solid #e6e6e6;font-weight:bold;">政企加油站</div>
-							<div style="background:#FFF;padding:5px;">
+							<div class="enterprise-learn">
+								<div class="header">政企加油站</div>
 								<div class="row">
-									<div class="col-33 bg-lightblue" style="height:70px;padding:8px;color:#FFF;border-radius:15px;
-										background-image:-webkit-linear-gradient(270deg, #00d0ff, #5AC8FA);">
-										集团产品库
-										<div style="font-size:20px;margin-top:10px;" class="aui-text-right">65条</div>
+									<div class="col-33 learn-item">
+										<div class="learn-item-icon" style="border:1px solid #B2D6F8;">
+											<i class="f7-icons" style="color:#B2D6F8;">folder</i>
+										</div>
+										<div class="learn-item-title">集团产品库</div>
+										<div class="learn-item-num" style="background: #B2D6F8;">65条</div>
 									</div>
-									<div class="col-33 bg-lightblue" style="height:70px;padding:8px;color:#FFF;border-radius:15px;
-										background-image:-webkit-linear-gradient(270deg, #00d0ff, #5AC8FA);">
-										集团案例库
-										<div style="font-size:20px;margin-top:10px;" class="aui-text-right">33条</div>
+									<div class="col-33 learn-item">
+										<div class="learn-item-icon" style="border:1px solid #C2E243;">
+											<i class="f7-icons" style="color:#C2E243;">drawers</i>
+										</div>
+										<div class="learn-item-title">集团案例库</div>
+										<div class="learn-item-num" style="background: #C2E243;">65条</div>
 									</div>
-									<div class="col-33 bg-lightblue" style="height:70px;padding:8px;color:#FFF;border-radius:15px;
-										background-image:-webkit-linear-gradient(270deg, #00d0ff, #5AC8FA);">
-										集团知识库
-										<div style="font-size:20px;margin-top:10px;" class="aui-text-right">98条</div>
+									<div class="col-33 learn-item">
+										<div class="learn-item-icon" style="border:1px solid #FFAC82;">
+											<i class="f7-icons" style="color:#FFAC82;">stopwatch</i>
+										</div>
+										<div class="learn-item-title">集团知识库</div>
+										<div class="learn-item-num" style="background: #FFAC82;">65条</div>
 									</div>
 								</div>
 							</div>
@@ -230,7 +246,6 @@
 				</div>
 			</div>
 		</div>
-		
 		
 		
 		<div class="login-screen modal-in">

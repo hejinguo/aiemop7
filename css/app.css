@@ -101,6 +101,15 @@ div{
 .theme-asiainfo .label-switch input[type=checkbox]:checked+.checkbox{
 	background: #00d0ff;
 }
+.theme-asiainfo .button.button-fill.color-shallowblue{
+	background: #B2D6F8;
+}
+.theme-asiainfo .color-lightblue{
+	color:#25C6FC;
+}
+.theme-asiainfo a{
+	color:#25C6FC;
+}
 .bg-gradient-blue{
 	background-image:-webkit-linear-gradient(315deg, #00d0ff, #4F8EFF);
 	border-radius:10px;
@@ -223,6 +232,9 @@ div{
 /**
  * data-page="home"
  */
+[data-page="home"] *{
+	color:#444444;
+}
 [data-page="home"] .swiper-container{
 	height:200px;
 }
@@ -232,9 +244,14 @@ div{
 [data-page="home"] .swiper-container .swiper-slide img{
 	height:200px;
 }
+[data-page="home"] .swiper-pagination-bullet-active{
+	background: #26C6FD;
+}
+[data-page="home"] .swiper-pagination-bullet{
+	opacity:.9;
+}
 [data-page="home"] .home-main-notice{
 	background: #FFF;
-	margin:5px auto;
 	display: -webkit-flex;
   	display: flex;
 }
@@ -247,36 +264,86 @@ div{
 }
 [data-page="home"] .home-main-entrance{
 	background: #FFF;
+	margin:10px auto;
 }
 [data-page="home"] .home-main-entrance a{
 	display: block;
 	color:rgb(0,0,0);
 	height:60px;
-	border-bottom:1px solid #EEEEEE;
-	border-right: 1px solid #EEEEEE;
-	/*padding-top:10px;*/
-	/*padding:10px auto;*/
-	padding-top:10px;
+	padding-top:8px;
 }
 [data-page="home"] .home-main-entrance i.f7-icons{
-	display:block;color:#FFF;
-	margin:0px auto;
-	border-radius:20px;font-size:18px;
-	width:20px;height:20px;padding:8px;
+	display:block;
+	margin:6px auto;
 }
-html.ios-gt-8 [data-page="home"] .list-block.media-list .item-title,
-[data-page="home"] .list-block.media-list .item-title{
-	font-weight: normal;
-	padding-bottom:10px;
+[data-page="home"] .home-person-info{
+	background:#FFF;
+	display:-webkit-flex;display:flex;
+	margin:0px 5px;border-radius:5px;
 }
-[data-page="home"] .list-block .item-content{
-	padding-left: 10px;
+[data-page="home"] .home-person-info .person-icon{
+	display:block;width:50px;height:50px;
+	margin:8px 5px;border-radius:25px;
 }
-[data-page="home"] .list-block.media-list .item-link .item-inner{
-	padding-right: 10px;
+[data-page="home"] .lately-task{
+	margin:10px 5px 0px 5px
 }
-
-
+[data-page="home"] .lately-task .header,[data-page="home"] .enterprise-learn .header{
+	font-weight:bold;margin-bottom:5px;color:#000000;
+}
+[data-page="home"] .lately-task .list-block li{
+	background:#FFF;margin-bottom:10px;border-radius:5px;
+}
+[data-page="home"] .lately-task .item-title{
+	width:100%;display:-webkit-flex;display:flex;
+	font-size: 14px;
+}
+[data-page="home"] .lately-task .item-title-main{
+	padding-top:3px;
+}
+[data-page="home"] .lately-task .item-title .item-num{
+	display:inline-block;width:45px;font-size:18px;vertical-align:middle;
+}
+[data-page="home"] .lately-task .item-title .item-progress{
+	display:inline-block;width:80px;height:18px;margin:3px auto;border-radius:3px;
+}
+[data-page="home"] .lately-task .item-title .item-value{
+	border-radius:3px;height:18px;
+}
+[data-page="home"] .lately-task .item-title .item-value span{
+	margin:auto 5px;color:#FFF;
+}
+[data-page="home"] .lately-task .list-block .item-inner{
+	padding-bottom:4px;
+	padding-top:5px;
+}
+[data-page="home"] .lately-task .list-block .item-inner:after,
+[data-page="home"] .lately-task .list-block ul:after,
+[data-page="home"] .lately-task .list-block ul:before{
+	height:0px;
+}
+[data-page="home"] .lately-task .list-block .item-content,
+[data-page="home"] .lately-task .list-block .item-inner{
+	min-height: 30px;
+}
+[data-page="home"] .enterprise-learn{
+	margin:10px 5px 5px 5px
+}
+[data-page="home"] .enterprise-learn .learn-item{
+	background:#FFF;border-radius:5px;text-align:center;overflow:hidden;
+}
+[data-page="home"] .enterprise-learn .learn-item-icon{
+	width:50px;height:50px;border-radius:50%;margin:-18px auto 0px auto;
+}
+[data-page="home"] .enterprise-learn .learn-item-icon .f7-icons{
+	margin-top:25px;font-size:14px;
+}
+[data-page="home"] .enterprise-learn .learn-item-num{
+	border-bottom-left-radius:5px;border-bottom-right-radius: 5px;color:#FFF;padding-top:2px;padding-bottom:2px;
+}
+[data-page="home"] .enterprise-learn .learn-item-title{
+	margin:8px auto;
+}
 /**
  * 地图首页
  */
