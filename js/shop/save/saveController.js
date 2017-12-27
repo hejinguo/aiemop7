@@ -16,6 +16,10 @@ define(['app','tool'],function(app,tool){
 		element: '.shop-save-page form [name="CITY_CODE"]',
 		event: 'change',
 		handler: changeCityCodeSelect
+	},{
+		element: '.shop-save-page form [name="TYPE_ID"]',
+		event: 'change',
+		handler: changeShopTypeSelect
 	}];
 	var cacheData = {};
 	var cacheQuery = {};
@@ -170,6 +174,19 @@ define(['app','tool'],function(app,tool){
 		$$.each(countyList,function(i,n){
 			app.f7.smartSelectAddOption('.shop-save-page form [name="COUNTY_CODE"]', '<option value="'+n.countyName+'">'+n.countyName+'</option>');
 		});
+	}
+	
+	/**
+	 * 商铺类型选择触发事件
+	 */
+	function changeShopTypeSelect(){
+		var shopType = $$('.shop-save-page form [name="TYPE_ID"]').val();
+		if(shopType.indexOf('市场') >= 0){
+			$$('.shop-save-page .shop-save-market-name').removeClass('disabled');
+		}else{
+			$$('.shop-save-page form [name="MARKET_NAME"]').val('');
+			$$('.shop-save-page .shop-save-market-name').addClass('disabled');
+		}
 	}
 	
 	/**
