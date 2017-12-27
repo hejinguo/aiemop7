@@ -24,14 +24,14 @@
 		<div class="statusbar-overlay"></div>
 		<!-- Panels overlay-->
 		<div class="panel-overlay"></div>
-		<div class="panel panel-left panel-reveal">
+		<div class="panel panel-left panel-cover"><!--panel-reveal，panel-cover -->
 			<div class="content-block">
 				<p>Left panel content goes here</p>
 			</div>
 		</div>
-		<div class="panel panel-right panel-cover">
-			<div class="content-block">
-				<p>Right panel content goes here</p>
+		<div class="panel panel-right panel-reveal">
+			<div class="view view-right">
+				<div class="pages"></div>
 			</div>
 		</div>
 		<!-- Views -->
@@ -41,7 +41,7 @@
 				<!-- Pages-->
 				<div class="pages">
 					<!-- Page, data-page contains page name-->
-					<div data-page="home" class="page home-page" data-page-title="智慧政企">
+					<div class="page home-page" data-page="home" data-page-title="智慧政企">
 						<!-- Scrollable page content-->
 						<div class="page-content">
 							<!-- Slider container -->
@@ -81,13 +81,13 @@
 									</div>
 								</div>
 								<div style="min-width:28px;">
-									<a href="#">更多</a>
+									<a href="#" class="no-complete">更多</a>
 								</div>
 							</div>
 							
 							<div class="row no-gutter home-main-entrance">
 								<div class="col-33 aui-text-center">
-									<a href="pages/map/map.html">
+									<a href="#" class="no-complete"><!--pages/map/map.html-->
 				    					<i class="f7-icons" style="color:#B2D6F8;">world_fill</i>
 				    					<span>我的集团</span>
 				    				</a>
@@ -97,7 +97,6 @@
 				    					<i class="f7-icons" style="color:#C3E345;">tabs_fill</i>
 				    					<span>商铺管理</span>
 				    				</a>
-									
 								</div>
 								<div class="col-33 aui-text-center">
 									<a href="pages/bigdata/bigdata.html">
@@ -106,19 +105,19 @@
 				    				</a>
 								</div>
 								<div class="col-33 aui-text-center">
-									<a href="pages/mms/mms.html">
+									<a href="#" class="no-complete"><!--pages/mms/mms.html--><!-- class="no-animation" -->
 				    					<i class="f7-icons" style="color:#FFCF2A;">briefcase_fill</i>
 				    					<span>业务通报</span>
 				    				</a>
 								</div>
 								<div class="col-33 aui-text-center">
-									<a href="pages/contact/contact.html">
+									<a href="#" class="no-complete"><!--pages/contact/contact.html-->
 				    					<i class="f7-icons" style="color:#A1BEBC;">phone_round_fill</i>
 				    					<span>通讯录</span>
 				    				</a>
 								</div>
 								<div class="col-33 aui-text-center">
-									<a href="javascript:alert('更多可定制的功能入口');">
+									<a href="#" class="no-complete">
 				    					<i class="f7-icons" style="color:#FFAC82;">more_round_fill</i>
 				    					<span>更多</span>
 				    				</a>
@@ -127,15 +126,17 @@
 							
 							<div class="home-person-info">
 								<div>
-									<img src="images/temp/timg.jpg" class="person-icon"/>
+									<img src="images/temp/timg.jpg" class="person-icon no-complete"/>
 								</div>
 								<div style="flex-grow:1;padding:5px;">
-									<span>何先生(ai_hejinguo)</span><br/>
-									<span style="color:#888;font-size:12px;">成都市分公司_客户经理</span><br/>
-									<span style="color:#888;font-size:12px;">13548061219</span>
+									<div class="person-name">加载中...</div>
+									<div class="person-subinfo">
+										<span></span><br/>
+										<span></span>
+									</div>
 								</div>
 								<div class="aui-text-right" style="padding:20px 10px;">
-									<a href="#" class="button button-fill color-shallowblue">&nbsp;&nbsp;签&nbsp;&nbsp;到&nbsp;&nbsp;</a>
+									<a href="#" class="button button-fill color-shallowblue no-complete">&nbsp;&nbsp;签&nbsp;&nbsp;到&nbsp;&nbsp;</a>
 								</div>
 							</div>
 							
@@ -144,7 +145,7 @@
 								<div class="list-block">
 									<ul style="background-color:inherit;">
 										<li style="border-left:3px solid #B2D6F8;">
-											<a href="#" class="item-link item-content">
+											<a href="#" class="item-link item-content no-complete">
 												<div class="item-inner">
 													<div class="item-title">
 														<div class="item-title-main">今日任务</div>
@@ -161,7 +162,7 @@
 											</a>
 										</li>
 										<li style="border-left:3px solid #A1BEBC;">
-											<a href="#" class="item-link item-content">
+											<a href="#" class="item-link item-content no-complete">
 												<div class="item-inner">
 													<div class="item-title">
 														<div class="item-title-main">明日任务</div>
@@ -178,7 +179,7 @@
 											</a>
 										</li>
 										<li style="border-left:3px solid #C2E243;">
-											<a href="#" class="item-link item-content">
+											<a href="#" class="item-link item-content no-complete">
 												<div class="item-inner">
 													<div class="item-title">
 														<div class="item-title-main">本周任务</div>
@@ -195,7 +196,7 @@
 											</a>
 										</li>
 										<li style="border-left:3px solid #FFAC82;">
-											<a href="#" class="item-link item-content">
+											<a href="#" class="item-link item-content no-complete">
 												<div class="item-inner">
 													<div class="item-title">
 														<div class="item-title-main">本月任务</div>
@@ -218,27 +219,27 @@
 							<div class="enterprise-learn">
 								<div class="header">政企加油站</div>
 								<div class="row">
-									<div class="col-33 learn-item">
+									<a href="#" class="col-33 learn-item no-complete">
 										<div class="learn-item-icon" style="border:1px solid #B2D6F8;">
 											<i class="f7-icons" style="color:#B2D6F8;">folder</i>
 										</div>
 										<div class="learn-item-title">集团产品库</div>
 										<div class="learn-item-num" style="background: #B2D6F8;">65条</div>
-									</div>
-									<div class="col-33 learn-item">
+									</a>
+									<a href="#" class="col-33 learn-item no-complete">
 										<div class="learn-item-icon" style="border:1px solid #C2E243;">
 											<i class="f7-icons" style="color:#C2E243;">drawers</i>
 										</div>
 										<div class="learn-item-title">集团案例库</div>
 										<div class="learn-item-num" style="background: #C2E243;">65条</div>
-									</div>
-									<div class="col-33 learn-item">
+									</a>
+									<a href="#" class="col-33 learn-item no-complete">
 										<div class="learn-item-icon" style="border:1px solid #FFAC82;">
 											<i class="f7-icons" style="color:#FFAC82;">stopwatch</i>
 										</div>
 										<div class="learn-item-title">集团知识库</div>
 										<div class="learn-item-num" style="background: #FFAC82;">65条</div>
-									</div>
+									</a>
 								</div>
 							</div>
 						</div>

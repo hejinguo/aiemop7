@@ -1,27 +1,17 @@
-define(['app'],function(app) {
+define(['app','tool'],function(app,tool) {
 	var $$ = Dom7;
 
 	function init() {
-		function myGod(id,w,n){
-			var box=$$(id)[0],can=true,w=w||1500,fq=fq||10,n=n==-1?-1:1;
-			box.innerHTML+=box.innerHTML;
-			box.onmouseover=function(){can=false};
-			box.onmouseout=function(){can=true};
-			var max=parseInt(box.scrollHeight/2);
-			new function (){
-				var stop=box.scrollTop%18==0&&!can;
-				if(!stop){
-					var set=n>0?[max,0]:[0,max];
-					box.scrollTop==set[0]?box.scrollTop=set[1]:box.scrollTop+=n;
-//					console.log(box.scrollTop);
-				};
-				setTimeout(arguments.callee,box.scrollTop%18?fq:w);
-			};
-		};
+		app.f7.addNotification({
+	        title: '系统公告',
+	        message: '用户您好,智慧政企移动办公管家目前已对您开放了‘商铺管理’、‘大数据报告’功能,其他的功能我们开发人员正在紧锣密鼓的赶制中,请知晓。'
+	    });
 		
-		myGod('.theme-asiainfo .marquee-notice-list',2000);
+		var user = tool.getUser();
+		$$('.home-page .home-person-info .person-name').html(user.staffName+'('+user.staffCode+')');
+		$$('.home-page .home-person-info .person-subinfo span:first-child').html(user.organize.orgName+'_'+user.roles[0].roleName);
 		
-		//mapView.render();
+		tool.marqueeNotice('.theme-asiainfo .marquee-notice-list',2000);
 	}
 	
 	return {

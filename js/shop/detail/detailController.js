@@ -2,10 +2,6 @@
 define(['app','tool'],function(app,tool){
 	var $$ = Dom7;
 	var bindings = [{
-		element: '.shop-detail-page-navbar-inner .right a',
-		event: 'click',
-		handler: clickModifyShopItem
-	},{
 		element: '.shop-detail-page .delete-shop-button',
 		event: 'click',
 		handler: clickDeleteShopItem
@@ -33,11 +29,9 @@ define(['app','tool'],function(app,tool){
 		});
 	}
 	
-	function clickModifyShopItem(){
-		app.views[1].router.load({url:'pages/shop/shop-save.html?entCode='+shopCache.entCode+'&editFlag='+shopCache.editFlag});
-	}
-	
 	function clickDeleteShopItem(){
+		app.f7.alert('对不起,您无权执行删除操作.');
+		/*
 		if(shopCache.editFlag && shopCache.editFlag == 1){
 			app.f7.confirm('您确定要删除该商铺吗?','删除',function () {
 		        tool.appAjax('cust/delShopInfo',{shopCode:shopCache.entCode},function(data){
@@ -51,6 +45,7 @@ define(['app','tool'],function(app,tool){
 		}else{
 			app.f7.alert('对不起,您无权执行删除操作.');
 		}
+		*/
 	}
 	
 	function loadShopIndividualInfo(entCode,typeCode){
@@ -59,13 +54,13 @@ define(['app','tool'],function(app,tool){
 			if(data.state && data.info.length > 0){
 				individual = "<div class=\"row\">";
 				$$.each(data.info, function (index, item) {
-					individual += "<div class=\"col-50\">"+item.K_NAME+"："+(item.K_VALUE ? item.K_VALUE : '不详')+"</div>";
+					individual += "<div class=\"col-50\">"+item.K_NAME+"：<span>"+(item.K_VALUE ? item.K_VALUE : '不详')+"</span></div>";
 				});
 				individual += "</div>";
 			}else{
-				individual = "无个性化信息";
+				individual = "<span>无个性化信息</span>";
 			}
-			$$('.shop-detail-individual-card .card-content-inner').html(individual);
+			$$('.shop-detail-individual-card').html(individual);
 		});
 	}
 	

@@ -16,7 +16,9 @@ define(['app','mms/mmsView'],function(app,mmsView){
 		testData.push({title:'和商务当日目标任务完成率',owner:owner,ranks:ranks});
 		testData.push({title:'专线当日净增数',owner:owner,ranks:ranks});
 		testData.push({title:'互联网专线当日净增数',owner:owner,ranks:ranks});
-		mmsView.render({model:testData});
+		setTimeout(function() {
+			mmsView.render({model:testData});
+		},500);
 	}
 	
 	return {

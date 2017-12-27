@@ -21,6 +21,10 @@ define(['app','tool'],function(app,tool){
 	var cacheQuery = {};
 	
 	function init(query){
+		app.f7.onPageBack('shop-save',function(page){
+			app.f7.closeModal();//'.picker-info'
+		});
+		
 		cacheQuery = query;
 		loadShopSelectInfo(query);
 		require(['shop/save/saveView'], function(saveView) {
@@ -48,26 +52,28 @@ define(['app','tool'],function(app,tool){
 					loadShopDetailInfo(query);
 				}else{
 					$$('.shop-save-page .save-shop-button').html('添加商铺');
+					
 					$$('.shop-save-page form [name="CITY_CODE"]').change();
-					/*require(['async!BMap'], function() {
+					require(['async!BMap'], function() {
 						var geolocation = new BMap.Geolocation();
 						geolocation.getCurrentPosition(function(r){
-							console.log(BMAP_STATUS_SUCCESS);
 							if(this.getStatus() == BMAP_STATUS_SUCCESS){
-								console.log('您的位置：'+r.point.lng+','+r.point.lat);
+//								console.log('您的位置：'+r.point.lng+','+r.point.lat);
+								$$('.shop-save-page form [name="LONGITUDE"]').val(r.point.lng);
+								$$('.shop-save-page form [name="LATITUDE"]').val(r.point.lat);
 								// 创建地理编码实例      
 								var myGeo = new BMap.Geocoder();      
 								// 根据坐标得到地址描述    
 								myGeo.getLocation(new BMap.Point(r.point.lng, r.point.lat), function(result){
 								    if (result){
-								    	app.f7.alert(result.address);
+								    	$$('.shop-save-page form [name="ADDRESS"]').val(result.address);
 								    }
 								});
 							}else {
 								console.log('failed'+this.getStatus());
 							}        
 						});
-					});*/
+					});
 				}
 				$$('.shop-save-page .save-shop-button').removeClass('disabled');
 			}
@@ -122,14 +128,14 @@ define(['app','tool'],function(app,tool){
 	 */
 	function execSaveShopInfo(shopInfo){
 		console.log(shopInfo);
-		
 		var url = shopInfo.ent_code ? 'cust/updateShopInfo' : 'cust/addShopInfo';
+		
 		tool.appAjax(url,{shopInfo:JSON.stringify(shopInfo)},function(data){
 			if(shopInfo.ent_code){//编辑
 				app.view.router.back({pageName:'shop-detail'});
 				app.router.load('shop-detail',cacheQuery);
 			}else{//添加
-//				app.view.router.back({pageName:'shop'});
+				app.view.router.back({pageName:'shop'});
 //				app.view.router.reloadPage('pages/shop/shop-save.html?entCode=N65941');
 			}
 			app.router.load('shop');
@@ -194,8 +200,8 @@ define(['app','tool'],function(app,tool){
 		shopInfo.network=formData.ENT_NETWORK && formData.ENT_NETWORK.length > 0 ? 'Y' : 'N';
 		shopInfo.broadband=formData.BROADBAND && formData.BROADBAND.length > 0 ? 'Y' : 'N';
 		shopInfo.isflag=formData.FLAG && formData.FLAG.length > 0 ? 'Y' : 'N';
-		shopInfo.longitude='0';
-		shopInfo.latitude='0';
+		shopInfo.longitude=formData.LONGITUDE;
+		shopInfo.latitude=formData.LATITUDE;
 		shopInfo.ent_image='';
 		shopInfo.ent_imgtype='';
 //		shopInfo.expandInfo=[];

@@ -1,18 +1,16 @@
 <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
 <div class="pages">
 	<!-- Page, "data-page" contains page name -->
-	<div data-page="shop-save" class="page shop-save-page" data-page-title="商铺维护">
+	<div class="page shop-save-page" data-page="shop-save" data-page-title="商铺维护">
 		<!-- Scrollable page content -->
 		<div class="page-content">
 			<form>
+				<!--<div class="aui-preloader-content"><span class="preloader"></span></div>-->
 				<div class="aui-hidden">
 					<input type="text" name="ENT_CODE" />
 					<input type="text" name="TYPE_CODE" />
 				</div>
-				<div class="list-block-form-title">
-					<span class="bg-gradient-blue"><i class="f7-icons">data</i></span>
-					商铺基本信息
-				</div>
+				<div class="content-block-title">商铺基本信息</div>
 				<div class="list-block">
 					<ul>
 						<li>
@@ -103,6 +101,19 @@
 						<li>
 							<div class="item-content">
 								<div class="item-inner">
+									<div class="item-title label">经纬度</div>
+									<div class="item-input">
+										<div class="row">
+											<input type="text" class="col-50" name="LONGITUDE" style="width:50%" placeholder="经度">
+											<input type="text" class="col-50" name="LATITUDE" style="width:50%" placeholder="纬度">
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
 									<div class="item-title label">联系人</div>
 									<div class="item-input">
 										<input type="text" name="TEL_NAME" placeholder="请填写联系人姓名">
@@ -132,10 +143,7 @@
 						</li>
 					</ul>
 				</div>
-				<div class="list-block-form-title">
-					<span class="bg-gradient-blue"><i class="f7-icons">star_fill</i></span>
-					商铺扩展信息
-				</div>
+				<div class="content-block-title">商铺扩展信息</div>
 				<div class="list-block">
 					<ul>
 						<li>
@@ -261,10 +269,7 @@
 					</ul>
 				</div>
 				<div class="individual-info aui-hidden">
-					<div class="list-block-form-title">
-						<span class="bg-gradient-blue"><i class="f7-icons">document_text_fill</i></span>
-						个性化信息
-					</div>
+					<div class="content-block-title">个性化信息</div>
 					<div class="list-block">
 						
 					</div>

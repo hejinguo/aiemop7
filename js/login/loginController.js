@@ -1,11 +1,11 @@
 define(['app','tool','login/loginView'],function(app,tool,LoginView) {
 	var $$ = Dom7;
 	var bindings = [{
-		element: '.login-screen-content .send-mark-button',
+		element: '.login-page .send-mark-button',
 		event: 'click',
 		handler: sendMarkForm
 	},{
-		element: '.login-screen-content .submit-login-button',
+		element: '.login-page .submit-login-button',
 		event: 'click',
 		handler: submitLoginForm
 	}];
@@ -16,8 +16,8 @@ define(['app','tool','login/loginView'],function(app,tool,LoginView) {
 	
 	function sendMarkForm(){
 		var _this = this;
-		var username = $$('.login-screen input[name="username"]').val();
-        var password = $$('.login-screen input[name="password"]').val();
+		var username = $$('.login-page input[name="username"]').val();
+        var password = $$('.login-page input[name="password"]').val();
         if(username && password){
         	var param = {staffCode:username,password:tool.encode(password)};//,appVersion:'1988.7.7'
         	app.f7.showIndicator();
@@ -46,9 +46,9 @@ define(['app','tool','login/loginView'],function(app,tool,LoginView) {
 	
 	function submitLoginForm(e){
 		var _this = this;
-		var username = $$('.login-screen input[name="username"]').val();
-        var password = $$('.login-screen input[name="password"]').val();
-        var loginmark = $$('.login-screen input[name="loginmark"]').val();
+		var username = $$('.login-page input[name="username"]').val();
+        var password = $$('.login-page input[name="password"]').val();
+        var loginmark = $$('.login-page input[name="loginmark"]').val();
         var deviceInfo = {};
         if(username && password && loginmark){
         	var param = {staffCode:username,password:tool.encode(password),loginMark:loginmark,appVersion:'1988.7.7',deviceInfo:tool.encode(JSON.stringify(deviceInfo))};
@@ -57,11 +57,7 @@ define(['app','tool','login/loginView'],function(app,tool,LoginView) {
 				if(data.state){
 					tool.setUser(data.info);
 					app.router.load('home');
-//					app.router.load('shop');
-//					app.router.load('bigdata');
-//					app.router.load('mms');
 					app.f7.closeModal('.login-screen');
-//					plus.navigator.setStatusBarBackground("0085D0");//登陆后的系统主界面状态栏颜色
 				}else if('USERCODE_OR_PASSWORD_ERROR' == data.code){
 					app.f7.alert('用户名或密码不正确');
 				}else if('LOGIN_MARK_ERROR' == data.code){

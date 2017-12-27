@@ -2,8 +2,6 @@ define(['app'], function(app) {
 	var $$ = Dom7;
 
 	function render(params) {
-//		$$('.shop-detail-page .page-pull-content').html(Template7.compile(template)(params.model));
-//		params.callback(params.model.ENT_CODE,params.model.TYPE_CODE);
 		bindEvents(params.bindings);
 	}
 	

@@ -7,7 +7,6 @@ define(['app'], function(app) {
 			var map = new BMap.Map($$('.map-page .page-content .page-pull-content')[0]);// 创建地图实例
 			var geolocation = new BMap.Geolocation();
 			geolocation.getCurrentPosition(function(r){
-//				console.log(BMAP_STATUS_SUCCESS);
 				if(this.getStatus() == BMAP_STATUS_SUCCESS){
 					console.log('您的位置：'+r.point.lng+','+r.point.lat);
 //					map.addControl(new BMap.GeolocationControl());
@@ -31,7 +30,7 @@ define(['app'], function(app) {
 					console.log('failed'+this.getStatus());
 				}        
 			});
-//				map.addOverlay(new BMap.Label('1122334455',{position:point}));// 将标注添加到地图中
+//			map.addOverlay(new BMap.Label('1122334455',{position:point}));// 将标注添加到地图中
 		});
 	}
 

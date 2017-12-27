@@ -48,8 +48,7 @@ define(['app','base64'],function(app,base64) {
 		if(/ip(hone|od|ad)/i.test(navigator.userAgent)) {
 			var i = document.createElement('iframe');
 			i.id=new Date().getTime();
-			i.src = 'favicon.ico';
-//			i.src = 'http://www.10086.cn/favicon.ico';
+			i.src = 'favicon.ico';//http://www.10086.cn/favicon.ico
 			i.style.display = 'none';
 			i.onload = function() {
 				setTimeout(function() {
@@ -104,6 +103,28 @@ define(['app','base64'],function(app,base64) {
 	}
 	
 	/**
+	 * 滚动公告消息控件
+	 * @param {Object} id
+	 * @param {Object} w
+	 * @param {Object} n
+	 */
+	function marqueeNotice(id,w,n){
+		var box=$$(id)[0],can=true,w=w||1500,fq=fq||10,n=n==-1?-1:1;
+		box.innerHTML+=box.innerHTML;
+		box.onmouseover=function(){can=false};
+		box.onmouseout=function(){can=true};
+		var max=parseInt(box.scrollHeight/2);
+		new function (){
+			var stop=box.scrollTop%18==0&&!can;
+			if(!stop){
+				var set=n>0?[max,0]:[0,max];
+				box.scrollTop==set[0]?box.scrollTop=set[1]:box.scrollTop+=n;
+			};
+			setTimeout(arguments.callee,box.scrollTop%18?fq:w);
+		};
+	};
+	
+	/**
  	* 通用Ajax方法,请勿直接调用,推荐使用ai.ajax或ai.json简化使用
  	*/
 	function _ai_ajax_common(url, param, onSuccess, onError, onComplete, contentType){
@@ -121,7 +142,7 @@ define(['app','base64'],function(app,base64) {
 			data:param,
 			method:'POST',
 	        dataType:'json',
-	        timeout:15000,//超时时间设置为15秒
+	        timeout:30000,//超时时间设置为15秒
 	        contentType: contentType,
 	        crossDomain:true,
 	        headers:{'X-Requested-With':'XMLHttpRequest','AI-Requested-Way':'H5','AI-Login-Token':workToken},
@@ -143,11 +164,9 @@ define(['app','base64'],function(app,base64) {
 				}
 	        },
 	        error:function(xhr, status){
-	        	console.log(xhr);
-	        	console.log(status);
-	            console.log(app);
-	            console.log(app ? app.f7 : 'NO');
-	            app.f7.alert("服务器处理过程发生问题,错误状态码："+status);
+	            require(['app'], function(app) {
+					app.f7.alert("服务器处理过程发生问题,错误状态码："+status);
+				});
 	            onError();
 	        },
 	        complete:function(xhr, status){
@@ -165,6 +184,7 @@ define(['app','base64'],function(app,base64) {
         appJson:appJson,
         appPath:appPath,
         dealImage:dealImage,
-        setDocumentTitle:setDocumentTitle
+        setDocumentTitle:setDocumentTitle,
+        marqueeNotice:marqueeNotice
     };
 });
