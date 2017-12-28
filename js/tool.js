@@ -142,7 +142,7 @@ define(['base64'],function(base64) {
 			data:param,
 			method:'POST',
 	        dataType:'json',
-	        timeout:30000,//超时时间设置为15秒
+	        timeout:15000,//超时时间设置为15秒
 	        contentType: contentType,
 	        crossDomain:true,
 	        headers:{'X-Requested-With':'XMLHttpRequest','AI-Requested-Way':'H5','AI-Login-Token':workToken},
@@ -175,7 +175,11 @@ define(['base64'],function(base64) {
 	        },
 	        error:function(xhr, status){
 	            require(['app'], function(app) {
-					app.f7.alert("服务器处理过程发生问题,错误状态码："+status);
+	            	if(status == 'timeout'){
+	            		app.f7.alert("服务器处理过程响应超时,请稍后重试.");
+	            	}else{
+	            		app.f7.alert("服务器处理过程发生问题,错误状态码："+status);
+	            	}
 				});
 	            onError();
 	        },
