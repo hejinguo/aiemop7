@@ -5,19 +5,25 @@ define(['tool','base64'],function(tool,base64) {
 	 * Init router, that handle page events
 	 */
     function init() {
+    	$$('.no-complete').click(function(){
+			require(['app'], function(app) {
+				app.f7.alert('我们正紧锣密鼓开发中.');
+			});
+			return false;
+		});
+    	
     	//重置登陆状态,保证每次都需要用户重新登陆
 //  	sessionStorage.removeItem("_USER_BASE_INFO");
     	//界面核心框架加载成功后渲染后台数据到页面
 		$$(document).on('page:beforeinit', function (e) {
-			if(e.detail.page.name.indexOf('smart-select-radio') >= 0){
+			var page = e.detail.page;
+			if(page.name.indexOf('smart-select-radio') >= 0){
 				console.log('忽略 '+e.detail.page.name+' 页面标题更新')
 				return;
 			}
-//			tool.setDocumentTitle(e.detail.page.name);
-			tool.setDocumentTitle($$("[data-page='"+e.detail.page.name+"']")[1].dataset.pageTitle);
-			var page = e.detail.page;
+			tool.setDocumentTitle($$("[data-page='"+page.name+"']")[1].dataset.pageTitle);
 			//验证用户是否已经登录
-			var user = JSON.parse(base64.decode(sessionStorage.getItem("_USER_BASE_INFO")||'')||'{}');
+			var user = tool.getUser();
 			if(user.lastLoginToken){
 				$$('.login-screen').remove();
 			}
@@ -26,12 +32,12 @@ define(['tool','base64'],function(tool,base64) {
 			}
 		});
 		$$(document).on('page:reinit', function (e) {
-			if(e.detail.page.name.indexOf('smart-select-radio') >= 0){
-				console.log('忽略 '+e.detail.page.name+' 页面标题更新')
+			var page = e.detail.page;
+			if(page.name.indexOf('smart-select-radio') >= 0){
+				console.log('忽略 '+page.name+' 页面标题更新')
 				return;
 			}
-//			tool.setDocumentTitle(e.detail.page.name);
-			tool.setDocumentTitle($$("[data-page='"+e.detail.page.name+"']")[0].dataset.pageTitle);
+			tool.setDocumentTitle($$("[data-page='"+page.name+"']")[0].dataset.pageTitle);
 		});
     }
 
@@ -45,7 +51,6 @@ define(['tool','base64'],function(tool,base64) {
 			console.log('忽略 '+pageName+' 页面数据逻辑')
 			return;
 		}
-		
 		console.log("加载 "+pageName +" 页面数据逻辑");
 		
 		var controllerName = "";
@@ -56,7 +61,7 @@ define(['tool','base64'],function(tool,base64) {
 				controllerName += value + 'Controller';
 			}
 		});
-
+		
 //		require([pageName + '/'+ pageName + 'Controller'], function(controller) {
 		require([controllerName], function(controller) {
 			controller.init(query);

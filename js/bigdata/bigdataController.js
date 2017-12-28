@@ -18,6 +18,8 @@ define(['app','tool','bigdata/bigdataView'],function(app,tool,bigdataView){
 	
 	function init(){
 		bigdataView.render(bindings);
+		param.unitIdName = '';
+		param.pageNum = 1;
 		_pullupRefresh(1);
 	}
 	

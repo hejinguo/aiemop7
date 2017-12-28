@@ -1,4 +1,4 @@
-define(['app','base64'],function(app,base64) {
+define(['base64'],function(base64) {
 	var $$ = Dom7;
 	var appPath = {download:'http://218.205.252.12:10029/emop.apk',//最新安装包地址
 			emop:'http://218.205.252.12:10029/aiemop/',//政企营销项目地址
@@ -148,17 +148,27 @@ define(['app','base64'],function(app,base64) {
 	        headers:{'X-Requested-With':'XMLHttpRequest','AI-Requested-Way':'H5','AI-Login-Token':workToken},
 	        success:function(data, status, xhr){
 	            if(!data.state && data.code == "JAVA_EXCEPTION"){
-	            	app.f7.alert('服务端请求处理发生问题,请联系系统管理员.');
+	            	require(['app'], function(app) {
+						app.f7.alert('服务端请求处理发生问题,请联系系统管理员.');
+					});
 	            	onError();
 				}else if(!data.state && data.code == "SHOW_MSG"){
-					app.f7.alert("SHOW_MSG="+data.info);
+					require(['app'], function(app) {
+						app.f7.alert("SHOW_MSG="+data.info);
+					});
 					onError();
 				}else if(!data.state && data.code == "CHARACTER_WRONGFUL"){
-					app.f7.alert('您提交的数据中含有非法字符,请调整后继续.');
+					require(['app'], function(app) {
+						app.f7.alert('您提交的数据中含有非法字符,请调整后继续.');
+					});
 					onError();
 				}else if(!data.state && data.code == "NOT_LOGINED"){
-					app.f7.alert('您尚未登陆或账号在其他终端上登陆导致本设备踢出.');
-					delUser();
+					require(['app'], function(app) {
+						app.f7.alert('您尚未登陆或账号在其他终端上登陆导致本设备踢出.',function(){
+							delUser();
+							document.location.href = 'index.html';
+						});
+					});
 				}else{
 					onSuccess(data);
 				}
