@@ -31,6 +31,7 @@ define(['router'], function(router) {
 		modalTitle: '消息',
 		pushState:true,
 		cache:false,
+		swipeBackPage:false,
 //		animateNavBackIcon: true,
 //		pushStateNoAnimation:true,
 //		smartSelectBackText:'返回',
