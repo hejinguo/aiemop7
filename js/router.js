@@ -7,7 +7,8 @@ define(['tool','base64'],function(tool,base64) {
     function init() {
     	$$('.no-complete').click(function(){
 			require(['app'], function(app) {
-				app.f7.alert('我们正紧锣密鼓开发中.');
+//				app.f7.alert('对不起,您当前操作的功能尚未开放.');
+				app.toast.show('对不起,您当前操作的功能尚未开放.');
 			});
 			return false;
 		});
