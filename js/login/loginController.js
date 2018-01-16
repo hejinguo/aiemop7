@@ -49,7 +49,7 @@ define(['app','tool','login/loginView'],function(app,tool,LoginView) {
 		var username = $$('.login-page input[name="username"]').val();
         var password = $$('.login-page input[name="password"]').val();
         var loginmark = $$('.login-page input[name="loginmark"]').val();
-        var deviceInfo = {};
+        var deviceInfo = {};//http://v1.framework7.io/docs/device-api.html
         if(username && password && loginmark){
         	var param = {staffCode:username,password:tool.encode(password),loginMark:loginmark,appVersion:'1988.7.7',deviceInfo:tool.encode(JSON.stringify(deviceInfo))};
 			app.f7.showIndicator();

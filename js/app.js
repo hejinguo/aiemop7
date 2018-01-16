@@ -14,6 +14,7 @@ require.config({
 });
 
 define(['router'], function(router) {
+//	http://v1.framework7.io/docs/device-api.html
 	/*
 	var isAndroid = Framework7.prototype.device.android === true;
 	var isIos = Framework7.prototype.device.ios === true;
