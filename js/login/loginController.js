@@ -19,9 +19,9 @@ define(['app','tool','login/loginView'],function(app,tool,LoginView) {
 		var username = $$('.login-page input[name="username"]').val();
         var password = $$('.login-page input[name="password"]').val();
         if(username && password){
-        	var param = {staffCode:username,password:tool.encode(password)};//,appVersion:'1988.7.7'
+        	var param = {staffCode:username,password:tool.getMD5(password)};//,appVersion:'1988.7.7'
         	app.f7.showIndicator();
-			tool.appAjax('base/sendMark',param,function(data){
+			tool.appAjax(tool.appPath.emopPro+'base/h5/sendMark',param,function(data){
 				if(data.state){
 					$$(_this).attr('disabled','disabled');
 					app.f7.alert('验证码已发送至 '+data.info +'');
@@ -51,9 +51,9 @@ define(['app','tool','login/loginView'],function(app,tool,LoginView) {
         var loginmark = $$('.login-page input[name="loginmark"]').val();
         var deviceInfo = {};//http://v1.framework7.io/docs/device-api.html
         if(username && password && loginmark){
-        	var param = {staffCode:username,password:tool.encode(password),loginMark:loginmark,appVersion:'1988.7.7',deviceInfo:tool.encode(JSON.stringify(deviceInfo))};
+        	var param = {staffCode:username,password:tool.getMD5(password),loginMark:loginmark,appVersion:'1988.7.7',deviceInfo:tool.encode(JSON.stringify(deviceInfo))};
 			app.f7.showIndicator();
-			tool.appAjax('base/login',param,function(data){
+			tool.appAjax(tool.appPath.emopPro+'base/h5/login',param,function(data){
 				if(data.state){
 					tool.setUser(data.info);
 					app.router.load('home');
