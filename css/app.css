@@ -352,6 +352,26 @@ body.with-panel-right-reveal .panel-overlay{
 .shop-page .list-block .item-media+.item-inner{
 	margin-left: 10px;
 }
+/*建档纳管页面样式*/
+.cust-page .list-block .item-text{
+	height: auto;
+}
+.cust-page .chip-media{
+	width:32px;height: 32px;
+}
+.cust-page .list-block .item-text .chip{
+	font-size: inherit;
+	background: #FFFFFF;
+}
+.cust-page .list-block .item-text .chip.chip-blue{
+	color:#B2D6F8;
+	border:1px solid #B2D6F8;
+}
+.cust-page .list-block .item-text .chip.chip-red{
+	color:#FF9E9D;
+	border:1px solid #FF9E9D;
+}
+
 /**
  * 彩信日报重点业务
  */

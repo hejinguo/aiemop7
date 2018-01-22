@@ -1,4 +1,4 @@
-define(['app','text!cust/cust-page-content.tpl'], function(app,template) {
+define(['app','text!cust/cust-page-content.tpl?v=1'], function(app,template) {
 	var $$ = Dom7;
 
 	function render(bindings) {
@@ -6,13 +6,13 @@ define(['app','text!cust/cust-page-content.tpl'], function(app,template) {
 	}
 	
 	function refresh(model) {
-		$$('.bigdata-page .page-pull-content').html('<ul></ul>');
-		$$('.bigdata-page .page-pull-content').scrollTop();
-		$$('.bigdata-page .page-pull-content ul').html(Template7.compile(template)(model));
+		$$('.cust-page .page-pull-content').html('<ul></ul>');
+		$$('.cust-page .page-pull-content').scrollTop();
+		$$('.cust-page .page-pull-content ul').html(Template7.compile(template)(model));
 	}
 	
 	function append(model){
-		$$('.bigdata-page .page-pull-content ul').append(Template7.compile(template)(model));
+		$$('.cust-page .page-pull-content ul').append(Template7.compile(template)(model));
 	}
 
 	function bindEvents(bindings) {

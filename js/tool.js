@@ -1,14 +1,14 @@
-define(['base64','md5'],function(base64) {
+define(['base64'],function(base64) {
 	var $$ = Dom7;
 //	var appPath = {download:'http://218.205.252.12:10029/emop.apk',//最新安装包地址
 //			emop:'http://218.205.252.12:10029/aiemop/',//政企营销项目地址
 //			work:'http://218.205.252.12:10029/aiwork/',//挂牌攻坚项目地址
 //			emopPro:'http://218.205.252.12:10029/aiemopPro/'//政企营销新项目地址
 //	};
-	var appPath = {download:'http://10.101.167.60:8080/emop.apk',//最新安装包地址
-			emop:'http://10.101.167.60:8080/aiemop/',//政企营销项目地址
-			work:'http://10.101.167.60:8080/aiwork/',//挂牌攻坚项目地址
-			emopPro:'http://10.101.167.60:8080/aiemopPro/'//政企营销新项目地址
+	var appPath = {download:'http://localhost/emop.apk',//最新安装包地址
+			emop:'http://localhost/apis/aiemop/',//政企营销项目地址
+			work:'http://localhost/apis/aiwork/',//挂牌攻坚项目地址
+			emopPro:'http://localhost/apis/aiemopPro/'//政企营销新项目地址
 	};
 	
 	function setUser(baseUser){
@@ -31,8 +31,27 @@ define(['base64','md5'],function(base64) {
 		return base64.decode(content);
 	}
 	
-	function getMD5(content){
-		return MD5(content);
+	/**
+	 * AES加密（需要先加载lib/aes/aes.min.js文件）
+	 * @param word
+	 * @returns {*}
+	 */
+	function aesEncrypt(word){
+	    var key = CryptoJS.enc.Utf8.parse("abcdefgabcdefg12");
+	    var srcs = CryptoJS.enc.Utf8.parse(word);
+	    var encrypted = CryptoJS.AES.encrypt(srcs, key, {mode:CryptoJS.mode.ECB,padding: CryptoJS.pad.Pkcs7});
+	    return encrypted.toString();
+	}
+
+	/**
+	 * AES解密
+	 * @param word
+	 * @returns {*}
+	 */
+	function aesDecrypt(word){
+	    var key = CryptoJS.enc.Utf8.parse("abcdefgabcdefg12");
+	    var decrypt = CryptoJS.AES.decrypt(word, key, {mode:CryptoJS.mode.ECB,padding: CryptoJS.pad.Pkcs7});
+	    return CryptoJS.enc.Utf8.stringify(decrypt).toString();
 	}
 	
 	/**
@@ -201,7 +220,8 @@ define(['base64','md5'],function(base64) {
 	return {
 		encode:encode,
 		decode:decode,
-		getMD5:getMD5,
+		aesEncrypt:aesEncrypt,
+		aesDecrypt:aesDecrypt,
 		setUser:setUser,
 		getUser:getUser,
         appAjax:appAjax,

@@ -1,7 +1,6 @@
 require.config({
 	paths: {
 		base64: '../lib/base64',
-		md5: '../lib/md5',
 		text: '../lib/requirejs-plugins/text',
 		async: '../lib/requirejs-plugins/async',
 		echarts: '../lib/echarts/echarts.common.min',
