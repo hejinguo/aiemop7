@@ -119,6 +119,15 @@ body.with-panel-right-reveal .panel-overlay{
 	/*background-image:-webkit-linear-gradient(315deg, #00d0ff, #4F8EFF);*/
 	background:#B2D6F8;
 }
+.button.button-fill.bg-button-edit{
+	background: #C2E243;
+}
+.button.button-fill.bg-button-delete{
+	background: #FFAC82;
+}
+.button.button-fill.bg-button-submit{
+	background: #25C6FC;/*#B2D6F8;*/
+}
 .content-block-title{
 	margin: 12px 15px;
 	font-size:16px;
@@ -318,21 +327,6 @@ body.with-panel-right-reveal .panel-overlay{
 }
 
 /**
- * data-page="shop-detail"
- */
-.shop-detail-page span{
-	color:#888;
-}
-.shop-detail-page .content-block-title{
-	margin: 12px 10px;font-size:16px;font-weight: bold;
-}
-.shop-detail-page .content-block-card{
-	margin:0px 5px;background:#FFF;border-radius:5px;padding:5px 10px;
-	/*box-shadow: 0 1px 2px rgba(0,0,0,.3);*/
-}
-
-
-/**
  * 地图首页
  */
 .map-page .page-content .page-pull-content{
@@ -352,6 +346,19 @@ body.with-panel-right-reveal .panel-overlay{
 .shop-page .list-block .item-media+.item-inner{
 	margin-left: 10px;
 }
+/**
+ * data-page="shop-detail"
+ */
+.shop-detail-page span{
+	color:#888;
+}
+.shop-detail-page .content-block-title{
+	margin: 12px 10px;font-size:16px;font-weight: bold;
+}
+.shop-detail-page .content-block-card{
+	margin:0px 5px;background:#FFF;border-radius:5px;padding:5px 10px;
+	/*box-shadow: 0 1px 2px rgba(0,0,0,.3);*/
+}
 /*建档纳管页面样式*/
 .cust-page .list-block .item-text{
 	height: auto;
@@ -370,6 +377,19 @@ body.with-panel-right-reveal .panel-overlay{
 .cust-page .list-block .item-text .chip.chip-red{
 	color:#FF9E9D;
 	border:1px solid #FF9E9D;
+}
+/**
+ * data-page="cust-detail"
+ */
+.cust-detail-page span{
+	color:#888;
+}
+.cust-detail-page .content-block-title{
+	margin: 12px 10px;font-size:16px;font-weight: bold;
+}
+.cust-detail-page .content-block-card{
+	margin:0px 5px;background:#FFF;border-radius:5px;padding:5px 10px;
+	/*box-shadow: 0 1px 2px rgba(0,0,0,.3);*/
 }
 
 /**

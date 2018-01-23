@@ -6,15 +6,15 @@ define(['app','tool','cust/custView'],function(app,tool,custView){
 	var bindings = [{
 		element: '.cust-page .searchbar',
 		event: 'submit',
-		handler: searchUnitItem
+		handler: searchCustItem
 	},{
 		element: '.cust-page .pull-to-refresh-content',
 		event: 'refresh',
-		handler: refreshUnitItem
+		handler: refreshCustItem
 	},{
 		element: '.cust-page .infinite-scroll',
 		event: 'infinite',
-		handler: infiniteUnitItem
+		handler: infiniteCustItem
 	}];
 	
 	function init(){
@@ -24,7 +24,7 @@ define(['app','tool','cust/custView'],function(app,tool,custView){
 		_pullupRefresh(1);
 	}
 	
-	function searchUnitItem(){
+	function searchCustItem(){
 //		e.preventDefault(); // 阻止默认事件
 		var searchInputBox = $$('.cust-page .searchbar [type="search"]');
 		searchInputBox.blur();
@@ -34,7 +34,7 @@ define(['app','tool','cust/custView'],function(app,tool,custView){
 		_pullupRefresh(1);
 	}
 	
-	function refreshUnitItem(){
+	function refreshCustItem(){
 		app.f7.showIndicator();
 		param.pageNum = 1;
 		_pullupRefresh(1,function(){
@@ -42,7 +42,7 @@ define(['app','tool','cust/custView'],function(app,tool,custView){
 		});
 	}
 	
-	function infiniteUnitItem(){
+	function infiniteCustItem(){
 		app.f7.showIndicator();
 		if (loading) return;
 		loading = true;

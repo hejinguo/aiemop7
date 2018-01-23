@@ -1,4 +1,4 @@
-define(['app','text!cust/cust-page-content.tpl?v=1'], function(app,template) {
+define(['app','text!cust/cust-page-content.tpl'], function(app,template) {
 	var $$ = Dom7;
 
 	function render(bindings) {

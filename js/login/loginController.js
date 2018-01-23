@@ -25,12 +25,22 @@ define(['app','tool','login/loginView'],function(app,tool,LoginView) {
 				if(data.state){
 					$$(_this).attr('disabled','disabled');
 					app.f7.alert('验证码已发送至 '+data.info +'');
-				}else if('USERCODE_OR_PASSWORD_ERROR' == data.code){
-					app.f7.alert('用户名或密码不正确');
-				}else if('USER_PHONE_NO_ERROR' == data.code){
-					app.f7.alert('接受验证码的手机号码设置不合法');
-				}else if('APP_VERSION_ERROR' == data.code){
-					app.f7.alert('APP_VERSION_ERROR');
+				}else if("LOCK_ERROR" == data.code){
+				    app.f7.alert("用户被锁定,请稍后再试或联系管理员解锁.");
+				}else if("USERCODE_ERROR" == data.code){
+					app.f7.alert("登陆工号错误,请提供准确的登陆工号.");
+				}else if("IMGCODE_ERROR" == data.code){
+					app.f7.alert("图形验证码错误,错误10次将被锁定1小时.");
+				}else if("PASSWORD_ERROR" == data.code){
+			        app.f7.alert("登陆密码错误,错误10次将被锁定1小时.");
+			    }else if("ORGANIZE_ERROR" == data.code){
+					app.f7.alert("用户归属机构错误,请联系管理员处理.");
+				}else if("LOGIN_MARK_ERROR" == data.code){
+					app.f7.alert("短信验证码错误，错误10次将被锁定1小时.");
+				}else if("PHONE_NO_ERROR" == data.code){
+					app.f7.alert("手机号码错误,请联系管理员处理.");
+				}else if("PASSWORD_ISEASY" == data.code){
+					app.f7.alert("新密码设置过于简单,请输入不少于6位的含大小写密码.");
 				}else{
 					app.f7.alert('服务器处理过程发生问题:'+data.code);
 				}
@@ -58,21 +68,21 @@ define(['app','tool','login/loginView'],function(app,tool,LoginView) {
 					tool.setUser(data.info);
 					app.router.load('home');
 					app.f7.closeModal('.login-screen');
-				}else if("LOCK_ERROR" == code){
+				}else if("LOCK_ERROR" == data.code){
 				    app.f7.alert("用户被锁定,请稍后再试或联系管理员解锁.");
-				}else if("USERCODE_ERROR" == code){
+				}else if("USERCODE_ERROR" == data.code){
 					app.f7.alert("登陆工号错误,请提供准确的登陆工号.");
-				}else if("IMGCODE_ERROR" == code){
+				}else if("IMGCODE_ERROR" == data.code){
 					app.f7.alert("图形验证码错误,错误10次将被锁定1小时.");
-				}else if("PASSWORD_ERROR" == code){
+				}else if("PASSWORD_ERROR" == data.code){
 			        app.f7.alert("登陆密码错误,错误10次将被锁定1小时.");
-			    }else if("ORGANIZE_ERROR" == code){
+			    }else if("ORGANIZE_ERROR" == data.code){
 					app.f7.alert("用户归属机构错误,请联系管理员处理.");
-				}else if("LOGIN_MARK_ERROR" == code){
+				}else if("LOGIN_MARK_ERROR" == data.code){
 					app.f7.alert("短信验证码错误，错误10次将被锁定1小时.");
-				}else if("PHONE_NO_ERROR" == code){
+				}else if("PHONE_NO_ERROR" == data.code){
 					app.f7.alert("手机号码错误,请联系管理员处理.");
-				}else if("PASSWORD_ISEASY" == code){
+				}else if("PASSWORD_ISEASY" == data.code){
 					app.f7.alert("新密码设置过于简单,请输入不少于6位的含大小写密码.");
 				}else{
 					app.f7.alert('服务器处理过程发生问题:'+data.code);
