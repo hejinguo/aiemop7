@@ -1,4 +1,4 @@
-define(['app','text!cust/detail/detail-page-content.tpl?v=112'], function(app,template) {
+define(['app','text!cust/detail/detail-page-content.tpl?v=122'], function(app,template) {
 	var $$ = Dom7;
 
 	function render(params) {

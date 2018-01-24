@@ -8,7 +8,6 @@
 				<!--<div class="aui-preloader-content"><span class="preloader"></span></div>-->
 				<div class="aui-hidden">
 					<input type="text" name="custSeqid" />
-					<input type="text" name="TYPE_CODE" />
 				</div>
 				<div class="content-block-title">集团基本信息</div>
 				<div class="list-block">
@@ -18,10 +17,45 @@
 								<div class="item-inner">
 									<div class="item-title label">集团名称</div>
 									<div class="item-input">
-										<input type="text" name="ENT_NAME" placeholder="请填写集团名称">
+										<input type="text" name="custName" placeholder="请填写集团名称">
 									</div>
 								</div>
 							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">集团编码</div>
+									<div class="item-input">
+										<input type="text" name="custCode" placeholder="请填写集团名称">
+									</div>
+								</div>
+							</div>
+						</li>
+						<!--<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">价值等级</div>
+									<div class="item-input">
+										<input type="text" name="custValue" placeholder="请填写集团名称">
+									</div>
+								</div>
+							</div>
+						</li>-->
+						<li>
+							<a href="#" class="smart-select" data-page-title="选择集团类型"
+								style="color:inherit;" data-open-in="picker" data-picker-close-text="关闭"><!-- data-open-in="popup" data-popup-close-text="Close Cars" -->
+								<!-- select -->
+								<select name="TYPE_ID"></select>
+								<div class="item-content">
+									<div class="item-inner">
+										<!-- Select label -->
+										<div class="item-title">集团行业</div>
+										<!-- Selected value, not required -->
+										<!--<div class="item-after">批发零售</div>-->
+									</div>
+								</div>
+							</a>
 						</li>
 						<li>
 							<a href="#" class="smart-select" data-page-title="选择归属地市"
@@ -54,36 +88,11 @@
 							</a>
 						</li>
 						<li>
-							<a href="#" class="smart-select" data-page-title="选择集团类型"
-								style="color:inherit;" data-open-in="picker" data-picker-close-text="关闭"><!-- data-open-in="popup" data-popup-close-text="Close Cars" -->
-								<!-- select -->
-								<select name="TYPE_ID"></select>
-								<div class="item-content">
-									<div class="item-inner">
-										<!-- Select label -->
-										<div class="item-title">集团类型</div>
-										<!-- Selected value, not required -->
-										<!--<div class="item-after">批发零售</div>-->
-									</div>
-								</div>
-							</a>
-						</li>
-						<!--<li>
-							<div class="item-content">
-								<div class="item-inner">
-									<div class="item-title label">街道</div>
-									<div class="item-input">
-										<input type="text" name="STREET" placeholder="请填写街道">
-									</div>
-								</div>
-							</div>
-						</li>-->
-						<li>
 							<div class="item-content">
 								<div class="item-inner">
 									<div class="item-title label">集团地址</div>
 									<div class="item-input">
-										<input type="text" name="ADDRESS" placeholder="请填写集团地址">
+										<input type="text" name="custAddr" placeholder="请填写集团地址">
 									</div>
 								</div>
 							</div>
@@ -97,6 +106,19 @@
 											<input type="text" class="col-50" name="LONGITUDE" style="width:50%" placeholder="经度">
 											<input type="text" class="col-50" name="LATITUDE" style="width:50%" placeholder="纬度">
 										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">是否建档</div>
+									<div class="item-input">
+										<label class="label-switch">
+											<input type="checkbox" name="ifArchive" value="T"/>
+											<div class="checkbox"></div>
+										</label>
 									</div>
 								</div>
 							</div>
@@ -154,19 +176,6 @@
 				<div class="content-block-title">门头照信息</div>
 				<div class="list-block">
 					<ul>
-						<!--<li>
-							<div class="item-content">
-								<div class="item-inner">
-									<div class="item-title label">完成集团组网</div>
-									<div class="item-input">
-										<label class="label-switch">
-											<input type="checkbox" name="ENT_NETWORK" value="Y"/>
-											<div class="checkbox"></div>
-										</label>
-									</div>
-								</div>
-							</div>
-						</li>-->
 						<!--<li>
 							<div class="item-content">
 								<div class="item-inner">

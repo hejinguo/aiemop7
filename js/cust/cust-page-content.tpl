@@ -12,7 +12,7 @@
 					<!--<div class="item-after">$15</div>-->
 				</div>
 				<div class="item-subtitle">
-					{{custAddr}}
+					{{js "this.ifArchive == 'T' ? '完成建档的集团地址信息已进行加密' : custAddr"}}
 				</div>
 				<div class="item-text">
 					<div>
@@ -30,8 +30,13 @@
 						</div>
 					</div>
 					<div>集团编码：{{custCode}}</div>
-					<div>集团行业：{{custIndustry}}</div>
-					<div>集团归属：{{custBelong}}</div>
+					<div>集团行业：{{js "this.custIndustryWidth ? this.custIndustryWidth.industryName : ''"}}</div>
+					<div>
+						集团归属：
+						{{js "this.custBelongWidth && this.custBelongWidth.orgLevel == 1 ? this.custBelongWidth.lvl1OrgName: ''"}}
+						{{js "this.custBelongWidth && this.custBelongWidth.orgLevel >= 2 ? this.custBelongWidth.lvl2OrgName: ''"}}
+						{{js "this.custBelongWidth && this.custBelongWidth.orgLevel >= 3 ? '- '+this.custBelongWidth.lvl3OrgName: ''"}}
+					</div>
 				</div>
 			</div>
 		</a>
