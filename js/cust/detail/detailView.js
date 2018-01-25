@@ -1,9 +1,8 @@
-define(['app','text!cust/detail/detail-page-content.tpl?v=122'], function(app,template) {
+define(['app','text!cust/detail/detail-page-content.tpl'], function(app,template) {
 	var $$ = Dom7;
 
 	function render(params) {
 		$$('.cust-detail-page .page-pull-content').html(Template7.compile(template)(params.model));
-//		params.callback(params.model.ENT_CODE,params.model.TYPE_CODE);
 		bindEvents(params.bindings);
 		if(params.model.longitude && params.model.latitude){
 			require(['async!BMap'], function() {
@@ -12,7 +11,7 @@ define(['app','text!cust/detail/detail-page-content.tpl?v=122'], function(app,te
 			    map.centerAndZoom(point, 15); // 初始化地图，设置中心点坐标和地图级别
 			    var marker = new BMap.Marker(point);// 创建标注  
 				map.addOverlay(marker);// 将标注添加到地图中
-				map.addControl(new BMap.GeolocationControl());
+//				map.addControl(new BMap.GeolocationControl());
 			});
 		}
 	}

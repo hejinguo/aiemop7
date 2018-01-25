@@ -12,7 +12,7 @@
 					<!--<div class="item-after">$15</div>-->
 				</div>
 				<div class="item-subtitle">
-					{{js "this.ifArchive == 'T' ? '完成建档的集团地址信息已进行加密' : custAddr"}}
+					{{js "this.ifArchive == 'T' ? '完成建档的集团地址已加密' : this.custAddr"}}
 				</div>
 				<div class="item-text">
 					<div>

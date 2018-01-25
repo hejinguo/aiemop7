@@ -15,7 +15,7 @@
 						<li>
 							<div class="item-content">
 								<div class="item-inner">
-									<div class="item-title label">集团名称</div>
+									<div class="item-title label">集团名称<span class="color-red">*</span></div>
 									<div class="item-input">
 										<input type="text" name="custName" placeholder="请填写集团名称">
 									</div>
@@ -27,30 +27,50 @@
 								<div class="item-inner">
 									<div class="item-title label">集团编码</div>
 									<div class="item-input">
-										<input type="text" name="custCode" placeholder="请填写集团名称">
+										<input type="text" name="custCode" placeholder="请填写集团280编码">
 									</div>
 								</div>
 							</div>
 						</li>
-						<!--<li>
-							<div class="item-content">
-								<div class="item-inner">
-									<div class="item-title label">价值等级</div>
-									<div class="item-input">
-										<input type="text" name="custValue" placeholder="请填写集团名称">
-									</div>
-								</div>
-							</div>
-						</li>-->
 						<li>
 							<a href="#" class="smart-select" data-page-title="选择集团类型"
 								style="color:inherit;" data-open-in="picker" data-picker-close-text="关闭"><!-- data-open-in="popup" data-popup-close-text="Close Cars" -->
 								<!-- select -->
-								<select name="TYPE_ID"></select>
+								<select name="custIndustryWidth.priIndustryCode"></select>
 								<div class="item-content">
 									<div class="item-inner">
 										<!-- Select label -->
-										<div class="item-title">集团行业</div>
+										<div class="item-title">一级行业</div>
+										<!-- Selected value, not required -->
+										<!--<div class="item-after">批发零售</div>-->
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="smart-select" data-page-title="选择集团类型"
+								style="color:inherit;" data-open-in="picker" data-picker-close-text="关闭"><!-- data-open-in="popup" data-popup-close-text="Close Cars" -->
+								<!-- select -->
+								<select name="custIndustryWidth.subIndustryCode"></select>
+								<div class="item-content">
+									<div class="item-inner">
+										<!-- Select label -->
+										<div class="item-title">二级行业</div>
+										<!-- Selected value, not required -->
+										<!--<div class="item-after">批发零售</div>-->
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="smart-select" data-page-title="选择集团类型"
+								style="color:inherit;" data-open-in="picker" data-picker-close-text="关闭"><!-- data-open-in="popup" data-popup-close-text="Close Cars" -->
+								<!-- select -->
+								<select name="custIndustryWidth.terIndustryCode"></select>
+								<div class="item-content">
+									<div class="item-inner">
+										<!-- Select label -->
+										<div class="item-title">三级行业</div>
 										<!-- Selected value, not required -->
 										<!--<div class="item-after">批发零售</div>-->
 									</div>
@@ -61,7 +81,7 @@
 							<a href="#" class="smart-select" data-page-title="选择归属地市"
 								style="color:inherit;" data-open-in="picker" data-picker-close-text="关闭">
 								<!-- select -->
-								<select name="CITY_CODE"><option></option></select>
+								<select name="custBelongWidth.lvl2OrgId"><option></option></select>
 								<div class="item-content">
 									<div class="item-inner">
 										<!-- Select label -->
@@ -76,7 +96,7 @@
 							<a href="#" class="smart-select" data-page-title="选择归属区县"
 								style="color:inherit;" data-open-in="picker" data-picker-close-text="关闭">
 								<!-- select -->
-								<select name="COUNTY_CODE"></select>
+								<select name="custBelongWidth.lvl3OrgId"></select>
 								<div class="item-content">
 									<div class="item-inner">
 										<!-- Select label -->
@@ -90,9 +110,18 @@
 						<li>
 							<div class="item-content">
 								<div class="item-inner">
-									<div class="item-title label">集团地址</div>
+									<div class="item-title label" style="display:flex;">
+										<div>经纬度</div>
+										<a class="button color-lightblue geolocation-button" style="line-height:19px;height:auto;margin:auto 5px;padding:0px 5px;">
+											<!--<i class="f7-icons" style="font-size:15px;">reload</i>-->
+											定位
+										</a>
+									</div>
 									<div class="item-input">
-										<input type="text" name="custAddr" placeholder="请填写集团地址">
+										<div class="row">
+											<input type="text" class="col-50" name="longitude" readonly="readonly" style="width:50%" placeholder="经度">
+											<input type="text" class="col-50" name="latitude" readonly="readonly" style="width:50%" placeholder="纬度">
+										</div>
 									</div>
 								</div>
 							</div>
@@ -100,12 +129,9 @@
 						<li>
 							<div class="item-content">
 								<div class="item-inner">
-									<div class="item-title label">经纬度</div>
+									<div class="item-title label">集团地址</div>
 									<div class="item-input">
-										<div class="row">
-											<input type="text" class="col-50" name="LONGITUDE" style="width:50%" placeholder="经度">
-											<input type="text" class="col-50" name="LATITUDE" style="width:50%" placeholder="纬度">
-										</div>
+										<input type="text" name="custAddr" placeholder="请填写集团地址">
 									</div>
 								</div>
 							</div>
@@ -135,33 +161,16 @@
 						</a>
 					</div>
 				</div>
-				<div class="list-block">
+				<div class="list-block cust-contacts-list">
 					<ul>
 						<li>
 							<div class="item-content">
 								<div class="item-inner">
 									<div class="item-input">
-										<input type="text" name="REMARK" placeholder="联系人姓名">
+										<input type="text" name="contacts[0].contactName" placeholder="联系人姓名">
 									</div>
 									<div class="item-input">
-										<input type="text" name="REMARK" placeholder="联系人电话">
-									</div>
-									<div style="width:100px;">
-										<a class="button button-fill bg-button-delete" style="line-height:19px;height:auto;">
-											删除
-										</a>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="item-content">
-								<div class="item-inner">
-									<div class="item-input">
-										<input type="text" name="REMARK" placeholder="联系人姓名">
-									</div>
-									<div class="item-input">
-										<input type="text" name="REMARK" placeholder="联系人电话">
+										<input type="text" name="contacts[0].contactPhone" placeholder="联系人电话">
 									</div>
 									<div style="width:100px;">
 										<a class="button button-fill bg-button-delete" style="line-height:19px;height:auto;">
@@ -176,22 +185,12 @@
 				<div class="content-block-title">门头照信息</div>
 				<div class="list-block">
 					<ul>
-						<!--<li>
-							<div class="item-content">
-								<div class="item-inner">
-									<div class="item-title label">备注</div>
-									<div class="item-input">
-										<input type="text" name="REMARK" placeholder="请填写备注">
-									</div>
-								</div>
-							</div>
-						</li>-->
 						<li>
 							<div class="item-content">
 								<div class="item-inner">
 									<!--<div class="item-title label">集团门头照</div>-->
 									<!--<div class="item-input">-->
-										<img style="width:100%;margin-top:5px;" alt="请选择集团的门头照" border="0"/>
+										<img style="width:100%;margin-top:5px;" alt="请点击选择集团的门头照" border="0"/>
 										<input type="file" accept="image/*" style="display: none;">
 									<!--</div>-->
 								</div>
@@ -199,15 +198,9 @@
 						</li>
 					</ul>
 				</div>
-				<div class="individual-info aui-hidden">
-					<div class="content-block-title">个性化信息</div>
-					<div class="list-block">
-						
-					</div>
-				</div>
 			</form>
 			
-			<a href="#" class="button button-fill bg-button-submit disabled save-cust-button" style="margin:10px;">集团维护</a>
+			<a href="#" class="button button-fill bg-button-submit disabled cust-save-button" style="margin:10px;">集团维护</a>
 		</div>
 	</div>
 </div>
