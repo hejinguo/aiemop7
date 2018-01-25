@@ -20,9 +20,11 @@ define(['app','tool'],function(app,tool){
 		tool.appAjax(tool.appPath.emopPro+'cust/get',{custSeqid:query.custSeqid},function(data){
 			if(data.state){
 				require(['cust/detail/detailView'], function(detailView) {
-//					if(data.info[0].ENT_IMAGE){
-//						data.info[0].ENT_IMAGE = tool.appPath.emop + 'cust/getShopImage?entCode=' + data.info[0].ENT_IMAGE+"&k="+new Date().getTime();
-//					}
+					if(data.info.images && data.info.images.length > 0){
+						$$.each(data.info.images, function (index, element) {
+						    element.imageName = tool.appPath.emopPro + 'cust/getShopImage?custSeqid=' + element.custSeqid+"&fileName="+element.imageName+"&k="+new Date().getTime();
+						});    
+					}
 					detailView.render({model:data.info,bindings:bindings});
 				});
 			}

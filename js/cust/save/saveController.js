@@ -136,82 +136,29 @@ define(['app','tool'],function(app,tool){
 	function clickSaveCustItem(){
 		var formData = app.f7.formToData($$('.cust-save-page form'));
 		formData.ifArchive = formData.ifArchive && formData.ifArchive.length > 0 ? 'T' : 'F';
-		console.log(formData);
-		console.log(JSON.stringify(formData));
-		
-		tool.appAjax(tool.appPath.emopPro+'cust/merge',formData,function(data){
-			console.log(data);
-			if(data.state){
-				
-			}
-		});
-		
-		
-//		var custInfo = privatePackDataObject(formData);
-//		if(!custInfo.ent_name || !custInfo.city || !custInfo.county || !custInfo.typeid){
-//			app.f7.alert('对不起,集团名称必须填写.');
-//			return;
-//		}
-//		
-//		var _this = $$('.cust-save-page form [type="file"]')[0];
-//		var photo = _this.files && _this.files.length > 0 ? _this.files[0] : null;
-//		if(photo && /image\/\w+/.test(photo.type)){
-//			tool.dealImage(window.URL.createObjectURL(photo), {width:300}, function(base) {
-//				$$('.cust-save-page form img').attr('src',base);
-//				custInfo.ent_image = base;
-//				custInfo.ent_imgtype = photo.type;
-//				console.log(photo.size/1024 +" 压缩后：" + base.length / 1024 + " ");
-//				execSaveShopInfo(custInfo);
-//			});
-//		}else{
-//			execSaveShopInfo(custInfo);
-//		}
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/**
-	 * 编辑时加载集团具体信息
-	 * @param {Object} query
-	 */
-	function loadCustDetailInfo(query){
-		tool.appAjax('cust/getShopInfoByCode',{custSeqid:query.custSeqid},function(data){
-			if(data.state){
-				app.f7.formFromData($$('.cust-save-page form'),data.info[0]);
-				if(data.info[0].ENT_IMAGE){
-					$$('.cust-save-page form img').attr('src',tool.appPath.emop + 'cust/getShopImage?entCode=' + data.info[0].ENT_IMAGE+"&k="+new Date().getTime());
-				}
-			}
-		});
-	}
-	
-	/**
-	 * 执行具体的保存逻辑
-	 * @param {Object} custInfo
-	 */
-	function execSaveCustInfo(custInfo){
-		console.log(custInfo);
-		var url = custInfo.ent_code ? 'cust/updateShopInfo' : 'cust/addShopInfo';
-		
-		tool.appAjax(url,{custInfo:JSON.stringify(custInfo)},function(data){
-			if(custInfo.ent_code){//编辑
-				app.view.router.back({pageName:'cust-detail'});
-				app.router.load('cust-detail',cacheQuery);
-			}else{//添加
-				app.view.router.back({pageName:'cust'});
-//				app.view.router.reloadPage('pages/cust/cust-save.html?entCode=N65941');
-			}
-			app.router.load('cust');
-		});
+		if(!formData['custName'] || !formData['custIndustryWidth.terIndustryCode'] ||
+			!formData['custBelongWidth.lvl3OrgId'] || !formData['longitude'] || !formData['latitude'] || !formData['custAddr']){
+			app.f7.alert('您有未填写的必须信息,请填写完整.');
+			return;
+		}
+		if(formData.ifArchive == 'T' && !formData['custCode']){
+			app.f7.alert('已建档的集团必须填写集团280编码.');
+			return;
+		}
+		var _this = $$('.cust-save-page form [type="file"]')[0];
+		var photo = _this.files && _this.files.length > 0 ? _this.files[0] : null;
+		if(photo && /image\/\w+/.test(photo.type)){
+			tool.dealImage(window.URL.createObjectURL(photo), {width:300}, function(base) {
+				$$('.cust-save-page form img').attr('src',base);
+				formData['images[0].imageCode'] = 'adphoto';
+				formData['images[0].imageName'] = base;
+				formData['images[0].imageTitle'] = photo.type;
+				console.log(photo.size/1024 +" 压缩后：" + base.length / 1024 + " ");
+				execSaveCustInfo(formData);
+			});
+		}else{
+			execSaveCustInfo(formData);
+		}
 	}
 	
 	/**
@@ -232,21 +179,47 @@ define(['app','tool'],function(app,tool){
 	}
 	
 	/**
-	 * 封装提交的数据
-	 * @param {Object} formData
+	 * 执行具体的保存逻辑
+	 * @param {Object} custInfo
 	 */
-	function privatePackDataObject(formData){
-		var custInfo = {};
-		custInfo.ent_280=formData.ENT_280;
-		custInfo.membernums=formData.ENT_MEMBERS;
-		custInfo.broadnum=formData.BROADBAND_NUMBER;
-		custInfo.business_tel=formData.BUSINESS_TEL;
-		custInfo.network=formData.ENT_NETWORK && formData.ENT_NETWORK.length > 0 ? 'Y' : 'N';
-		custInfo.broadband=formData.BROADBAND && formData.BROADBAND.length > 0 ? 'Y' : 'N';
-		custInfo.isflag=formData.FLAG && formData.FLAG.length > 0 ? 'Y' : 'N';
-		custInfo.ent_image='';
-		custInfo.ent_imgtype='';
-		return custInfo;
+	function execSaveCustInfo(custInfo){
+		console.log(custInfo);
+		
+		tool.appAjax(tool.appPath.emopPro+'cust/merge',custInfo,function(data){
+			console.log(data);
+			if(data.state){
+				if(custInfo.custSeqid){//编辑
+					app.view.router.back({pageName:'cust-detail'});
+					app.router.load('cust-detail',{custSeqid:custInfo.custSeqid});
+				}else{//添加
+					app.view.router.back({pageName:'cust'});
+	//				app.view.router.reloadPage('pages/cust/cust-save.html?custSeqid=200000009');
+				}
+				app.router.load('cust');
+			}
+		});
+	}
+
+
+
+
+
+	
+	
+	
+	/**
+	 * 编辑时加载集团具体信息
+	 * @param {Object} query
+	 */
+	function loadCustDetailInfo(query){
+		tool.appAjax('cust/getShopInfoByCode',{custSeqid:query.custSeqid},function(data){
+			if(data.state){
+				app.f7.formFromData($$('.cust-save-page form'),data.info[0]);
+				if(data.info[0].ENT_IMAGE){
+					$$('.cust-save-page form img').attr('src',tool.appPath.emop + 'cust/getShopImage?entCode=' + data.info[0].ENT_IMAGE+"&k="+new Date().getTime());
+				}
+			}
+		});
 	}
 	
 	return {
