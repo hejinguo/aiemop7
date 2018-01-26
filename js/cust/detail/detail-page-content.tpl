@@ -28,9 +28,12 @@
 		<span>完成建档的联系人信息已加密</span>
 	{{else}}
 		{{#js_if "this.contacts && this.contacts.length > 0"}}
-			{{#each this.contacts}}
-				<span>{{contactName}}{{contactPhone}}</span><br/>
-			{{/each}}
+			<div class="row">
+				{{#each this.contacts}}
+					<div class="col-50"><span>{{contactName}}</span></div>
+					<div class="col-50"><span>{{contactPhone}}</span></div>
+				{{/each}}
+			</div>
 		{{else}}
 			<span>未提交联系人信息</span>
 		{{/js_if}}
