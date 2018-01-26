@@ -201,9 +201,6 @@ define(['app','tool'],function(app,tool){
 		if(photo && /image\/\w+/.test(photo.type)){//编辑或添加时提交照片数据
 			tool.dealImage(window.URL.createObjectURL(photo), {width:300}, function(base) {
 				$$('.cust-save-page form img').attr('src',base);
-//				formData['images[0].imageCode'] = 'adphoto';
-//				formData['images[0].imageName'] = base;
-//				formData['images[0].imageTitle'] = photo.type;
 				formData.images = [{
 					imageCode:'adphoto',
 					imageName:base,
@@ -213,9 +210,8 @@ define(['app','tool'],function(app,tool){
 				execSaveCustInfo(formData);
 			});
 		}else if(pageData.custSeqid && $$('.cust-save-page form img').attr('src')){//编辑时未修改照片数据
-//			formData['images[0].imageCode'] = 'adphoto';
 			formData.images = [{
-					imageCode:'adphoto'
+				imageCode:'adphoto'
 			}];
 			execSaveCustInfo(formData);
 		}else{//添加时未提交照片数据
@@ -245,9 +241,15 @@ define(['app','tool'],function(app,tool){
 	 * @param {Object} custInfo
 	 */
 	function execSaveCustInfo(custInfo){
-		custInfo.contacts = [{contactName:custInfo.contactName,contactPhone:custInfo.contactPhone}];
+//		custInfo.contacts = [{contactName:custInfo.contactName,contactPhone:custInfo.contactPhone}];
+		custInfo.contacts = [];
 		delete custInfo.contactName;
 		delete custInfo.contactPhone;
+		var contactNameArrays = $$('.cust-save-page form [name="contactName"]');
+		var contactPhoneArrays = $$('.cust-save-page form [name="contactPhone"]');
+		for(var i = 0;i < contactNameArrays.length ; i++){
+			custInfo.contacts.push({contactName:contactNameArrays[i].value,contactPhone:contactPhoneArrays[i].value});
+		}
 		custInfo.custIndustryWidth = {priIndustryCode:custInfo.priIndustryCode,subIndustryCode:custInfo.subIndustryCode,terIndustryCode:custInfo.terIndustryCode};
 		delete custInfo.priIndustryCode;
 		delete custInfo.subIndustryCode;
@@ -256,8 +258,7 @@ define(['app','tool'],function(app,tool){
 		delete custInfo.lvl2OrgId;
 		delete custInfo.lvl3OrgId;
 		console.log(custInfo);
-		return false;
-//		tool.appAjax(tool.appPath.emopPro+'cust/merge',custInfo,function(data){
+//		return false;
 		tool.appJson(tool.appPath.emopPro+'cust/merge',JSON.stringify(custInfo),function(data){
 			console.log(data);
 			if(data.state){
@@ -286,6 +287,11 @@ define(['app','tool'],function(app,tool){
 					$$.each(data.info.images, function (index, element) {
 						$$('.cust-save-page form img').attr('src',tool.appPath.emopPro + 'cust/getShopImage?custSeqid=' + element.custSeqid+"&fileName="+element.imageName+"&k="+new Date().getTime());
 					});    
+				}
+				if(data.info.contacts && data.info.contacts.length > 0){
+					require(['text!cust/save/save-page-content.tpl'], function(template) {
+						$$('.cust-save-page form .cust-contacts-list ul').html(Template7.compile(template)(data.info.contacts));
+					});
 				}
 				loadSmartSelectOption();
 			}
