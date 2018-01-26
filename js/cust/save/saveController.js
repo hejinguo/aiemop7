@@ -54,10 +54,10 @@ define(['app','tool'],function(app,tool){
 			pageData.custSeqid = query.custSeqid;//编辑操作
 			$$('.cust-save-page form [name="custSeqid"]').val(query.custSeqid);
 			$$('.cust-save-page .cust-save-button').html('编辑集团');
-//			app.f7.showIndicator();
+			app.f7.showIndicator();
 			loadCustDetailInfo(query);
 		}else{
-//			app.f7.showIndicator();
+			app.f7.showIndicator();
 			loadSmartSelectOption();
 //			geolocation();//默认获取当前定位信息
 			$$('.cust-save-page .cust-save-button').html('添加集团');
@@ -71,11 +71,19 @@ define(['app','tool'],function(app,tool){
 	function loadSmartSelectOption(){
 		tool.appAjax(tool.appPath.emopPro+'cust/select',{},function(data){
 			if(data.state){
-				setSmartSelectOption('.cust-save-page form [name="priIndustryCode"]',data.info.custIndustrys,'industryCode','industryName',changePriIndustryCodeSelect);
+				setSmartSelectOption('.cust-save-page form [name="priIndustryCode"]',data.info.custIndustrys,'industryCode','industryName',function(){
+					if(pageData.custSeqid){
+						app.f7.formFromData($$('.cust-save-page form'),{priIndustryCode:pageData.custInfo.custIndustryWidth.priIndustryCode});
+					}else{
+						changePriIndustryCodeSelect();
+					}
+				});
 				setSmartSelectOption('.cust-save-page form [name="lvl2OrgId"]',data.info.organizes,'orgId','orgName',function(){
-					
-					changeLvl2OrgIdSelect();
-					
+					if(pageData.custSeqid){
+						app.f7.formFromData($$('.cust-save-page form'),{lvl2OrgId:pageData.custInfo.custBelongWidth.lvl2OrgId});
+					}else{
+						changeLvl2OrgIdSelect();
+					}
 				});
 			}
 		});
@@ -87,7 +95,13 @@ define(['app','tool'],function(app,tool){
 		var pIndustryCode = $$('.cust-save-page form [name="priIndustryCode"]').val();
 		tool.appAjax(tool.appPath.emopPro+'cust-industry/list',{pIndustryCode:pIndustryCode},function(data){
 			if(data.state){
-				setSmartSelectOption('.cust-save-page form [name="subIndustryCode"]',data.info,'industryCode','industryName',changeSubIndustryCodeSelect);
+				setSmartSelectOption('.cust-save-page form [name="subIndustryCode"]',data.info,'industryCode','industryName',function(){
+					if(pageData.custSeqid){
+						app.f7.formFromData($$('.cust-save-page form'),{subIndustryCode:pageData.custInfo.custIndustryWidth.subIndustryCode});
+					}else{
+						changeSubIndustryCodeSelect();
+					}
+				});
 			}
 		});
 	}
@@ -100,9 +114,11 @@ define(['app','tool'],function(app,tool){
 			if(data.state){
 				setSmartSelectOption('.cust-save-page form [name="terIndustryCode"]',data.info,'industryCode','industryName');
 			}
+			if(pageData.custSeqid){
+				app.f7.formFromData($$('.cust-save-page form'),{terIndustryCode:pageData.custInfo.custIndustryWidth.terIndustryCode});
+			}
 			if(++pageData.smartAmount == 2){
 				app.f7.hideIndicator();
-//				app.f7.formFromData($$('.cust-save-page form'),pageData.custInfo);
 			}
 		});
 	}
@@ -115,9 +131,11 @@ define(['app','tool'],function(app,tool){
 			if(data.state){
 				setSmartSelectOption('.cust-save-page form [name="lvl3OrgId"]',data.info,'orgId','orgName');
 			}
+			if(pageData.custSeqid){
+				app.f7.formFromData($$('.cust-save-page form'),{lvl3OrgId:pageData.custInfo.custBelongWidth.lvl3OrgId});
+			}
 			if(++pageData.smartAmount == 2){
 				app.f7.hideIndicator();
-//				app.f7.formFromData($$('.cust-save-page form'),pageData.custInfo);
 			}
 		});
 	}
@@ -227,11 +245,20 @@ define(['app','tool'],function(app,tool){
 	 * @param {Object} custInfo
 	 */
 	function execSaveCustInfo(custInfo){
+		custInfo.contacts = [{contactName:custInfo.contactName,contactPhone:custInfo.contactPhone}];
+		delete custInfo.contactName;
+		delete custInfo.contactPhone;
+		custInfo.custIndustryWidth = {priIndustryCode:custInfo.priIndustryCode,subIndustryCode:custInfo.subIndustryCode,terIndustryCode:custInfo.terIndustryCode};
+		delete custInfo.priIndustryCode;
+		delete custInfo.subIndustryCode;
+		delete custInfo.terIndustryCode;
+		custInfo.custBelongWidth = {lvl2OrgId:custInfo.lvl2OrgId,lvl3OrgId:custInfo.lvl3OrgId};
+		delete custInfo.lvl2OrgId;
+		delete custInfo.lvl3OrgId;
 		console.log(custInfo);
-		
 		return false;
-		
-		tool.appAjax(tool.appPath.emopPro+'cust/merge',custInfo,function(data){
+//		tool.appAjax(tool.appPath.emopPro+'cust/merge',custInfo,function(data){
+		tool.appJson(tool.appPath.emopPro+'cust/merge',JSON.stringify(custInfo),function(data){
 			console.log(data);
 			if(data.state){
 				if(custInfo.custSeqid){//编辑
@@ -253,11 +280,6 @@ define(['app','tool'],function(app,tool){
 	function loadCustDetailInfo(query){
 		tool.appAjax(tool.appPath.emopPro+'cust/get',{custSeqid:query.custSeqid},function(data){
 			if(data.state){
-//				data.info.priIndustryCode = data.info.custIndustryWidth.priIndustryCode;
-//				data.info.subIndustryCode = data.info.custIndustryWidth.subIndustryCode;
-//				data.info.terIndustryCode = data.info.custIndustryWidth.terIndustryCode;
-//				data.info.lvl2OrgId = data.info.custBelongWidth.lvl2OrgId;
-//				data.info.lvl3OrgId = data.info.custBelongWidth.lvl3OrgId;
 				pageData.custInfo = data.info;
 				app.f7.formFromData($$('.cust-save-page form'),data.info);
 				if(data.info.images && data.info.images.length > 0){
