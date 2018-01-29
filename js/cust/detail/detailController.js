@@ -7,11 +7,10 @@ define(['app','tool'],function(app,tool){
 		handler: clickDeleteCustItem
 		
 	}];
-	var shopCache = null;
+	var pageData = {custInfo:null};
 	
 	function init(query){
 		setTimeout(function(){
-			shopCache = query;
 			loadCustDetailInfo(query);
 		},500);
 	}
@@ -19,6 +18,7 @@ define(['app','tool'],function(app,tool){
 	function loadCustDetailInfo(query){
 		tool.appAjax(tool.appPath.emopPro+'cust/get',{custSeqid:query.custSeqid},function(data){
 			if(data.state){
+				pageData.custInfo = data.info;
 				require(['cust/detail/detailView'], function(detailView) {
 					if(data.info.images && data.info.images.length > 0){
 						$$.each(data.info.images, function (index, element) {
@@ -32,22 +32,24 @@ define(['app','tool'],function(app,tool){
 	}
 	
 	function clickDeleteCustItem(){
-		app.f7.alert('对不起,您无权执行删除操作.');
-		/*
-		if(shopCache.editFlag && shopCache.editFlag == 1){
-			app.f7.confirm('您确定要删除该商铺吗?','删除',function () {
-		        tool.appAjax('cust/delShopInfo',{shopCode:shopCache.entCode},function(data){
+//		app.f7.alert('对不起,您无权执行删除操作.');
+		var user = tool.getUser();
+		if(!pageData.custInfo.custCreateStaff || 
+			pageData.custInfo.custCreateStaff != tool.getUser().staffCode){//只能自己删除自己创建的集团
+			app.f7.alert('对不起,只能删除自己创建的集团记录.');
+		}else if(user.organize.orgType < 3){//省和市公司不允许编辑和删除
+			app.f7.alert('对不起,省市级账号无权执行删除操作.');
+		}else{
+			app.f7.confirm('您确定要删除该集团吗?','删除',function () {
+		        tool.appAjax(tool.appPath.emopPro+'cust/delete',{custSeqid:pageData.custInfo.custSeqid},function(data){
 		        	if(data.state){
-						app.toast.show("删除商铺操作成功.");
-						app.views[1].router.back({pageName:'shop'});
-						app.router.load('shop');
+						app.toast.show("删除集团记录操作成功.");
+						app.view.router.back({pageName:'cust'});
+						app.router.load('cust');
 					}
 				});
 		    });
-		}else{
-			app.f7.alert('对不起,您无权执行删除操作.');
 		}
-		*/
 	}
 	
 	return {

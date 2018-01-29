@@ -1,4 +1,4 @@
-define(['app','tool'],function(app,tool){
+define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,template){
 	var $$ = Dom7;
 	var bindings = [{
 		element: '.cust-save-page .geolocation-button',
@@ -8,6 +8,10 @@ define(['app','tool'],function(app,tool){
 		element: '.cust-save-page .cust-save-button',
 		event: 'click',
 		handler: clickSaveCustItem
+	},{
+		element: '.cust-save-page .add-cust-contact-btn',
+		event: 'click',
+		handler: clickAddCustContact
 	},{
 		element: '.cust-save-page form [type="file"]',
 		event: 'change',
@@ -50,6 +54,7 @@ define(['app','tool'],function(app,tool){
 	 * @param {Object} query
 	 */
 	function initCustPageInfo(query){
+		clickAddCustContact();//新增一个联系人信息
 		if(query.custSeqid){
 			pageData.custSeqid = query.custSeqid;//编辑操作
 			$$('.cust-save-page form [name="custSeqid"]').val(query.custSeqid);
@@ -72,14 +77,14 @@ define(['app','tool'],function(app,tool){
 		tool.appAjax(tool.appPath.emopPro+'cust/select',{},function(data){
 			if(data.state){
 				setSmartSelectOption('.cust-save-page form [name="priIndustryCode"]',data.info.custIndustrys,'industryCode','industryName',function(){
-					if(pageData.custSeqid){
+					if(pageData.custSeqid && pageData.custInfo.custIndustryWidth){
 						app.f7.formFromData($$('.cust-save-page form'),{priIndustryCode:pageData.custInfo.custIndustryWidth.priIndustryCode});
 					}else{
 						changePriIndustryCodeSelect();
 					}
 				});
 				setSmartSelectOption('.cust-save-page form [name="lvl2OrgId"]',data.info.organizes,'orgId','orgName',function(){
-					if(pageData.custSeqid){
+					if(pageData.custSeqid && pageData.custInfo.custBelongWidth){
 						app.f7.formFromData($$('.cust-save-page form'),{lvl2OrgId:pageData.custInfo.custBelongWidth.lvl2OrgId});
 					}else{
 						changeLvl2OrgIdSelect();
@@ -96,7 +101,7 @@ define(['app','tool'],function(app,tool){
 		tool.appAjax(tool.appPath.emopPro+'cust-industry/list',{pIndustryCode:pIndustryCode},function(data){
 			if(data.state){
 				setSmartSelectOption('.cust-save-page form [name="subIndustryCode"]',data.info,'industryCode','industryName',function(){
-					if(pageData.custSeqid){
+					if(pageData.custSeqid && pageData.custInfo.custIndustryWidth){
 						app.f7.formFromData($$('.cust-save-page form'),{subIndustryCode:pageData.custInfo.custIndustryWidth.subIndustryCode});
 					}else{
 						changeSubIndustryCodeSelect();
@@ -114,7 +119,7 @@ define(['app','tool'],function(app,tool){
 			if(data.state){
 				setSmartSelectOption('.cust-save-page form [name="terIndustryCode"]',data.info,'industryCode','industryName');
 			}
-			if(pageData.custSeqid){
+			if(pageData.custSeqid && pageData.custInfo.custIndustryWidth){
 				app.f7.formFromData($$('.cust-save-page form'),{terIndustryCode:pageData.custInfo.custIndustryWidth.terIndustryCode});
 			}
 			if(++pageData.smartAmount == 2){
@@ -131,7 +136,7 @@ define(['app','tool'],function(app,tool){
 			if(data.state){
 				setSmartSelectOption('.cust-save-page form [name="lvl3OrgId"]',data.info,'orgId','orgName');
 			}
-			if(pageData.custSeqid){
+			if(pageData.custSeqid && pageData.custInfo.custBelongWidth){
 				app.f7.formFromData($$('.cust-save-page form'),{lvl3OrgId:pageData.custInfo.custBelongWidth.lvl3OrgId});
 			}
 			if(++pageData.smartAmount == 2){
@@ -241,7 +246,6 @@ define(['app','tool'],function(app,tool){
 	 * @param {Object} custInfo
 	 */
 	function execSaveCustInfo(custInfo){
-//		custInfo.contacts = [{contactName:custInfo.contactName,contactPhone:custInfo.contactPhone}];
 		custInfo.contacts = [];
 		delete custInfo.contactName;
 		delete custInfo.contactPhone;
@@ -257,10 +261,10 @@ define(['app','tool'],function(app,tool){
 		custInfo.custBelongWidth = {lvl2OrgId:custInfo.lvl2OrgId,lvl3OrgId:custInfo.lvl3OrgId};
 		delete custInfo.lvl2OrgId;
 		delete custInfo.lvl3OrgId;
-		console.log(custInfo);
+//		console.log(custInfo);
 //		return false;
 		tool.appJson(tool.appPath.emopPro+'cust/merge',JSON.stringify(custInfo),function(data){
-			console.log(data);
+//			console.log(data);
 			if(data.state){
 				if(custInfo.custSeqid){//编辑
 					app.view.router.back({pageName:'cust-detail'});
@@ -289,13 +293,25 @@ define(['app','tool'],function(app,tool){
 					});    
 				}
 				if(data.info.contacts && data.info.contacts.length > 0){
-					require(['text!cust/save/save-page-content.tpl'], function(template) {
+//					require(['text!cust/save/save-page-content.tpl'], function(template) {
 						$$('.cust-save-page form .cust-contacts-list ul').html(Template7.compile(template)(data.info.contacts));
-					});
+//					});
 				}
 				loadSmartSelectOption();
 			}
 		});
+	}
+	
+	/**
+	 * 点击添加联系人信息输入项目
+	 */
+	function clickAddCustContact(){
+		var contacts = $$('.cust-save-page .cust-contacts-list ul li').length;
+		if(contacts < 5){
+			$$('.cust-save-page .cust-contacts-list ul').append(Template7.compile(template)([{contactName:'',contactPhone:''}]));
+		}else{
+			app.f7.alert('仅允许添加最多5个联系人信息输入栏');
+		}
 	}
 	
 	return {
