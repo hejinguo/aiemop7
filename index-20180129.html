@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Required meta tags-->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!-- Your app title -->
+		<title>智慧政企</title>
+		<!-- Path to Framework7 iOS CSS theme styles-->
+		<link rel="stylesheet" href="lib/framework7/css/framework7.ios.min.css">
+		<!-- Path to Framework7 iOS related color styles -->
+		<link rel="stylesheet" href="lib/framework7/css/framework7.ios.colors.min.css">
+		<!-- Path to Framework7 icons styles -->
+		<link rel="stylesheet" href="lib/framework7-icons/css/framework7-icons.css">
+		<!-- Path to Framework7 toast styles -->
+		<link rel="stylesheet" href="lib/framework7-plugins/toast/toast.css">
+		<!-- Path to your custom app styles-->
+		<link rel="stylesheet" href="css/app.css">
+	</head>
+	<body class="layout-asiainfo theme-asiainfo">
+		<!-- Status bar overlay for full screen mode (PhoneGap) -->
+		<div class="statusbar-overlay"></div>
+		<!-- Panels overlay-->
+		<div class="panel-overlay"></div>
+		<div class="panel panel-left panel-cover"><!--panel-reveal，panel-cover -->
+			<div class="content-block">
+				<p>Left panel content goes here</p>
+			</div>
+		</div>
+		<div class="panel panel-right panel-reveal">
+			<div class="view view-right">
+				<div class="pages"></div>
+			</div>
+		</div>
+		<!-- Views -->
+		<div class="views">
+			<!-- Your first view, it is also a .tab and should have "active" class to make it visible by default-->
+			<div class="view view-main">
+				<!-- Pages-->
+				<div class="pages">
+					<!-- Page, data-page contains page name-->
+					<div class="page home-page" data-page="home" data-page-title="智慧政企">
+						<!-- Scrollable page content-->
+						<div class="page-content">
+							<!-- Slider container -->
+							<div class="swiper-container swiper-init" data-pagination=".swiper-pagination"
+								data-speed="400" data-space-between="5" data-loop="true">
+							    <!-- Slides wrapper -->
+							    <div class="swiper-wrapper">
+							        <!-- Slides -->
+							        <a href="#" class="swiper-slide no-complete" style="background:#4a1ea8;">
+							        	<img src="images/temp/20171215171025953v2L.jpg"/>
+							        </a>
+							        <a href="#" class="swiper-slide no-complete" style="background:#d3061c;">
+							        	<img src="images/temp/20171208165107331x8G.png"/>
+							        </a>
+							        <a href="#" class="swiper-slide no-complete" style="background:#f8e26b;">
+							        	<img src="images/temp/20171215095017518f5x.jpg"/>
+							        </a>
+							        <a href="#" class="swiper-slide no-complete" style="background:#9746c7;">
+							        	<img src="images/temp/20171213161845187u15.jpg"/>
+							        </a>
+							        <a href="#" class="swiper-slide no-complete" style="background:#FBE660;">
+							        	<img src="images/temp/20171225153651.jpg"/>
+							        </a>
+							    </div>
+							    <!-- Pagination, if required -->
+							    <div class="swiper-pagination"></div>
+							</div>
+							
+							<div class="home-main-notice">
+								<div>
+									<i class="f7-icons color-lightblue">volume_fill</i><!--social_rss-->
+								</div>
+								<div style="flex-grow:1;">
+									<!--欢迎使用政企移动办公管家-->
+									<div class="marquee-notice-list">
+										<a href="#">欢迎使用政企移动办公管家-无需安装,快捷使用</a>
+									</div>
+								</div>
+								<div style="min-width:28px;">
+									<a href="#" class="no-complete">更多</a>
+								</div>
+							</div>
+							
+							<div class="row no-gutter home-main-entrance">
+								<div class="col-33 aui-text-center">
+									<a href="pages/cust/cust.html">
+				    					<i class="f7-icons" style="color:#B2D6F8;">book_fill</i>
+				    					<span>建档纳管</span>
+				    				</a>
+								</div>
+								<div class="col-33 aui-text-center">
+									<a href="pages/shop/shop.html">
+				    					<i class="f7-icons" style="color:#C3E345;">tabs_fill</i>
+				    					<span>商铺管理</span>
+				    				</a>
+								</div>
+								<div class="col-33 aui-text-center">
+									<a href="pages/bigdata/bigdata.html">
+				    					<i class="f7-icons" style="color:#FFA09D;">data_fill</i>
+				    					<span>大数据报告</span>
+				    				</a>
+								</div>
+								<!--<div class="col-33 aui-text-center">
+									<a href="pages/map/map.html">
+				    					<i class="f7-icons" style="color:#B2D6F8;">world_fill</i>
+				    					<span>我的集团</span>
+				    				</a>
+								</div>-->
+								<div class="col-33 aui-text-center">
+									<a href="pages/mms/mms.html"><!--pages/mms/mms.html--><!-- class="no-animation" -->
+				    					<i class="f7-icons" style="color:#FFCF2A;">briefcase_fill</i>
+				    					<span>业务通报</span>
+				    				</a>
+								</div>
+								<div class="col-33 aui-text-center">
+									<a href="pages/contact/contact.html"><!--pages/contact/contact.html-->
+				    					<i class="f7-icons" style="color:#A1BEBC;">phone_round_fill</i>
+				    					<span>通讯录</span>
+				    				</a>
+								</div>
+								<div class="col-33 aui-text-center">
+									<a href="#" class="no-complete">
+				    					<i class="f7-icons" style="color:#FFAC82;">more_round_fill</i>
+				    					<span>更多</span>
+				    				</a>
+								</div>
+							</div>
+							
+							<div class="home-person-info">
+								<div>
+									<img src="images/temp/timg.jpg" class="person-icon no-complete"/>
+								</div>
+								<div style="flex-grow:1;padding:5px;">
+									<div class="person-name">加载中...</div>
+									<div class="person-subinfo">
+										<span></span>
+										<span></span>
+									</div>
+								</div>
+								<div class="aui-text-right" style="padding:20px 10px;">
+									<a href="#" class="button button-fill color-shallowblue no-complete">&nbsp;&nbsp;签&nbsp;&nbsp;到&nbsp;&nbsp;</a>
+								</div>
+							</div>
+							
+							<div class="lately-task">
+								<div class="header">近期任务</div>
+								<div class="list-block">
+									<ul style="background-color:inherit;">
+										<li style="border-left:3px solid #B2D6F8;">
+											<a href="#" class="item-link item-content no-complete">
+												<div class="item-inner">
+													<div class="item-title">
+														<div class="item-title-main">今日任务</div>
+														<div style="flex-grow:1;text-align:center;">
+															<div class="item-num" style="color:#B2D6F8;">50%</div>
+															<div class="item-progress" style="background:#E2CFD5;">
+																<div class="item-value" style="width:50%;background:#B2D6F8;">
+																	<span>22/99</span>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</a>
+										</li>
+										<li style="border-left:3px solid #A1BEBC;">
+											<a href="#" class="item-link item-content no-complete">
+												<div class="item-inner">
+													<div class="item-title">
+														<div class="item-title-main">明日任务</div>
+														<div style="flex-grow:1;text-align:center;">
+															<div class="item-num" style="color:#A1BEBC;">30%</div>
+															<div class="item-progress" style="background:#E2CFD5;">
+																<div class="item-value" style="width:30%;background:#A1BEBC;">
+																	<span>22/99</span>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</a>
+										</li>
+										<li style="border-left:3px solid #C2E243;">
+											<a href="#" class="item-link item-content no-complete">
+												<div class="item-inner">
+													<div class="item-title">
+														<div class="item-title-main">本周任务</div>
+														<div style="flex-grow:1;text-align:center;">
+															<div class="item-num" style="color:#C2E243;">80%</div>
+															<div class="item-progress" style="background:#E2CFD5;">
+																<div class="item-value" style="width:80%;background:#C2E243;">
+																	<span>22/99</span>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</a>
+										</li>
+										<li style="border-left:3px solid #FFAC82;">
+											<a href="#" class="item-link item-content no-complete">
+												<div class="item-inner">
+													<div class="item-title">
+														<div class="item-title-main">本月任务</div>
+														<div style="flex-grow:1;text-align:center;">
+															<div class="item-num" style="color:#FFAC82;">60%</div>
+															<div class="item-progress" style="background:#E2CFD5;">
+																<div class="item-value" style="width:60%;background:#FFAC82;">
+																	<span>22/99</span>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							
+							<div class="enterprise-learn">
+								<div class="header">政企加油站</div>
+								<div class="row">
+									<a href="#" class="col-33 learn-item no-complete">
+										<div class="learn-item-icon" style="border:1px solid #B2D6F8;">
+											<i class="f7-icons" style="color:#B2D6F8;">folder</i>
+										</div>
+										<div class="learn-item-title">集团产品库</div>
+										<div class="learn-item-num" style="background: #B2D6F8;">65条</div>
+									</a>
+									<a href="#" class="col-33 learn-item no-complete">
+										<div class="learn-item-icon" style="border:1px solid #C2E243;">
+											<i class="f7-icons" style="color:#C2E243;">drawers</i>
+										</div>
+										<div class="learn-item-title">集团案例库</div>
+										<div class="learn-item-num" style="background: #C2E243;">65条</div>
+									</a>
+									<a href="#" class="col-33 learn-item no-complete">
+										<div class="learn-item-icon" style="border:1px solid #FFAC82;">
+											<i class="f7-icons" style="color:#FFAC82;">stopwatch</i>
+										</div>
+										<div class="learn-item-title">集团知识库</div>
+										<div class="learn-item-num" style="background: #FFAC82;">65条</div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="login-screen modal-in">
+			<div class="view">
+				<div class="page login-page" data-page="login" data-page-title="智慧政企">
+					<div class="page-content login-screen-content">
+						<div class="aui-text-center">
+							<img src="images/base/login/top-banner.png" class="top-banner"/>
+						</div>
+						<form>
+							<div class="list-block">
+								<ul>
+									<li>
+										<div class="item-content">
+											<div class="item-input item-inner">
+												<i class="f7-icons">person_fill</i>
+												<input type="text" name="username" placeholder="请输入登陆用户名">
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="item-content">
+											<div class="item-input item-inner">
+												<i class="f7-icons">lock_fill</i>
+												<input type="password" name="password" placeholder="请输入登陆密码">
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="item-content row">
+											<div class="col-70">
+												<div class="item-input item-inner">
+													<i class="f7-icons">chat_fill</i>
+													<input type="number" name="loginmark" placeholder="请输入短信验证码">
+												</div>
+											</div>
+											<div class="col-30 aui-text-center">
+												<a href="#" class="link disabled send-mark-button">获取验证码</a>
+											</div>
+										</div>
+									</li>
+								</ul>
+								<a href="#" class="button button-fill button-big disabled submit-login-button">登&nbsp;&nbsp;陆</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Path to Framework7 Library JS-->
+		<script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
+		<!-- Path to Framework7 toast JS-->
+		<script type="text/javascript" src="lib/framework7-plugins/toast/toast.js"></script>
+		<!-- Path to aes-min JS -->
+		<script type="text/javascript" src="lib/aes-min.js" ></script>
+		<!-- Path to require Library JS-->
+		<script type="text/javascript" src="lib/require.js" data-main="js/app"></script>
+	</body>
+</html>
