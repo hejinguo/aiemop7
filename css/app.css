@@ -58,7 +58,7 @@ div{
 
 
 /*覆盖framework7样式*/
-.layout-asiainfo .login-page .page-content{
+.layout-asiainfo .login-page .page-content,.popup-reset-password{
 	/*background-image:-webkit-linear-gradient(270deg, #BCA2D2, #00d0ff);*/
 	background:url(../images/base/login/btm-banner.png),-webkit-linear-gradient(270deg, #BCA2D2, #06afd2);
 	background-position: bottom;background-repeat: no-repeat;background-size: 100%;

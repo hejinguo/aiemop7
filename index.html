@@ -204,10 +204,78 @@
 								<a href="#" class="button button-fill button-big disabled submit-login-button">登&nbsp;&nbsp;陆</a>
 							</div>
 						</form>
+						<div class="aui-text-center">
+							<!--<a href="pages/reset/password.html" style="color:#FFFFFF;">忘记或重置密码,请点击这里</a>-->
+							<a href="#" data-popup=".popup-reset-password" class="open-popup" style="color:#FFFFFF;">忘记或重置密码,请点击这里</a>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		
+		<div class="popup popup-reset-password">
+			<form>
+	    		<div class="content-block">
+	      			<!--<p>About</p>
+	      			<p><a href="#" class="close-popup">Close popup</a></p>
+	      			<p>Lorem ipsum dolor ...</p>-->
+	      			<div class="content-block-title aui-text-center color-white">
+						重置登陆密码
+					</div>
+	      			<div class="list-block">
+						<ul>
+							<li>
+								<div class="item-content">
+									<div class="item-inner">
+										<div class="item-title label">登陆工号:</div>
+										<div class="item-input">
+											<input type="text" name="staffCode" placeholder="请填写登陆工号">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="item-content">
+									<div class="item-inner">
+										<div class="item-title label">手机号码:</div>
+										<div class="item-input">
+											<input type="text" name="phoneNo" placeholder="请填写手机号码">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="item-content">
+									<div class="item-inner">
+										<div class="item-title label">短信验证码:</div>
+										<div class="item-input">
+											<div style="display:-webkit-flex;display:flex;">
+												<input type="text" name="loginMark" style="flex-grow:1;" placeholder="请填写验证码">
+												<a class="submit-resetmark-button"
+													style="margin-top:10px;min-width:80px;font-size:15px;margin-left:5px;">获取验证码</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="item-content">
+									<div class="item-inner">
+										<div class="item-title label">新登陆密码:</div>
+										<div class="item-input">
+											<input type="text" name="password" placeholder="请填写登陆密码">
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+	      			<p><a href="#" class="button button-fill color-green submit-resetpwd-button">确定</a></p>
+	      			<p><a href="#" class="button button-fill color-orange close-resetpwd-button">取消</a></p>
+	    		</div>
+	    	</form>
+		</div>
+		
 		<!-- Path to Framework7 Library JS-->
 		<script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
 		<!-- Path to Framework7 toast JS-->
