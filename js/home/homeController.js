@@ -11,8 +11,8 @@ define(['app','tool'],function(app,tool) {
 		
 		var user = tool.getUser();
 		$$('.home-page .home-person-info .person-name').html(user.staffName+'('+user.staffCode+')');
-		$$('.home-page .home-person-info .person-subinfo span:first-child').html(user.organize.orgName+(user.roles ? '_'+user.roles[0].roleName : ''));
-		$$('.home-page .home-person-info .person-subinfo span:last-child').html(user.phoneNo);
+		$$('.home-page .home-person-info .person-subinfo-organize').html(user.organize.orgName+(user.roles ? '_'+user.roles[0].roleName : ''));
+		$$('.home-page .home-person-info .person-subinfo-phoneno').html(user.phoneNo);
 		tool.marqueeNotice('.theme-asiainfo .marquee-notice-list',2000);
 	}
 	

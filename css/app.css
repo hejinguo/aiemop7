@@ -92,7 +92,7 @@ div{
 	height:18px; overflow:hidden;
 }
 .theme-asiainfo .marquee-notice-list a{
-	color:#C00; text-decoration:none; height: 18px; display: block;color:#444444;overflow:hidden;
+	color:#C00; text-decoration:none; height: 18px; display: block;color:#888;overflow:hidden;
 }
 body.with-panel-right-reveal .panel-overlay{
 	background: rgba(0,0,0,0.6);opacity: 0.6;
@@ -218,7 +218,7 @@ body.with-panel-right-reveal .panel-overlay{
  * data-page="home"
  */
 .home-page *{
-	color:#444;
+	color:#888;
 }
 .home-page .swiper-container{
 	height:200px;
@@ -244,87 +244,10 @@ body.with-panel-right-reveal .panel-overlay{
 .home-page .home-main-notice .f7-icons{
 	font-size:14px;	margin:2px auto;
 }
-.home-page .home-main-entrance{
-	background: #FFF;margin:10px auto;
-}
 .home-page .home-main-entrance a{
-	display: block;color:rgb(0,0,0);height:60px;padding-top:8px;
+	color:#888;
 }
-.home-page .home-main-entrance i.f7-icons{
-	display:block;margin:6px auto;
-}
-.home-page .home-person-info{
-	background:#FFF;margin:0px 5px;border-radius:5px;display:-webkit-flex;display:flex;
-}
-.home-page .home-person-info .person-icon{
-	display:block;width:50px;height:50px;margin:8px 5px;border-radius:25px;margin-left:10px;
-}
-.home-page .home-person-info .person-name{
-	padding:3px 0px 2px 0px;
-}
-.home-page .home-person-info .person-subinfo{
-	line-height:15px;
-}
-.home-page .home-person-info .person-subinfo span{
-	color:#888;font-size:12px;display:block;
-}
-.home-page .lately-task{
-	margin:10px 5px 0px 5px
-}
-.home-page .lately-task .header,.home-page .enterprise-learn .header{
-	font-weight:bold;margin-bottom:5px;color:#000000;
-}
-.home-page .lately-task .list-block li{
-	background:#FFF;margin-bottom:10px;border-radius:5px;
-}
-.home-page .lately-task .item-title{
-	width:100%;font-size: 14px;display:-webkit-flex;display:flex;
-}
-.home-page .lately-task .item-title-main{
-	padding-top:3px;
-}
-.home-page .lately-task .item-title .item-num{
-	display:inline-block;width:45px;font-size:18px;vertical-align:middle;
-}
-.home-page .lately-task .item-title .item-progress{
-	display:inline-block;width:80px;height:18px;margin:3px auto;border-radius:3px;
-}
-.home-page .lately-task .item-title .item-value{
-	border-radius:3px;height:18px;
-}
-.home-page .lately-task .item-title .item-value span{
-	margin:auto 5px;color:#FFF;
-}
-.home-page .lately-task .list-block .item-inner{
-	padding-bottom:4px;padding-top:5px;
-}
-.home-page .lately-task .list-block .item-inner:after,
-.home-page .lately-task .list-block ul:after,
-.home-page .lately-task .list-block ul:before{
-	height:0px;
-}
-.home-page .lately-task .list-block .item-content,
-.home-page .lately-task .list-block .item-inner{
-	min-height: 30px;
-}
-.home-page .enterprise-learn{
-	margin:10px 5px 5px 5px
-}
-.home-page .enterprise-learn .learn-item{
-	background:#FFF;border-radius:5px;text-align:center;overflow:hidden;
-}
-.home-page .enterprise-learn .learn-item-icon{
-	width:50px;height:50px;border-radius:50%;margin:-18px auto 0px auto;
-}
-.home-page .enterprise-learn .learn-item-icon .f7-icons{
-	margin-top:25px;font-size:16px;
-}
-.home-page .enterprise-learn .learn-item-num{
-	border-bottom-left-radius:5px;border-bottom-right-radius: 5px;color:#FFF;padding-top:2px;padding-bottom:2px;
-}
-.home-page .enterprise-learn .learn-item-title{
-	margin:8px auto;
-}
+
 
 /**
  * 地图首页
