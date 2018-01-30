@@ -32,14 +32,13 @@ define(['app','tool'],function(app,tool){
 	}
 	
 	function clickDeleteCustItem(){
-//		app.f7.alert('对不起,您无权执行删除操作.');
 		var user = tool.getUser();
 		if(!pageData.custInfo.custCreateStaff || 
 			pageData.custInfo.custCreateStaff != tool.getUser().staffCode){//只能自己删除自己创建的集团
 			app.f7.alert('对不起,只能删除自己创建的集团记录.');
-		}else if(user.organize.orgType < 3){//省和市公司不允许编辑和删除
+		}/*else if(user.organize.orgType < 3){//省和市公司不允许编辑和删除
 			app.f7.alert('对不起,省市级账号无权执行删除操作.');
-		}else{
+		}*/else{
 			app.f7.confirm('您确定要删除该集团吗?','删除',function () {
 		        tool.appAjax(tool.appPath.emopPro+'cust/delete',{custSeqid:pageData.custInfo.custSeqid},function(data){
 		        	if(data.state){
