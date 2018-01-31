@@ -38,7 +38,8 @@ define(['app','tool','login/loginView'],function(app,tool,LoginView) {
         	app.f7.showIndicator();
 			tool.appAjax(tool.appPath.emopPro+'base/h5/sendMark',param,function(data){
 				if(data.state){
-					$$(_this).attr('disabled','disabled');
+//					$$(_this).attr('disabled','disabled'); TODO
+					$$('_this').addClass('disabled');
 					app.f7.alert('验证码已发送至 '+data.info +'');
 				}else{
 					privateErrorAlert(data.code);
@@ -96,7 +97,8 @@ define(['app','tool','login/loginView'],function(app,tool,LoginView) {
         	app.f7.showIndicator();
 			tool.appAjax(tool.appPath.emopPro+'base/h5/sendResetMark',param,function(data){
 				if(data.state){
-					$$(_this).attr('disabled','disabled');
+//					$$(_this).attr('disabled','disabled');
+					$$('_this').addClass('disabled');
 					app.f7.alert('验证码已发送至 '+data.info +'');
 				}else{
 					privateErrorAlert(data.code);
@@ -145,7 +147,7 @@ define(['app','tool','login/loginView'],function(app,tool,LoginView) {
 	 */
 	function clickCloseResetpwdBtn(){
 		$$('.popup-reset-password form')[0].reset();
-		$$('.popup-reset-password .submit-sendmark-button').removeAttr('disabled');
+		$$('.popup-reset-password .submit-sendmark-button').removeClass('disabled');
 		app.f7.closeModal('.popup-reset-password');
 	}
 	
