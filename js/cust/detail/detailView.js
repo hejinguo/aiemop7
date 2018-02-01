@@ -12,6 +12,18 @@ define(['app','text!cust/detail/detail-page-content.tpl'], function(app,template
 			    var marker = new BMap.Marker(point);// 创建标注  
 				map.addOverlay(marker);// 将标注添加到地图中
 //				map.addControl(new BMap.GeolocationControl());
+//				map.addEventListener("click", function(e){    
+//  				alert(e.point.lng + ", " + e.point.lat);    
+//				});
+//				var geoc = new BMap.Geocoder();    
+//				map.addEventListener("click", function(e){        
+//				    var pt = e.point;
+//				    geoc.getLocation(pt, function(rs){
+//				        alert(rs.address);
+////				        var addComp = rs.addressComponents;
+////				        alert(addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber);
+//				    });        
+//				});
 			});
 		}
 	}

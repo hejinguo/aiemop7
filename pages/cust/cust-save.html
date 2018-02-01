@@ -110,18 +110,22 @@
 						<li>
 							<div class="item-content">
 								<div class="item-inner">
-									<div class="item-title label" style="display:flex;">
+									<div class="item-title label" style="display:-webkit-flex;display: flex;">
 										<div>经&nbsp;纬&nbsp;度&nbsp;<span class="color-red">*</span></div>
-										<a class="button color-lightblue geolocation-button" style="line-height:19px;height:auto;margin:auto 5px;padding:0px 5px;">
-											<!--<i class="f7-icons" style="font-size:15px;">reload</i>-->
+									</div>
+									<div class="item-input" style="display:-webkit-flex;display: flex;">
+										<input type="text" name="longitude" readonly="readonly" placeholder="经度" style="padding:0px 5px;">
+										<input type="text" name="latitude" readonly="readonly" placeholder="纬度" style="padding:0px 5px;">
+										<!--<a class="button color-lightblue geolocation-button" style="line-height:19px;min-width:45px;height:auto;margin:auto 5px;padding:0px 5px;">
 											定位
 										</a>
-									</div>
-									<div class="item-input">
-										<div class="row">
-											<input type="text" class="col-50" name="longitude" readonly="readonly" style="width:50%" placeholder="经度">
-											<input type="text" class="col-50" name="latitude" readonly="readonly" style="width:50%" placeholder="纬度">
-										</div>
+										<a class="button color-red geolocation-button" style="line-height:19px;min-width:45px;height:auto;margin:auto 5px;padding:0px 5px;">
+											选择
+										</a>-->
+										<p class="buttons-row" style="margin-top:0px;margin-bottom:0px;">
+											<a href="#" class="button button-fill color-orange geolocation-button" style="line-height:19px;min-width:40px;height:auto;border:0px;">定位</a>
+											<a href="#" class="button button-fill color-green" style="line-height:19px;min-width:40px;height:auto;border:0px;">选择</a>
+										</p>
 									</div>
 								</div>
 							</div>

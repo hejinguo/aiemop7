@@ -168,20 +168,22 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 		require(['async!BMap'], function() {
 			new BMap.Geolocation().getCurrentPosition(function(r){
 				if(this.getStatus() == BMAP_STATUS_SUCCESS){
-//					console.log('您的位置：'+r.point.lng+','+r.point.lat);
+//					console.log(r.address);
 					$$('.cust-save-page form [name="longitude"]').val(r.point.lng);
 					$$('.cust-save-page form [name="latitude"]').val(r.point.lat);
 //					创建地理编码实例并根据坐标得到地址描述 
 					new BMap.Geocoder().getLocation(new BMap.Point(r.point.lng, r.point.lat), function(result){
 					    if (result){
+//					    	console.log(result.addressComponents);
 					    	$$('.cust-save-page form [name="custAddr"]').val(result.address);
 					    	app.f7.hideIndicator();
 					    }
 					});
 				}else {
-					console.log('failed : '+this.getStatus());
+					privateGeolocationError(this.getStatus());
+					app.f7.hideIndicator();
 				}        
-			});
+			});//,{timeout:5000,enableHighAccuracy:true,SDKLocation:false}
 		});
 	}
 	
@@ -311,6 +313,35 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 			$$('.cust-save-page .cust-contacts-list ul').append(Template7.compile(template)([{contactName:'',contactPhone:''}]));
 		}else{
 			app.f7.alert('仅允许添加最多5个联系人信息输入栏');
+		}
+	}
+	
+	/**
+	 * 百度定位返回失败状态时候的处理函数
+	 */
+	function privateGeolocationError(status){
+		switch (status){
+			case BMAP_STATUS_TIMEOUT:
+				app.toast.show(status+':定位过程超时,请稍后重试.');
+				break;
+			case BMAP_STATUS_SERVICE_UNAVAILABLE:
+				app.toast.show(status+':定位服务不可用,请稍后重试.');
+				break;
+			case BMAP_STATUS_PERMISSION_DENIED:
+				app.toast.show(status+':没有定位权限,请稍后重试.');
+				break;
+			case BMAP_STATUS_INVALID_REQUEST:
+				app.toast.show(status+':非法定位请求,请稍后重试.');
+				break;
+			case BMAP_STATUS_UNKNOWN_ROUTE:
+				app.toast.show(status+':导航结果未知,请稍后重试.');
+				break;
+			case BMAP_STATUS_UNKNOWN_LOCATION:
+				app.toast.show(status+':位置结果未知,请稍后重试.');
+				break;
+			default://0:检索成功,1:城市列表,4:非法密钥
+				app.toast.show(status+':定位过程异常,请稍后重试.');
+				break;
 		}
 	}
 	
