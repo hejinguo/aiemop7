@@ -5,6 +5,10 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 		event: 'click',
 		handler: geolocation
 	},{
+		element: '.cust-save-page .selectgeoloc-button',
+		event: 'click',
+		handler: function(){app.f7.alert('对不起,您无权通过地图选择地理位置.');}
+	},{
 		element: '.cust-save-page .cust-save-button',
 		event: 'click',
 		handler: clickSaveCustItem
