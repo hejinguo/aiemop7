@@ -91,6 +91,8 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 					}
 				});
 			}
+		},function(){
+			app.f7.hideIndicator();
 		});
 	}
 	/**
@@ -108,6 +110,8 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 					}
 				});
 			}
+		},function(){
+			app.f7.hideIndicator();
 		});
 	}
 	/**
@@ -125,6 +129,8 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 			if(++pageData.smartAmount == 2){
 				app.f7.hideIndicator();
 			}
+		},function(){
+			app.f7.hideIndicator();
 		});
 	}
 	/**
@@ -142,6 +148,8 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 			if(++pageData.smartAmount == 2){
 				app.f7.hideIndicator();
 			}
+		},function(){
+			app.f7.hideIndicator();
 		});
 	}
 	
@@ -183,7 +191,7 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 					privateGeolocationError(this.getStatus());
 					app.f7.hideIndicator();
 				}        
-			});//,{timeout:5000,enableHighAccuracy:true,SDKLocation:false}
+			});//,{timeout:10000,maximumAge:10000,enableHighAccuracy:true}
 		});
 	}
 	
@@ -248,6 +256,7 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 	 * @param {Object} custInfo
 	 */
 	function execSaveCustInfo(custInfo){
+		app.f7.showIndicator();
 		custInfo.contacts = [];
 		delete custInfo.contactName;
 		delete custInfo.contactPhone;
@@ -277,6 +286,8 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 				}
 				app.router.load('cust');
 			}
+		},function(){
+			app.f7.hideIndicator();
 		});
 	}
 
@@ -301,6 +312,8 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 				}
 				loadSmartSelectOption();
 			}
+		},function(){
+			app.f7.hideIndicator();
 		});
 	}
 	

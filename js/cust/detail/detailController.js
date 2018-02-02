@@ -40,6 +40,7 @@ define(['app','tool'],function(app,tool){
 			app.f7.alert('对不起,省市级账号无权执行删除操作.');
 		}*/else{
 			app.f7.confirm('您确定要删除该集团吗?','删除',function () {
+				app.f7.showIndicator();
 		        tool.appAjax(tool.appPath.emopPro+'cust/delete',{custSeqid:pageData.custInfo.custSeqid},function(data){
 		        	if(data.state){
 						app.toast.show("删除集团记录操作成功.");

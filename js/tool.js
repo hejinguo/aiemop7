@@ -5,10 +5,10 @@ define(['base64'],function(base64) {
 //			work:'http://218.205.252.12:10029/aiwork/',//挂牌攻坚项目地址
 //			emopPro:'http://218.205.252.12:10029/aiemopPro/'//政企营销新项目地址
 //	};
-//	var appPath = {download:'http://10.101.167.27/emop.apk',//最新安装包地址
-//			emop:'http://localhost/apis/aiemop/',//政企营销项目地址
-//			work:'http://localhost/apis/aiwork/',//挂牌攻坚项目地址
-//			emopPro:'http://localhost/apis/aiemopPro/'//政企营销新项目地址
+//	var appPath = {download:'https://pudi.tk:2443/emop.apk',//最新安装包地址
+//			emop:'https://pudi.tk:2443/aiemop/',//政企营销项目地址
+//			work:'https://pudi.tk:2443/aiwork/',//挂牌攻坚项目地址
+//			emopPro:'https://pudi.tk:2443/aiemopPro/'//政企营销新项目地址
 //	};
 	var appPath = {download:'http://10.101.27.185:8080/emop.apk',//最新安装包地址
 			emop:'http://10.101.27.185:8080/aiemop/',//政企营销项目地址
@@ -187,7 +187,7 @@ define(['base64'],function(base64) {
 	            	onError();
 				}else if(!data.state && data.code == "SHOW_MSG"){
 					require(['app'], function(app) {
-						app.f7.alert("SHOW_MSG="+data.info);
+						app.f7.alert(data.info);
 					});
 					onError();
 				}else if(!data.state && data.code == "CHARACTER_WRONGFUL"){
