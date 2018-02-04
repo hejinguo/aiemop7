@@ -1,4 +1,20 @@
-<div class="pages">
+<!-- Top Navbar-->
+<div class="navbar">
+	<div class="navbar-inner">
+		<div class="left"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+		<!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+		<div class="center sliding">建档纳管</div>
+		<div class="right">
+			<!-- 
+                Right link contains only icon - additional "icon-only" class
+                Additional "open-panel" class tells app to open panel when we click on this link
+            -->
+			<!--<a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a>-->
+		</div>
+	</div>
+</div>
+<!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+<div class="pages navbar-through">
 	<div class="page cust-page" data-page="cust" data-page-title="建档纳管">
 		<!-- Search Bar -->
 	    <form action="." class="searchbar searchbar-init">

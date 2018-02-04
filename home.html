@@ -43,8 +43,18 @@
 		<div class="views">
 			<!-- Your first view, it is also a .tab and should have "active" class to make it visible by default-->
 			<div class="view view-main">
-				<!-- Pages-->
-				<div class="pages">
+			    <!-- Top Navbar-->
+				<div class="navbar">
+					<div class="navbar-inner">
+						<div class="left"></div>
+						<div class="center sliding">智慧政企</div>
+						<div class="right">
+							<!--<a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a>-->
+						</div>
+					</div>
+				</div>
+				<!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+				<div class="pages navbar-through">
 					<!-- Page, data-page contains page name-->
 					<div class="page home-page" data-page="home" data-page-title="智慧政企">
 						<!-- Scrollable page content-->

@@ -58,10 +58,17 @@ div{
 
 
 /*覆盖framework7样式*/
-.layout-asiainfo .login-page .page-content,.popup-reset-password{
+.layout-asiainfo .login-page .page-content,.layout-asiainfo .popup-reset-password{
 	/*background-image:-webkit-linear-gradient(270deg, #BCA2D2, #00d0ff);*/
 	background:url(../images/base/login/btm-banner.png),-webkit-linear-gradient(270deg, #BCA2D2, #06afd2);
 	background-position: bottom;background-repeat: no-repeat;background-size: 100%;
+}
+.theme-asiainfo .navbar{
+	background:#B2D6F8;/*-webkit-linear-gradient(180deg, #BCA2D2, #06afd2);*/
+	color: #FFFFFF;
+}
+.theme-asiainfo .navbar a.link{
+	color: #FFFFFF;
 }
 .theme-asiainfo .tabbar a.active{
 	color:#4F8EFF;

@@ -47,7 +47,7 @@ define(['router'], function(router) {
 	    }
 	});
 	console.log("初始化View启动");
-	var view = f7.addView('.view-main',{domCache: true});
+	var view = f7.addView('.view-main',{domCache: true,dynamicNavbar: true});
 	var right = f7.addView('.view-right',{animatePages: false,reloadPages:true});
 	console.log("初始化View结束");
 	console.log("初始化APP过程结束");
