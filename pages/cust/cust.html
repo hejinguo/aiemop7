@@ -8,8 +8,8 @@
 			<!-- 
                 Right link contains only icon - additional "icon-only" class
                 Additional "open-panel" class tells app to open panel when we click on this link
-            -->
-			<!--<a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a>-->
+     		--><!--icon-only open-panel-->
+			<a href="pages/cust/cust-save.html" class="link">添加</a>
 		</div>
 	</div>
 </div>
@@ -23,13 +23,18 @@
 	            <a href="#" class="searchbar-clear"></a>
 	        </div>
 	        <a href="#" class="searchbar-cancel">
-	        	<a href="pages/cust/cust-save.html" class="link" style="width:40px;padding-left:10px">
-	        		<!--<i class="f7-icons">add</i>--><span>添加</span>
+	        	<a href="pages/cust/cust-search.html" class="open-panel" 
+	        		data-panel="right" data-view=".view-right" style="width:40px;padding-left:10px">
+	        		<!--<i class="f7-icons">data</i>--><span>筛选</span>
 	        	</a>
 	        </a>
 	    </form>
 	    <!-- Search Bar overlay-->
 	    <div class="searchbar-overlay"></div>
+	    <!-- Floating Action Button -->
+	    <!--<a href="pages/cust/cust-save.html" class="floating-button color-green">
+			<i class="f7-icons">add</i>
+		</a>-->
 		<!-- Page content -->
 		<div class="page-content pull-to-refresh-content infinite-scroll" data-ptr-distance="55" data-distance="50">
 			<!-- Default pull to refresh layer-->

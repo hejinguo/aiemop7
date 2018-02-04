@@ -64,12 +64,16 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 			$$('.cust-save-page form [name="custSeqid"]').val(query.custSeqid);
 			$$('.cust-save-page .cust-save-button').html('编辑集团');
 			app.f7.showIndicator();
-			loadCustDetailInfo(query);
+			setTimeout(function() {
+				loadCustDetailInfo(query);
+			},500);
 		}else{
-			app.f7.showIndicator();
-			loadSmartSelectOption();
-//			geolocation();//默认获取当前定位信息
 			$$('.cust-save-page .cust-save-button').html('添加集团');
+			app.f7.showIndicator();
+			setTimeout(function() {
+				loadSmartSelectOption();
+			},500);
+//			geolocation();//默认获取当前定位信息
 		}
 		$$('.cust-save-page .cust-save-button').removeClass('disabled');
 	}
