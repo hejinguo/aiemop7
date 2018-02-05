@@ -36,6 +36,8 @@ define(['app','tool'],function(app,tool){
 		if(!pageData.custInfo.custCreateStaff || 
 			pageData.custInfo.custCreateStaff != tool.getUser().staffCode){//只能自己删除自己创建的集团
 			app.f7.alert('对不起,只能删除自己创建的集团记录.');
+		}else if(pageData.custInfo.custCode){
+			app.f7.alert('对不起,含集团编码的数据在138删除.');
 		}/*else if(user.organize.orgType < 3){//省和市公司不允许编辑和删除
 			app.f7.alert('对不起,省市级账号无权执行删除操作.');
 		}*/else{

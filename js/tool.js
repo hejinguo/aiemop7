@@ -187,7 +187,7 @@ define(['base64'],function(base64) {
 	            	onError();
 				}else if(!data.state && data.code == "SHOW_MSG"){
 					require(['app'], function(app) {
-						app.f7.alert(data.info);
+						app.f7.alert(data.info+".");
 					});
 					onError();
 				}else if(!data.state && data.code == "CHARACTER_WRONGFUL"){
