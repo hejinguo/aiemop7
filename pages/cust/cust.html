@@ -17,17 +17,22 @@
 <div class="pages navbar-through">
 	<div class="page cust-page" data-page="cust" data-page-title="建档纳管">
 		<!-- Search Bar -->
-	    <form action="." class="searchbar searchbar-init">
+	    <form action="." class="searchbar"><!--searchbar-init-->
 	        <div class="searchbar-input">
-	            <input type="search" placeholder="请输入集团编码或名称搜索">
+	            <!--<input type="search" placeholder="请输入集团编码或名称搜索">-->
+	            <a class="pretend-search-input open-panel"  data-panel="right" data-view=".view-right"
+	            	href="pages/cust/cust-search.html">
+	            	<i class="f7-icons" style="font-size:13px;margin-right:2px;">search</i>
+	            	<span>请通过集团关键信息搜索</span>
+	            </a>
 	            <a href="#" class="searchbar-clear"></a>
 	        </div>
-	        <a href="#" class="searchbar-cancel">
+	        <!--<a href="#" class="searchbar-cancel">
 	        	<a href="pages/cust/cust-search.html" class="open-panel" 
 	        		data-panel="right" data-view=".view-right" style="width:40px;padding-left:10px">
-	        		<!--<i class="f7-icons">data</i>--><span>筛选</span>
+	        		<span>筛选</span>
 	        	</a>
-	        </a>
+	        </a>-->
 	    </form>
 	    <!-- Search Bar overlay-->
 	    <div class="searchbar-overlay"></div>

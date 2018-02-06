@@ -1,7 +1,7 @@
 <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
 <div class="pages">
 	<!-- Page, "data-page" contains page name -->
-	<div class="page cust-search-page" data-page="cust-search" data-page-title="集团筛选">
+	<div class="page cust-search-page" data-page="cust-search">
 		<!-- Scrollable page content -->
 		<div class="page-content">
 			<!--
@@ -9,94 +9,110 @@
 				集团筛选功能即将上线...
 			</div>
 			-->
-			
-			<div class="content-block-title" style="margin: 14px 15px;">集团筛选</div>
-			<div class="list-block">
-				<ul>
-					<li>
-						<div class="item-content">
-							<div class="item-inner">
-								<div class="item-title label">集团编码</div>
-								<div class="item-input">
-									<input type="text" placeholder="请输入集团编码">
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="item-content">
-							<div class="item-inner">
-								<div class="item-title label">集团名称</div>
-								<div class="item-input">
-									<input type="text" placeholder="请输入集团名称">
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="item-content">
-							<div class="item-inner">
-								<div class="item-title label">集团地址</div>
-								<div class="item-input">
-									<input type="text" placeholder="请输入集团地址">
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<a href="#" class="smart-select" data-page-title="是否建档"
-							style="color:inherit;" data-open-in="picker" data-picker-close-text="关闭">
-							<select name="fruits">
-								<option value="" selected>全部</option>
-								<option value="T">已建档</option>
-								<option value="F">未建档</option>
-							</select>
+			<form>
+				<div class="content-block-title" style="margin: 14px 15px;">集团筛选</div>
+				<div class="list-block">
+					<ul>
+						<li>
 							<div class="item-content">
 								<div class="item-inner">
-									<!-- Select label -->
-									<div class="item-title">是否建档</div>
-									<!-- Selected value, not required -->
-									<div class="item-after">全部</div>
+									<div class="item-title label">集团编码</div>
+									<div class="item-input">
+										<input type="text" name="custCode" placeholder="请输入集团编码">
+									</div>
 								</div>
 							</div>
-						</a>
-					</li>
-					<li>
-						<a href="#" class="smart-select" data-page-title="是否定位"
-							style="color:inherit;" data-open-in="picker" data-picker-close-text="关闭">
-							<select name="fruits">
-								<option value="" selected>全部</option>
-								<option value="T">已定位</option>
-								<option value="F">未定位</option>
-							</select>
+						</li>
+						<li>
 							<div class="item-content">
 								<div class="item-inner">
-									<!-- Select label -->
-									<div class="item-title">是否定位</div>
-									<!-- Selected value, not required -->
-									<div class="item-after">全部</div>
+									<div class="item-title label">集团名称</div>
+									<div class="item-input">
+										<input type="text" name="custName" placeholder="请输入集团名称">
+									</div>
 								</div>
 							</div>
-						</a>
-					</li>
-					<li>
-						<div class="item-content">
-							<div class="item-inner">
-								<div class="item-title label">我的集团</div>
-								<div class="item-input">
-									<label class="label-switch">
-			              <input type="checkbox">
-			              <div class="checkbox"></div>
-			            </label>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">集团地址</div>
+									<div class="item-input">
+										<input type="text" name="custAddr" placeholder="请输入集团地址">
+									</div>
 								</div>
 							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
+						</li>
+						<li>
+							<a href="#" class="smart-select" data-page-title="是否建档"
+								style="color:inherit;" data-open-in="picker" data-picker-close-text="关闭">
+								<select name="ifArchive">
+									<option value="" selected>全部</option>
+									<option value="T">已建档集团</option>
+									<option value="F">未建档集团</option>
+								</select>
+								<div class="item-content">
+									<div class="item-inner">
+										<!-- Select label -->
+										<div class="item-title">是否建档</div>
+										<!-- Selected value, not required -->
+										<div class="item-after">全部</div>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="smart-select" data-page-title="是否定位"
+								style="color:inherit;" data-open-in="picker" data-picker-close-text="关闭">
+								<select name="ifLocation">
+									<option value="" selected>全部</option>
+									<option value="T">已定位集团</option>
+									<option value="F">未定位集团</option>
+								</select>
+								<div class="item-content">
+									<div class="item-inner">
+										<!-- Select label -->
+										<div class="item-title">是否定位</div>
+										<!-- Selected value, not required -->
+										<div class="item-after">全部</div>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">我创建的</div>
+									<div class="item-input" style="width:auto;">
+										<label class="label-switch">
+				              				<input type="checkbox" name="createNo" value="T">
+				              				<div class="checkbox"></div>
+				            			</label>
+									</div>
+									<div class="aui-text-right" style="font-size:10px;">我创建的集团</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">我管理的</div>
+									<div class="item-input" style="width:auto;">
+										<label class="label-switch">
+				              				<input type="checkbox" name="serviceNo" value="T">
+				              				<div class="checkbox"></div>
+				            			</label>
+									</div>
+									<div class="aui-text-right" style="font-size:10px;">我是客户经理</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</form>
 			
-			<a href="#" class="button button-fill bg-button-submit cust-search-button" style="margin:10px;">筛选集团</a>
-			<a href="#" class="button button-fill bg-button-reset cust-search-button" style="margin:10px;">重置条件</a>
+			<a href="javascript:void(0);" class="button button-fill bg-button-submit cust-search-button" style="margin:10px;">筛选集团</a>
+			<a href="javascript:void(0);" class="button button-fill bg-button-reset cust-reset-button" style="margin:10px;">重置条件</a>
 		</div>
 	</div>
 </div>

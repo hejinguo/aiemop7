@@ -18,11 +18,15 @@ define(['tool','base64'],function(tool,base64) {
     	//界面核心框架加载成功后渲染后台数据到页面
 		$$(document).on('page:beforeinit', function (e) {
 			var page = e.detail.page;
+			var pageTitle = $$("[data-page='"+page.name+"']")[1].dataset.pageTitle;
+//			console.log("1:pageTitle="+pageTitle);
 			if(page.name.indexOf('smart-select-radio') >= 0){
 				console.log('忽略 '+e.detail.page.name+' 页面标题更新')
-				return;
+			}else if(!pageTitle){
+				console.log('忽略 '+page.name+' 页面标题更新')
+			}else{
+				tool.setDocumentTitle(pageTitle);
 			}
-			tool.setDocumentTitle($$("[data-page='"+page.name+"']")[1].dataset.pageTitle);
 			//验证用户是否已经登录
 			var user = tool.getUser();
 			if(user.lastLoginToken){
@@ -34,11 +38,15 @@ define(['tool','base64'],function(tool,base64) {
 		});
 		$$(document).on('page:reinit', function (e) {
 			var page = e.detail.page;
+			var pageTitle = $$("[data-page='"+page.name+"']")[0].dataset.pageTitle;
+//			console.log("2:pageTitle="+pageTitle);
 			if(page.name.indexOf('smart-select-radio') >= 0){
 				console.log('忽略 '+page.name+' 页面标题更新')
-				return;
+			}else if(!pageTitle){
+				console.log('忽略 '+page.name+' 页面标题更新')
+			}else{
+				tool.setDocumentTitle(pageTitle);
 			}
-			tool.setDocumentTitle($$("[data-page='"+page.name+"']")[0].dataset.pageTitle);
 		});
     }
 

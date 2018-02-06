@@ -2,12 +2,12 @@ define(['app','tool','cust/custView'],function(app,tool,custView){
 	
 	var $$ = Dom7;
 	var loading = false;
-	var param = {custName:'',pageNum:1,pageSize:10};
-	var bindings = [{
+	var param = {};
+	var bindings = [/*{
 		element: '.cust-page .searchbar',
 		event: 'submit',
 		handler: searchCustItem
-	},{
+	},*/{
 		element: '.cust-page .pull-to-refresh-content',
 		event: 'refresh',
 		handler: refreshCustItem
@@ -17,13 +17,37 @@ define(['app','tool','cust/custView'],function(app,tool,custView){
 		handler: infiniteCustItem
 	}];
 	
-	function init(){
-		custView.render(bindings);
-		param.custName = '';
+	function init(query){
+		var qstring = "",tstring="";
+		query = query || {};
+		$$.each(query,function(k,v){
+			qstring += (v ? "&"+k+"="+v : '');
+			//tstring += (v ? ","+v : '');
+		});
+		tstring += query.custCode ? ',集团编码('+query.custCode+')' : '';
+		tstring += query.custName ? ',集团名称('+query.custName+')' : '';
+		tstring += query.custAddr ? ',集团地址('+query.custAddr+')' : '';
+		tstring += query.ifArchive ? (query.ifArchive == 'T' ? ',已建档集团' : ',未建档集团') : '';
+		tstring += query.ifLocation ? (query.ifLocation == 'T' ? ',已定位集团' : ',未定位集团') : '';
+		tstring += query.serviceNo && query.serviceNo == 'T' ? ',我创建的集团' : '';
+		tstring += query.createNo && query.createNo == 'T' ? ',我是客户经理' : '';
+		if(qstring){
+			param = query;
+			$$('.cust-page .pretend-search-input span').html(tstring.substring(1));//JSON.stringify(query)
+			$$('.cust-page .pretend-search-input').attr('href','pages/cust/cust-search.html?'+qstring.substring(1));
+		}else{
+			param = {};
+			$$('.cust-page .pretend-search-input span').html('请通过集团关键信息搜索');
+			$$('.cust-page .pretend-search-input').attr('href','pages/cust/cust-search.html');
+		}
+//		console.log(query);
 		param.pageNum = 1;
+		param.pageSize = 10;
+		custView.render(bindings);
 		_pullupRefresh(1);
 	}
 	
+	/*
 	function searchCustItem(){
 //		e.preventDefault(); // 阻止默认事件
 		var searchInputBox = $$('.cust-page .searchbar [type="search"]');
@@ -33,6 +57,12 @@ define(['app','tool','cust/custView'],function(app,tool,custView){
 		param.pageNum = 1;
 		_pullupRefresh(1);
 	}
+	*/
+	
+/*	function clickSearchItem(){
+		app.right.loadPage('pages/cust/cust-search.html?custName=测试&serviceNo=F');
+		app.f7.openPanel('right');
+	}*/
 	
 	function refreshCustItem(){
 		app.f7.showIndicator();
@@ -55,7 +85,7 @@ define(['app','tool','cust/custView'],function(app,tool,custView){
 	function _pullupRefresh(type,callback) {
 		var onCallback = arguments[1]?arguments[1]:function(){};//数据加载完毕后的回调函数
 		setTimeout(function() {
-			tool.appAjax(tool.appPath.emopPro+'cust/list',param,function(data){
+			tool.appJson(tool.appPath.emopPro+'cust/list',JSON.stringify(param),function(data){
 				loading = false;
 				if(data.state){
 					if(1 == type){

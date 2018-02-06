@@ -42,10 +42,6 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 	function init(query){
 		pageData = {custSeqid:null,custInfo:null,smartAmount:0};
 		
-		app.f7.onPageBack('cust-save',function(page){
-			app.f7.closeModal();//'.picker-info'
-		});
-		
 		require(['cust/save/saveView'], function(saveView) {
 			saveView.render({bindings:bindings});
 		});

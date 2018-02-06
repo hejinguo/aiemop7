@@ -25,10 +25,6 @@ define(['app','tool'],function(app,tool){
 	var cacheQuery = {};
 	
 	function init(query){
-		app.f7.onPageBack('shop-save',function(page){
-			app.f7.closeModal();//'.picker-info'
-		});
-		
 		cacheQuery = query;
 		loadShopSelectInfo(query);
 		require(['shop/save/saveView'], function(saveView) {
