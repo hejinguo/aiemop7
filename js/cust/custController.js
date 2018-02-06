@@ -3,11 +3,7 @@ define(['app','tool','cust/custView'],function(app,tool,custView){
 	var $$ = Dom7;
 	var loading = false;
 	var param = {};
-	var bindings = [/*{
-		element: '.cust-page .searchbar',
-		event: 'submit',
-		handler: searchCustItem
-	},*/{
+	var bindings = [{
 		element: '.cust-page .pull-to-refresh-content',
 		event: 'refresh',
 		handler: refreshCustItem
@@ -29,8 +25,8 @@ define(['app','tool','cust/custView'],function(app,tool,custView){
 		tstring += query.custAddr ? ',集团地址('+query.custAddr+')' : '';
 		tstring += query.ifArchive ? (query.ifArchive == 'T' ? ',已建档集团' : ',未建档集团') : '';
 		tstring += query.ifLocation ? (query.ifLocation == 'T' ? ',已定位集团' : ',未定位集团') : '';
-		tstring += query.serviceNo && query.serviceNo == 'T' ? ',我创建的集团' : '';
-		tstring += query.createNo && query.createNo == 'T' ? ',我是客户经理' : '';
+		tstring += query.serviceNo && query.serviceNo == 'T' ? ',我是客户经理' : '';
+		tstring += query.createNo && query.createNo == 'T' ? ',我创建的集团' : '';
 		if(qstring){
 			param = query;
 			$$('.cust-page .pretend-search-input span').html(tstring.substring(1));//JSON.stringify(query)
@@ -46,23 +42,6 @@ define(['app','tool','cust/custView'],function(app,tool,custView){
 		custView.render(bindings);
 		_pullupRefresh(1);
 	}
-	
-	/*
-	function searchCustItem(){
-//		e.preventDefault(); // 阻止默认事件
-		var searchInputBox = $$('.cust-page .searchbar [type="search"]');
-		searchInputBox.blur();
-		app.f7.showIndicator();
-		param.custName = searchInputBox.val();
-		param.pageNum = 1;
-		_pullupRefresh(1);
-	}
-	*/
-	
-/*	function clickSearchItem(){
-		app.right.loadPage('pages/cust/cust-search.html?custName=测试&serviceNo=F');
-		app.f7.openPanel('right');
-	}*/
 	
 	function refreshCustItem(){
 		app.f7.showIndicator();
