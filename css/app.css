@@ -67,6 +67,9 @@ div{
 	background:#A2BBDA;/*-webkit-linear-gradient(180deg, #BCA2D2, #06afd2);*/
 	color: #FFFFFF;
 }
+.theme-asiainfo .panel{
+	width: 75%;
+}
 /*.theme-asiainfo .navbar.navbar-hidden,.theme-asiainfo .navbar.navbar-hiding{
 	-webkit-transition-duration: .0s;
     transition-duration: .0s;
