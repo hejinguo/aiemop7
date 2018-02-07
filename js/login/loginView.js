@@ -1,4 +1,4 @@
-define(function(template) {
+define(function() {
 	var $$ = Dom7;
 
 	function render(params) {

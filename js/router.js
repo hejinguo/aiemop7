@@ -27,6 +27,9 @@ define(['tool','base64'],function(tool,base64) {
 			}else{
 				tool.setDocumentTitle(pageTitle);
 			}
+//			单独来分享类(page.query['_he_share'] ? 'T' : 'F')(T),后台封装时填充框架,参数仅仅区分是否封装,是否必须登陆访问由数据配置决定
+//			不属于分享类(page.query['_he_share'] ? 'T' : 'F')(F),后台不需要填充框架且必须登录才能访问
+//			思路二：由H5制作工具生成模板样式一致的两套页面(cust.html cust-share.html)
 			//验证用户是否已经登录
 			var user = tool.getUser();
 			if(user.lastLoginToken){

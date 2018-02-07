@@ -205,13 +205,8 @@ body.with-panel-right-reveal .panel-overlay,body.with-panel-right-cover .panel-o
 	color:#FFFFFF;font-size: 15px;
 }
 .login-page .submit-login-button{
-	width:60%;
-	margin:35px auto;
-	border-radius: 15px;
-	background: #73D658;
-	height: 38px;
-	font-size: 14px;
-	line-height: 38px;
+	width:60%;margin:35px auto;border-radius: 15px;background: #73D658;
+	height: 38px;font-size: 14px;line-height: 38px;
 }
 .login-page .list-block .item-content{
 	padding-left: 0px;padding:5px 15px;
@@ -264,6 +259,34 @@ body.with-panel-right-reveal .panel-overlay,body.with-panel-right-cover .panel-o
 }
 .home-page .home-main-notice .f7-icons{
 	font-size:14px;	margin:2px auto;
+}
+.home-page .home-person-info{
+	background:#FFFFFF;margin:40px 14px 0px 14px;border-radius:5px;box-shadow: 0 5px 10px rgba(0,0,0,.3);
+}
+.home-page .home-person-info .home-person-icon{
+	background-image:url(../images/base/home/home-person-info-bg.jpg);background-size:auto 100%;
+	text-align:center;border-top-left-radius:5px;border-top-right-radius:5px;height:60px;
+}
+.home-page .home-person-info .home-person-icon img{
+	width:60px;height:60px;border:1px solid #B2D6F8;border-radius:30px;margin-top:-30px;
+}
+.home-page .home-person-info .home-person-icon .person-name{
+	color:#FFFFFF;
+}
+.home-page .home-person-info .row{
+	border-bottom:1px solid #efeff4;
+}
+.home-page .home-person-info .row .col-50{
+	padding:15px 0px;
+}
+.home-page .home-person-info .row .f7-icons{
+	font-size:16px;margin-right:6px;
+}
+.home-page .home-person-info .home-person-signed{
+	display:block;padding:10px 0px;
+}
+.home-page .home-person-info .home-person-signed.signed{
+	color:#b1d6f8;
 }
 .home-page .home-main-entrance a{
 	color:#888;
