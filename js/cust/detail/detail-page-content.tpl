@@ -75,5 +75,5 @@
 <!--<a href="pages/cust/cust-save.html?custSeqid={{custSeqid}}" class="button button-fill bg-button-edit" style="margin:10px;">编辑商铺</a>-->
 <!--<a href="#" class="button button-fill bg-button-delete delete-cust-button" style="margin:10px;">删除商铺</a>-->
 <a href="pages/cust/cust-unit.html?custSeqid={{custSeqid}}" style="margin:10px;"
-	data-panel="right" data-view=".view-right" class="button button-fill bg-button-submit open-panel">匹配集团</a>
-<a href="pages/cust/cust-save.html?custSeqid={{custSeqid}}" class="button button-fill bg-button-edit" style="margin:10px;">完善信息</a>
+	data-panel="right" data-view=".view-right" class="button button-fill bg-button-submit open-panel">匹配存量集团</a>
+<a href="pages/cust/cust-save.html?custSeqid={{custSeqid}}" class="button button-fill bg-button-edit" style="margin:10px;">完善附加信息</a>

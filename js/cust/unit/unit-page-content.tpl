@@ -16,6 +16,8 @@
 						</div>
 					</div>-->
 					<div>集团编码：{{custCode}}</div>
+					<div>价值等级：{{custValue}}</div>
+					<div>集团行业：{{js "this.custIndustryWidth ? this.custIndustryWidth.industryName : ''"}}</div>
 					<div>
 						集团归属：
 						{{js "this.custBelongWidth && this.custBelongWidth.orgLevel == 1 ? this.custBelongWidth.lvl1OrgName: ''"}}
