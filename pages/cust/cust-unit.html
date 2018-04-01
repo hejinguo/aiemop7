@@ -1,0 +1,27 @@
+<!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+<div class="pages">
+	<!-- Page, "data-page" contains page name -->
+	<div class="page cust-unit-page" data-page="cust-unit">
+		<!-- Search Bar -->
+	    <form action="." class="searchbar searchbar-init">
+	        <div class="searchbar-input">
+	            <input type="search" placeholder="请按存量集团名称搜索完成匹配">
+	            <a href="#" class="searchbar-clear"></a>
+	        </div>
+	        <!--<a href="#" class="searchbar-cancel">Cancel</a>-->
+	    </form>
+	    <!-- Search Bar overlay-->
+	    <div class="searchbar-overlay"></div>
+		<!-- Page content -->
+		<div class="page-content pull-to-refresh-content infinite-scroll" data-ptr-distance="55" data-distance="50">
+			<!-- Default pull to refresh layer-->
+			<div class="pull-to-refresh-layer">
+				<div class="preloader"></div>
+				<div class="pull-to-refresh-arrow"></div>
+			</div>
+			<div class="page-pull-content list-block media-list">
+				<div class="aui-preloader-content"><span class="preloader"></span></div>
+			</div>
+		</div>
+	</div>
+</div>

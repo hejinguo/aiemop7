@@ -1,5 +1,6 @@
 define(['tool'],function(tool) {
 	var $$ = Dom7;
+	var tempIcon = 'images/temp/timg.jpg';
 
 	function render(params) {
 		bindEvents(params.bindings);

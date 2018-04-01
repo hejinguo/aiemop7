@@ -17,10 +17,10 @@ define(['app','text!cust/cust-page-content.tpl'], function(app,template) {
 
 	function bindEvents(bindings) {
 		for (var i in bindings) {
-//			$$(bindings[i].element).off(bindings[i].event);
-//			$$(bindings[i].element).on(bindings[i].event, bindings[i].handler);
-			$$(document).off(bindings[i].event,bindings[i].element);
-			$$(document).on(bindings[i].event,bindings[i].element,bindings[i].handler);
+			$$(bindings[i].element).off(bindings[i].event);
+			$$(bindings[i].element).on(bindings[i].event, bindings[i].handler);
+//			$$(document).off(bindings[i].event,bindings[i].element);
+//			$$(document).on(bindings[i].event,bindings[i].element,bindings[i].handler);
 		}
 	}
 	

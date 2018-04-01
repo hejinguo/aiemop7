@@ -5,10 +5,17 @@
 	<div class="row">
 		<div class="col-100">集团名称：<span>{{custName}}</span></div>
 		<div class="col-50">集团编码：<span>{{custCode}}</span></div>
-		<div class="col-50">价值等级：<span>{{js "this.custValue ? this.custValue : '不详'"}}</span></div>
-		<div class="col-50">是否建档：<span>{{js "this.ifArchive == 'T' ? '已建档' : '未建档'"}}</span></div>
-		<div class="col-50">档案编码：<span>{{custSeqid}}</span></div>
-		<div class="col-100">集团行业：<span>{{js "this.custIndustryWidth ? this.custIndustryWidth.industryName : ''"}}</span></div>
+		<div class="col-50">是否匹配：<span>{{js "this.ifMatch == 'T' ? '已匹配' : '未匹配'"}}</span></div>
+		<!--<div class="col-50">档案编码：<span>{{custSeqid}}</span></div>-->
+		<!--<div class="col-100">集团行业：<span>{{js "this.custIndustryWidth ? this.custIndustryWidth.industryName : ''"}}</span></div>-->
+		<!--<div class="col-100">成立时间：<span>{{js "this.custCreateTime ? this.custCreateTime : ''"}}</span></div>-->
+		<div class="col-100">行业类型：<span>{{js "this.inderstryF ? this.inderstryF : ''"}}</span></div>
+		<div class="col-100">行业种类：<span>{{js "this.inderstryS ? this.inderstryS : ''"}}</span></div>
+		<div class="col-100">企业类型：<span>{{js "this.custType ? this.custType : ''"}}</span></div>
+		<div class="col-100">是否个体户：<span>{{js "this.ifMen ? this.ifMen : ''"}}</span></div>
+		<div class="col-100">是否酒店宾馆旅馆：<span>{{js "this.ifHotel ? this.ifHotel : ''"}}</span></div>
+		<div class="col-100">是否国家机构：<span>{{js "this.ifOrganization ? this.ifOrganization : ''"}}</span></div>
+		<div class="col-100">是否事业单位：<span>{{js "this.ifInstitution ? this.ifInstitution : ''"}}</span></div>
 		<div class="col-100">
 			集团归属：
 			<span>
@@ -17,7 +24,7 @@
 				{{js "this.custBelongWidth && this.custBelongWidth.orgLevel >= 3 ? '- '+this.custBelongWidth.lvl3OrgName: ''"}}
 			</span>
 		</div>
-		<div class="col-100">集团地址：<span>{{js "this.ifArchive == 'T' ? '完成建档的集团地址已加密' : this.custAddr"}}</span></div>
+		<div class="col-100">集团地址：<span>{{this.custAddr}}</span></div>
 	</div>
 </div>
 <div class="content-block-title">
@@ -65,5 +72,8 @@
 	{{/js_if}}
 </div>
 
-<a href="pages/cust/cust-save.html?custSeqid={{custSeqid}}" class="button button-fill bg-button-edit" style="margin:10px;">编辑商铺</a>
-<a href="#" class="button button-fill bg-button-delete delete-cust-button" style="margin:10px;">删除商铺</a>
+<!--<a href="pages/cust/cust-save.html?custSeqid={{custSeqid}}" class="button button-fill bg-button-edit" style="margin:10px;">编辑商铺</a>-->
+<!--<a href="#" class="button button-fill bg-button-delete delete-cust-button" style="margin:10px;">删除商铺</a>-->
+<a href="pages/cust/cust-unit.html?custSeqid={{custSeqid}}" style="margin:10px;"
+	data-panel="right" data-view=".view-right" class="button button-fill bg-button-submit open-panel">匹配集团</a>
+<a href="pages/cust/cust-save.html?custSeqid={{custSeqid}}" class="button button-fill bg-button-edit" style="margin:10px;">完善信息</a>

@@ -9,15 +9,15 @@
 			<div class="item-inner">
 				<div class="item-title-row">
 					<div class="item-title">{{custName}}</div>
-					<!--<div class="item-after">$15</div>-->
+					<div class="item-after">{{js "this.distance ? (this.distance<1000? this.distance+'米':(this.distance/1000.0).toFixed(2)+'公里') : this.distance+'米'"}}</div>
 				</div>
 				<div class="item-subtitle">
-					{{js "this.ifArchive == 'T' ? '完成建档的集团地址已加密' : this.custAddr"}}
+					{{custAddr}}
 				</div>
 				<div class="item-text">
 					<div>
-						<div class="chip {{js "this.ifArchive == 'T' ? 'chip-blue' : 'chip-red'"}}">
-    						<div class="chip-label">{{js "this.ifArchive == 'T' ? '已建档' : '未建档'"}}</div>
+						<div class="chip {{js "this.ifMatch == 'T' ? 'chip-blue' : 'chip-red'"}}">
+    						<div class="chip-label">{{js "this.ifMatch == 'T' ? '已匹配' : '未匹配'"}}</div>
 						</div>
 						<div class="chip {{js "this.longitude && this.latitude ? 'chip-blue' : 'chip-red'"}}">
     						<div class="chip-label">{{js "this.longitude && this.latitude ? '已定位' : '未定位'"}}</div>
@@ -30,7 +30,9 @@
 						</div>
 					</div>
 					<div>集团编码：{{custCode}}</div>
-					<div>集团行业：{{js "this.custIndustryWidth ? this.custIndustryWidth.industryName : ''"}}</div>
+					<div>行业类型：{{js "this.inderstryF ? this.inderstryF : ''"}}</div>
+					<div>行业种类：{{js "this.inderstryS ? this.inderstryS : ''"}}</div>
+					<div>企业类型：{{js "this.custType ? this.custType : ''"}}</div>
 					<div>
 						集团归属：
 						{{js "this.custBelongWidth && this.custBelongWidth.orgLevel == 1 ? this.custBelongWidth.lvl1OrgName: ''"}}

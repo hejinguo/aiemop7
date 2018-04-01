@@ -58,7 +58,7 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 		if(query.custSeqid){
 			pageData.custSeqid = query.custSeqid;//编辑操作
 			$$('.cust-save-page form [name="custSeqid"]').val(query.custSeqid);
-			$$('.cust-save-page .cust-save-button').html('编辑集团');
+			$$('.cust-save-page .cust-save-button').html('提交信息');
 			app.f7.showIndicator();
 			setTimeout(function() {
 				loadCustDetailInfo(query);
@@ -66,9 +66,9 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 		}else{
 			$$('.cust-save-page .cust-save-button').html('添加集团');
 			app.f7.showIndicator();
-			setTimeout(function() {
-				loadSmartSelectOption();
-			},500);
+//			setTimeout(function() {
+//				loadSmartSelectOption();
+//			},500);
 //			geolocation();//默认获取当前定位信息
 		}
 		$$('.cust-save-page .cust-save-button').removeClass('disabled');
@@ -204,16 +204,16 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 	 */
 	function clickSaveCustItem(){
 		var formData = app.f7.formToData($$('.cust-save-page form'));
-		formData.ifArchive = formData.ifArchive && formData.ifArchive.length > 0 ? 'T' : 'F';
-		if(!formData['custName'] || !formData['terIndustryCode'] ||
-			!formData['lvl3OrgId'] || !formData['longitude'] || !formData['latitude'] || !formData['custAddr']){
-			app.f7.alert('您有未填写的必须信息,请填写完整.');
-			return;
-		}
-		if(formData.ifArchive == 'T' && !formData['custCode']){
-			app.f7.alert('已建档的集团必须填写集团280编码.');
-			return;
-		}
+//		formData.ifArchive = formData.ifArchive && formData.ifArchive.length > 0 ? 'T' : 'F';
+//		if(!formData['custName'] || !formData['terIndustryCode'] ||
+//			!formData['lvl3OrgId'] || !formData['longitude'] || !formData['latitude'] || !formData['custAddr']){
+//			app.f7.alert('您有未填写的必须信息,请填写完整.');
+//			return;
+//		}
+//		if(formData.ifArchive == 'T' && !formData['custCode']){
+//			app.f7.alert('已建档的集团必须填写集团280编码.');
+//			return;
+//		}
 		
 		var _this = $$('.cust-save-page form [type="file"]')[0];
 		var photo = _this.files && _this.files.length > 0 ? _this.files[0] : null;
@@ -314,7 +314,8 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 						$$('.cust-save-page form .cust-contacts-list ul').html(Template7.compile(template)(data.info.contacts));
 //					});
 				}
-				loadSmartSelectOption();
+//				loadSmartSelectOption();
+				app.f7.hideIndicator();
 			}
 		},function(){
 			app.f7.hideIndicator();
