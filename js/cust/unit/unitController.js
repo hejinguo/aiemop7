@@ -61,12 +61,13 @@ define(['app','tool','cust/unit/unitView'],function(app,tool,custView){
 		custMatch.custCode = unitInfo.custCode;
 		if(custMatch.custSeqid && custMatch.custCode){
 			app.f7.confirm("确定要与 "+unitInfo.custName+" 完成匹配?",function(){
+//				app.right.loadPage('pages/cust/cust-save.html?custSeqid='+custMatch.custSeqid);
 				tool.appJson(tool.appPath.emopPro+'unit/match',JSON.stringify(custMatch),function(data){
 					if(data.state){
 						app.router.load('cust-detail',{custSeqid:custMatch.custSeqid});
 						app.router.load('cust',{});
 						app.f7.closePanel();
-						app.f7.confirm("集团匹配成功,是否立即完善附加信息?",function(){
+						app.f7.alert("集团匹配成功,请继续完善附加信息.",function(){
 							app.view.router.loadPage('pages/cust/cust-save.html?custSeqid='+custMatch.custSeqid);
 						});
 					}
