@@ -16,6 +16,7 @@ define(['app','tool','cust/custView'],function(app,tool,custView){
 		element: '.view[data-page="cust"] .location-btn',
 		event: 'click',
 		handler: function(){
+			app.f7.showIndicator();
 			geolocation(function(){
 				refreshCustItem();
 			});
@@ -108,7 +109,7 @@ define(['app','tool','cust/custView'],function(app,tool,custView){
 	 * 获取当前定位信息
 	 */
 	function geolocation(callback){
-		app.f7.showIndicator();
+//		app.f7.showIndicator();
 		var onCallback = arguments[0]?arguments[0]:function(){};//定位完毕后的回调函数
 		require(['async!BMap'], function() {
 			new BMap.Geolocation().getCurrentPosition(function(r){
