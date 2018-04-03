@@ -20,11 +20,21 @@ define(['app','tool','cust/unit/unitView'],function(app,tool,custView){
 		element: '.cust-unit-page .list-block li',
 		event: 'click',
 		handler: clickUnitInfoItem
+	},{
+		element: '.view[data-page="cust-unit"] .cust-unit-help',
+		event: 'click',
+		handler: function(){
+			app.f7.confirm('您确定找不到能匹配到的存量集团时,点击确定我们将会立即创建为预建档!',function(){
+				app.view.loadPage('pages/cust/cust-save.html?custSeqid='+custMatch.custSeqid);
+			});
+		}
 	}];
 	
 	function init(query){
 		custMatch.custSeqid = query.custSeqid;
-		$$('.cust-unit-page .page-pull-content').css('background','url("'+tool.appPath.emopPro+'unit/waterMark")');
+		custMatch.custName = query.custName;
+		$$('.cust-unit-page-title').html(custMatch.custName);
+		$$('.cust-unit-page .page-content').css('background','url("'+tool.appPath.emopPro+'unit/waterMark")');
 		param.pageNum = 1;
 		param.pageSize = 10;
 		custView.render(bindings);
@@ -60,16 +70,13 @@ define(['app','tool','cust/unit/unitView'],function(app,tool,custView){
 		var unitInfo = $$(e.srcElement).parents('a')[0].dataset;
 		custMatch.custCode = unitInfo.custCode;
 		if(custMatch.custSeqid && custMatch.custCode){
-			app.f7.confirm("确定要与 "+unitInfo.custName+" 完成匹配?",function(){
-//				app.right.loadPage('pages/cust/cust-save.html?custSeqid='+custMatch.custSeqid);
+			app.f7.confirm("是否确定将 "+custMatch.custName+" 与 "+unitInfo.custName+" 完成匹配?<br/>注意匹配操作目前暂不支持撤销！",function(){
+				app.f7.showIndicator();
+				delete custMatch.custName;
 				tool.appJson(tool.appPath.emopPro+'unit/match',JSON.stringify(custMatch),function(data){
 					if(data.state){
-						app.router.load('cust-detail',{custSeqid:custMatch.custSeqid});
 						app.router.load('cust',{});
-						app.f7.closePanel();
-						app.f7.alert("集团匹配成功,请继续完善附加信息.",function(){
-							app.view.router.loadPage('pages/cust/cust-save.html?custSeqid='+custMatch.custSeqid);
-						});
+						app.view.loadPage('pages/cust/cust-save.html?custSeqid='+custMatch.custSeqid);
 					}
 				},function(){
 	

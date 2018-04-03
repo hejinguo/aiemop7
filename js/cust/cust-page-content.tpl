@@ -1,6 +1,7 @@
 {{#each this}}
 	<li>
-		<a href="pages/cust/cust-detail.html?custSeqid={{custSeqid}}" class="item-link item-content">
+		<!--<a href="pages/cust/cust-detail.html?custSeqid={{custSeqid}}" class="item-link item-content">-->
+		<a href="pages/cust/cust-map.html?custSeqid={{custSeqid}}" class="item-link item-content">
 			<!--<div class="item-media">
 				<div class="chip-media {{js "this.ifArchive == 'T' ? 'bg-light-blue' : 'bg-light-gray'"}}">
 					<i class="f7-icons" style="font-size: 20px">ticket</i>
@@ -15,7 +16,7 @@
 					{{custAddr}}
 				</div>
 				<div class="item-text">
-					<div>
+					<!--<div>
 						<div class="chip {{js "this.ifMatch == 'T' ? 'chip-blue' : 'chip-red'"}}">
     						<div class="chip-label">{{js "this.ifMatch == 'T' ? '已匹配' : '未匹配'"}}</div>
 						</div>
@@ -28,7 +29,8 @@
 						<div class="chip {{js "this.contacts && this.contacts.length > 0 ? 'chip-blue' : 'chip-red'"}}">
     						<div class="chip-label">{{js "this.contacts && this.contacts.length > 0 ? '有联系人' : '无联系人'"}}</div>
 						</div>
-					</div>
+					</div>-->
+					<!--<hr />-->
 					<div>集团编码：{{custCode}}</div>
 					<div>行业类型：{{js "this.inderstryF ? this.inderstryF : ''"}}</div>
 					<div>行业种类：{{js "this.inderstryS ? this.inderstryS : ''"}}</div>

@@ -7,11 +7,12 @@ define(['app','text!cust/detail/detail-page-content.tpl'], function(app,template
 		if(params.model.longitude && params.model.latitude){
 			require(['async!BMap'], function() {
 				var map = new BMap.Map($$('.cust-detail-page .cust-detail-map-card div')[0]);// 创建地图实例
+				map.addControl(new BMap.GeolocationControl());
 			    var point = new BMap.Point(params.model.longitude, params.model.latitude); // 创建点坐标
-			    map.centerAndZoom(point, 15); // 初始化地图，设置中心点坐标和地图级别
+			    map.centerAndZoom(point, 18); // 初始化地图，设置中心点坐标和地图级别
 			    var marker = new BMap.Marker(point);// 创建标注  
 				map.addOverlay(marker);// 将标注添加到地图中
-//				map.addControl(new BMap.GeolocationControl());
+				
 //				map.addEventListener("click", function(e){    
 //  				alert(e.point.lng + ", " + e.point.lat);    
 //				});

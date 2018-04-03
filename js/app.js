@@ -32,9 +32,9 @@ define(['router'], function(router) {
 	console.log("初始化APP路由结束");
 	var f7 = new Framework7({
 		modalTitle: '消息',
-		pushState:true,
 		cache:false,
 		swipeBackPage:false,
+//		pushState:true,//测试环境
 //		animateNavBackIcon: true,
 //		pushStateNoAnimation:true,
 //		smartSelectBackText:'返回',

@@ -348,6 +348,12 @@ body.with-panel-right-reveal .panel-overlay,body.with-panel-right-cover .panel-o
 	color:#FF9E9D;
 	border:1px solid #FF9E9D;
 }
+.cust-map-page .page-content .page-pull-content{
+	position:absolute;left:0px;right:0px;
+	bottom:0px;
+	top:0px;
+	/*bottom:50px;top:44px;*/
+}
 /**
  * data-page="cust-detail"
  */

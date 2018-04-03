@@ -282,10 +282,10 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 //			console.log(data);
 			if(data.state){
 				if(custInfo.custSeqid){//编辑
-					app.view.router.back({pageName:'cust-detail'});
-					app.router.load('cust-detail',{custSeqid:custInfo.custSeqid});
+					app.view.router.back({pageName:'cust',force:true});
+//					app.router.load('cust-detail',{custSeqid:custInfo.custSeqid});
 				}else{//添加
-					app.view.router.back({pageName:'cust'});
+					app.view.router.back({pageName:'cust',force:true});
 	//				app.view.router.reloadPage('pages/cust/cust-save.html?custSeqid=200000009');
 				}
 				app.router.load('cust');

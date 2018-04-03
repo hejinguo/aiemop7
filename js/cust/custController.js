@@ -33,8 +33,8 @@ define(['app','tool','cust/custView','coordtransform'],function(app,tool,custVie
 		tstring += query.custCode ? ',集团编码('+query.custCode+')' : '';
 		tstring += query.custName ? ',集团名称('+query.custName+')' : '';
 		tstring += query.custAddr ? ',集团地址('+query.custAddr+')' : '';
-		tstring += query.ifMatch ? (query.ifMatch == 'T' ? ',已匹配集团' : ',未匹配集团') : '';
 		tstring += query.radius && query.radius >0 ? ",附近"+(query.radius<1000 ? query.radius+'米' : query.radius/1000+'公里') : '';
+//		tstring += query.ifMatch ? (query.ifMatch == 'T' ? ',已匹配集团' : ',未匹配集团') : '';
 //		tstring += query.ifLocation ? (query.ifLocation == 'T' ? ',已定位集团' : ',未定位集团') : '';
 //		tstring += query.serviceNo && query.serviceNo == 'T' ? ',我是客户经理' : '';
 //		tstring += query.createNo && query.createNo == 'T' ? ',我创建的集团' : '';
@@ -111,6 +111,7 @@ define(['app','tool','cust/custView','coordtransform'],function(app,tool,custVie
 //		app.f7.showIndicator();
 		var onCallback = arguments[0]?arguments[0]:function(){};//定位完毕后的回调函数
 		require(['async!BMap'], function() {
+			$$('.cust-page-title').html('正在定位');
 			new BMap.Geolocation().getCurrentPosition(function(r){
 				if(this.getStatus() == BMAP_STATUS_SUCCESS){
 					//将百度定位的经纬度转换为用于数据库比对的WGS84定位格式数据
@@ -120,7 +121,7 @@ define(['app','tool','cust/custView','coordtransform'],function(app,tool,custVie
 					//创建地理编码实例并根据坐标得到地址描述 
 					new BMap.Geocoder().getLocation(new BMap.Point(r.point.lng, r.point.lat), function(result){
 					    if (result){
-					    	$$('.view[data-page="cust"] .center').html(result.address);
+							$$('.cust-page-title').html(result.address);
 					    	onCallback();//定位成功的回调函数
 //					    	app.f7.hideIndicator();
 					    }
