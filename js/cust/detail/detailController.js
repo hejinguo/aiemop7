@@ -1,5 +1,5 @@
 //define(['app','tool','bigdata/unitimg/unitimgView'],function(app,tool,unitimgView){
-define(['app','tool'],function(app,tool){
+define(['app','tool','coordtransform'],function(app,tool,coordtransform){
 	var $$ = Dom7;
 	var bindings = [{
 		element: '.cust-detail-page .delete-cust-button',
@@ -19,13 +19,17 @@ define(['app','tool'],function(app,tool){
 		tool.appAjax(tool.appPath.emopPro+'cust/get',{custSeqid:query.custSeqid},function(data){
 			if(data.state){
 				pageData.custInfo = data.info;
+				//将数据库中WGS84定位格式数据转换为用于百度定位的经纬度
+				var bd09 = coordtransform.wgs84tobd09(pageData.custInfo.longitude,pageData.custInfo.latitude);
+				pageData.custInfo.longitude = bd09[0];
+				pageData.custInfo.latitude = bd09[1];
 				require(['cust/detail/detailView'], function(detailView) {
-					if(data.info.images && data.info.images.length > 0){
-						$$.each(data.info.images, function (index, element) {
+					if(pageData.custInfo.images && pageData.custInfo.images.length > 0){
+						$$.each(pageData.custInfo.images, function (index, element) {
 						    element.imageName = tool.appPath.emopPro + 'cust/getShopImage?custSeqid=' + element.custSeqid+"&fileName="+element.imageName+"&k="+new Date().getTime();
 						});    
 					}
-					detailView.render({model:data.info,bindings:bindings});
+					detailView.render({model:pageData.custInfo,bindings:bindings});
 				});
 			}
 		});

@@ -1,4 +1,4 @@
-define(['app','tool','cust/custView'],function(app,tool,custView){
+define(['app','tool','cust/custView','coordtransform'],function(app,tool,custView,coordtransform){
 	
 	var $$ = Dom7;
 	var loading = false;
@@ -47,7 +47,6 @@ define(['app','tool','cust/custView'],function(app,tool,custView){
 			$$('.cust-page .pretend-search-input span').html('请通过集团关键信息搜索');
 			$$('.cust-page .pretend-search-input').attr('href','pages/cust/cust-search.html');
 		}
-//		console.log(query);
 		param.pageNum = 1;
 		param.pageSize = 10;
 		custView.render(bindings);
@@ -114,15 +113,15 @@ define(['app','tool','cust/custView'],function(app,tool,custView){
 		require(['async!BMap'], function() {
 			new BMap.Geolocation().getCurrentPosition(function(r){
 				if(this.getStatus() == BMAP_STATUS_SUCCESS){
-//					console.log(r);
-					location.longitude = r.point.lng;
-					location.latitude = r.point.lat;
-//					创建地理编码实例并根据坐标得到地址描述 
+					//将百度定位的经纬度转换为用于数据库比对的WGS84定位格式数据
+					var wgs84 = coordtransform.bd09towgs84(r.point.lng, r.point.lat);
+					location.longitude = wgs84[0];
+					location.latitude = wgs84[1];
+					//创建地理编码实例并根据坐标得到地址描述 
 					new BMap.Geocoder().getLocation(new BMap.Point(r.point.lng, r.point.lat), function(result){
 					    if (result){
-//					    	console.log(result);
-							onCallback();
 					    	$$('.view[data-page="cust"] .center').html(result.address);
+					    	onCallback();//定位成功的回调函数
 //					    	app.f7.hideIndicator();
 					    }
 					});

@@ -9,7 +9,7 @@
 			<div class="item-inner">
 				<div class="item-title-row">
 					<div class="item-title">{{custName}}</div>
-					<div class="item-after">{{js "this.distance ? (this.distance<1000? this.distance+'米':(this.distance/1000.0).toFixed(2)+'公里') : this.distance+'米'"}}</div>
+					<div class="item-after">{{js "this.distance ? (this.distance<1000? this.distance.toFixed(2)+'米':(this.distance/1000.0).toFixed(2)+'公里') : this.distance+'米'"}}</div>
 				</div>
 				<div class="item-subtitle">
 					{{custAddr}}

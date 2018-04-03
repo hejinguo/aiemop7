@@ -4,6 +4,7 @@ require.config({
 		text: '../lib/requirejs-plugins/text',
 		async: '../lib/requirejs-plugins/async',
 		echarts: '../lib/echarts/echarts.common.min',
+		coordtransform: '../lib/coordtransform',
 //		BMap: 'https://api.map.baidu.com/api?v=3.0&ak=sBRRXwEWp4MoUmugUZ5tBfVe1hrQyyZg'
 		BMap: 'https://api.map.baidu.com/api?v=2.0&ak=sBRRXwEWp4MoUmugUZ5tBfVe1hrQyyZg'
 	},
