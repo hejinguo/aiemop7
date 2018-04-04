@@ -31,12 +31,12 @@
 						</div>
 					</div>-->
 					<!--<hr />-->
-					<div>集团编码：{{custCode}}</div>
+					<div>企业编码：{{custCode}}</div>
 					<div>行业类型：{{js "this.inderstryF ? this.inderstryF : ''"}}</div>
 					<div>行业种类：{{js "this.inderstryS ? this.inderstryS : ''"}}</div>
 					<div>企业类型：{{js "this.custType ? this.custType : ''"}}</div>
 					<div>
-						集团归属：
+						企业归属：
 						{{js "this.custBelongWidth && this.custBelongWidth.orgLevel == 1 ? this.custBelongWidth.lvl1OrgName: ''"}}
 						{{js "this.custBelongWidth && this.custBelongWidth.orgLevel >= 2 ? this.custBelongWidth.lvl2OrgName: ''"}}
 						{{js "this.custBelongWidth && this.custBelongWidth.orgLevel >= 3 ? '- '+this.custBelongWidth.lvl3OrgName: ''"}}

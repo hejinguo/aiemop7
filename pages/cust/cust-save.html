@@ -3,7 +3,7 @@
 	<div class="navbar-inner">
 		<div class="left"><a href="#" class="back link"> <i class="icon icon-back color-white"></i><span>返回</span></a></div>
 		<!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
-		<div class="center sliding">集团维护</div>
+		<div class="center sliding cust-save-page-title">集团维护</div>
 		<div class="right">
 			
 		</div>
@@ -20,9 +20,10 @@
 				<div class="aui-hidden">
 					<input type="text" name="custSeqid" />
 				</div>
-				<!--<div class="content-block-title">集团基本信息</div>
+				<div class="content-block-title">经纬度信息</div>
 				<div class="list-block">
 					<ul>
+						<!--
 						<li>
 							<div class="item-content">
 								<div class="item-inner">
@@ -106,33 +107,6 @@
 						<li>
 							<div class="item-content">
 								<div class="item-inner">
-									<div class="item-title label" style="display:-webkit-flex;display: flex;">
-										<div>经&nbsp;纬&nbsp;度&nbsp;<span class="color-red">*</span></div>
-									</div>
-									<div class="item-input" style="display:-webkit-flex;display: flex;">
-										<input type="text" name="longitude" readonly="readonly" placeholder="经度" style="padding:0px 5px;">
-										<input type="text" name="latitude" readonly="readonly" placeholder="纬度" style="padding:0px 5px;">
-										<p class="buttons-row" style="margin-top:0px;margin-bottom:0px;">
-											<a href="#" class="button button-fill color-orange geolocation-button" style="line-height:19px;min-width:40px;height:auto;border:0px;">定位</a>
-											<a href="#" class="button button-fill color-green selectgeoloc-button" style="line-height:19px;min-width:40px;height:auto;border:0px;">选择</a>
-										</p>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="item-content">
-								<div class="item-inner">
-									<div class="item-title label">集团地址<span class="color-red">*</span></div>
-									<div class="item-input">
-										<input type="text" name="custAddr" placeholder="请填写集团地址">
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="item-content">
-								<div class="item-inner">
 									<div class="item-title label">是否建档</div>
 									<div class="item-input">
 										<label class="label-switch">
@@ -143,8 +117,36 @@
 								</div>
 							</div>
 						</li>
+						-->
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label" style="display:-webkit-flex;display: flex;">
+										<div>经&nbsp;纬&nbsp;度&nbsp;<span class="color-red">*</span></div>
+									</div>
+									<div class="item-input" style="display:-webkit-flex;display: flex;">
+										<input type="text" name="longitude" readonly="readonly" placeholder="经度" style="padding:0px 5px;">
+										<input type="text" name="latitude" readonly="readonly" placeholder="纬度" style="padding:0px 5px;">
+										<p class="buttons-row" style="margin-top:0px;margin-bottom:0px;">
+											<a href="#" class="button button-fill color-orange geolocation-button" style="line-height:19px;min-width:40px;height:auto;border:0px;">定位</a>
+											<!--<a href="#" class="button button-fill color-green selectgeoloc-button" style="line-height:19px;min-width:40px;height:auto;border:0px;">选择</a>-->
+										</p>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">企业地址<span class="color-red">*</span></div>
+									<div class="item-input">
+										<input type="text" name="custAddr" placeholder="请填写企业地址">
+									</div>
+								</div>
+							</div>
+						</li>
 					</ul>
-				</div>-->
+				</div>
 				<div style="display:flex;">
 					<div class="content-block-title" style="flex-grow:1">
 						联系人信息

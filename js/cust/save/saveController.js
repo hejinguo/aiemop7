@@ -58,6 +58,7 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 		if(query.custSeqid){
 			pageData.custSeqid = query.custSeqid;//编辑操作
 			$$('.cust-save-page form [name="custSeqid"]').val(query.custSeqid);
+			$$('.cust-save-page-title').html('完善信息');
 			$$('.cust-save-page .cust-save-button').html('提交信息');
 			app.f7.showIndicator();
 			setTimeout(function() {
@@ -194,7 +195,7 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 				}else {
 					privateGeolocationError(this.getStatus());
 					app.f7.hideIndicator();
-				}        
+				}
 			});//,{timeout:10000,maximumAge:10000,enableHighAccuracy:true}
 		});
 	}
@@ -214,7 +215,10 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 //			app.f7.alert('已建档的集团必须填写集团280编码.');
 //			return;
 //		}
-		
+		if(!formData['longitude'] || !formData['latitude'] || !formData['custAddr']){
+			app.f7.alert('您有未填写的必须信息,请填写完整.');
+			return;
+		}
 		var _this = $$('.cust-save-page form [type="file"]')[0];
 		var photo = _this.files && _this.files.length > 0 ? _this.files[0] : null;
 		if(photo && /image\/\w+/.test(photo.type)){//编辑或添加时提交照片数据
@@ -269,6 +273,7 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 		for(var i = 0;i < contactNameArrays.length ; i++){
 			custInfo.contacts.push({contactName:contactNameArrays[i].value,contactPhone:contactPhoneArrays[i].value});
 		}
+		/*
 		custInfo.custIndustryWidth = {priIndustryCode:custInfo.priIndustryCode,subIndustryCode:custInfo.subIndustryCode,terIndustryCode:custInfo.terIndustryCode};
 		delete custInfo.priIndustryCode;
 		delete custInfo.subIndustryCode;
@@ -276,7 +281,9 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 		custInfo.custBelongWidth = {lvl2OrgId:custInfo.lvl2OrgId,lvl3OrgId:custInfo.lvl3OrgId};
 		delete custInfo.lvl2OrgId;
 		delete custInfo.lvl3OrgId;
+		*/
 //		console.log(custInfo);
+//		app.f7.hideIndicator();
 //		return false;
 		tool.appJson(tool.appPath.emopPro+'cust/merge',JSON.stringify(custInfo),function(data){
 //			console.log(data);

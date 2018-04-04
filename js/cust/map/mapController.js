@@ -31,14 +31,14 @@ define(['app','tool','cust/map/mapView','coordtransform'],function(app,tool,mapV
 	function clickFloatingButton(){
 		var buttons = [
 	        {
-	            text: '我已找到集团立即完成匹配',
+	            text: '我已找到企业立即完成匹配',
 //	            bold: true,
 	            onClick: function () {
 	            	app.view.loadPage("pages/cust/cust-unit.html?custSeqid="+custInfo.custSeqid+"&custName="+custInfo.custName);
 	            }
 	        },
 	        {
-	            text: '我未找到集团立即删除记录',
+	            text: '我未找到企业立即删除记录',
 	            color: 'red',
 	            onClick: function () {
 	                app.f7.confirm('请确认在地图标识附近您不能找到时,才应该继续完成此次删除操作!<br/>注意删除操作目前暂不支持撤销！',function(){

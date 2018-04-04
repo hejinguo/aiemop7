@@ -31,10 +31,12 @@ define(['router'], function(router) {
 	router.init();
 	console.log("初始化APP路由结束");
 	var f7 = new Framework7({
-		modalTitle: '消息',
 		cache:false,
 		swipeBackPage:false,
-//		pushState:true,//测试环境
+		modalTitle: '消息',
+		modalButtonOk: '确定',
+		modalButtonCancel: '取消',
+//		pushState:true,
 //		animateNavBackIcon: true,
 //		pushStateNoAnimation:true,
 //		smartSelectBackText:'返回',

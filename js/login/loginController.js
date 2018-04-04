@@ -153,7 +153,9 @@ define(['app','tool','login/loginView'],function(app,tool,LoginView) {
 	 * 通用异常提醒逻辑
 	 */
 	function privateErrorAlert(dcode){
-		if("LOCK_ERROR" == dcode){
+		if("WAIT_MARK" == dcode){
+			app.f7.alert("勿高频次获取验证码,请间隔60秒重试.");
+		}else if("LOCK_ERROR" == dcode){
 		    app.f7.alert("用户被锁定,请稍后再试或联系管理员解锁.");
 		}else if("USERCODE_ERROR" == dcode){
 			app.f7.alert("登陆工号错误,请提供准确的登陆工号.");
