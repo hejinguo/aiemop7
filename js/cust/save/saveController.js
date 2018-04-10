@@ -215,10 +215,6 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 //			app.f7.alert('已建档的集团必须填写集团280编码.');
 //			return;
 //		}
-		if(!formData['longitude'] || !formData['latitude'] || !formData['custAddr']){
-			app.f7.alert('您有未填写的必须信息,请填写完整.');
-			return;
-		}
 		var _this = $$('.cust-save-page form [type="file"]')[0];
 		var photo = _this.files && _this.files.length > 0 ? _this.files[0] : null;
 		if(photo && /image\/\w+/.test(photo.type)){//编辑或添加时提交照片数据
@@ -264,14 +260,21 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 	 * @param {Object} custInfo
 	 */
 	function execSaveCustInfo(custInfo){
-		app.f7.showIndicator();
 		custInfo.contacts = [];
 		delete custInfo.contactName;
 		delete custInfo.contactPhone;
 		var contactNameArrays = $$('.cust-save-page form [name="contactName"]');
 		var contactPhoneArrays = $$('.cust-save-page form [name="contactPhone"]');
 		for(var i = 0;i < contactNameArrays.length ; i++){
-			custInfo.contacts.push({contactName:contactNameArrays[i].value,contactPhone:contactPhoneArrays[i].value});
+			if(contactNameArrays[i].value && contactPhoneArrays[i].value){
+				custInfo.contacts.push({contactName:contactNameArrays[i].value,contactPhone:contactPhoneArrays[i].value});
+			}
+		}
+		if(!custInfo.longitude || !custInfo.latitude || !custInfo.custAddr
+				|| !(custInfo.images && custInfo.images.length > 0)
+				|| !(custInfo.contacts && custInfo.contacts.length > 0)){
+			app.f7.alert('您有未填写的必须信息,请填写完整.');
+			return;
 		}
 		/*
 		custInfo.custIndustryWidth = {priIndustryCode:custInfo.priIndustryCode,subIndustryCode:custInfo.subIndustryCode,terIndustryCode:custInfo.terIndustryCode};
@@ -285,6 +288,7 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 //		console.log(custInfo);
 //		app.f7.hideIndicator();
 //		return false;
+		app.f7.showIndicator();
 		tool.appJson(tool.appPath.emopPro+'cust/merge',JSON.stringify(custInfo),function(data){
 //			console.log(data);
 			if(data.state){
