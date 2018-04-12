@@ -27,6 +27,19 @@
 		<div class="col-100">企业地址：<span>{{this.custAddr}}</span></div>
 	</div>
 </div>
+{{#js_if "this.unitInfo && this.unitInfo.custCode"}}
+	<div class="content-block-title">
+		匹配集团信息
+	</div>
+	<div class="content-block-card">
+		<div class="row">
+			<div class="col-100">集团名称：<span>{{unitInfo.custName}}</span></div>
+			<div class="col-100">集团编码：<span>{{unitInfo.custCode}}</span></div>
+			<div class="col-100">价值等级：<span>{{unitInfo.custValue}}</span></div>
+			<div class="col-100">客户经理：<span>{{unitInfo.serviceNo}}</span></div>
+		</div>
+	</div>
+{{/js_if}}
 <div class="content-block-title">
 	联系人信息
 </div>
