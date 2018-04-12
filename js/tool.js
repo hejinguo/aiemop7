@@ -170,7 +170,7 @@ define(['base64'],function(base64) {
 			data:param,
 			method:'POST',
 	        dataType:'json',
-	        timeout:15000,//超时时间设置为15秒
+	        timeout:30000,//超时时间设置为30秒
 	        contentType: contentType,
 	        crossDomain:true,
 	        headers:{'X-Requested-With':'XMLHttpRequest','AI-Requested-Way':'H5','AI-Login-Token':workToken},
@@ -187,7 +187,7 @@ define(['base64'],function(base64) {
 					onError();
 				}else if(!data.state && data.code == "CHARACTER_WRONGFUL"){
 					require(['app'], function(app) {
-						app.f7.alert('您提交的数据中含有非法字符,请调整后继续.');
+						app.f7.alert('您提交的数据中含有非法字符(\'<>),请调整后继续.');
 					});
 					onError();
 				}else if(!data.state && data.code == "NOT_LOGINED"){

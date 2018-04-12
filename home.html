@@ -117,34 +117,30 @@
 								</div>
 							</div>
 							
-							<div class="home-main-entrance row" style="margin:14px;">
-								<a href="pages/cust/cust.html" class="col-50 aui-text-center"
-									style="background:#FFFFFF;margin:0px 7px 0px 0px;border-radius:5px;padding:10px 0px;box-shadow: 0 5px 10px rgba(0,0,0,.3);">
-										<div style="width:45px;height:45px;background:#B2D6F8;border-radius:25px;margin:0px auto;">
-											<i class="f7-icons" style="font-size:17px;color:#FFF;margin:13px 12px;">book_fill</i>
-										</div>
-										<div style="padding-top:8px;">建档纳管</div>
+							<div class="home-main-entrance row">
+								<a href="pages/cust/cust.html" class="col-50 aui-text-center aui-hidden" data-module-mark="cust-module">
+									<div style="background:#B2D6F8;">
+										<i class="f7-icons">book_fill</i>
+									</div>
+									<div style="padding-top:8px;">建档纳管</div>
 								</a>
-								<a href="pages/shop/shop.html" class="col-50 aui-text-center"
-									style="background:#FFFFFF;margin:0px 0px 0px 7px;border-radius:5px;padding:10px 0px;box-shadow: 0 5px 10px rgba(0,0,0,.3);">
-										<div style="width:45px;height:45px;background:#C3E345;border-radius:25px;margin:0px auto;">
-											<i class="f7-icons" style="font-size:17px;color:#FFF;margin:13px 12px;">tabs_fill</i>
-										</div>
-										<div style="padding-top:8px;">商铺管理</div>
+								<a href="pages/shop/shop.html" class="col-50 aui-text-center">
+									<div style="background:#C3E345;">
+										<i class="f7-icons">tabs_fill</i>
+									</div>
+									<div style="padding-top:8px;">商铺管理</div>
 								</a>
-								<a href="pages/bigdata/bigdata.html" class="col-50 aui-text-center"
-									style="background:#FFFFFF;margin:14px 7px 0px 0px;;border-radius:5px;padding:10px 0px;box-shadow: 0 5px 10px rgba(0,0,0,.3);">
-										<div style="width:45px;height:45px;background:#FFA09D;border-radius:25px;margin:0px auto;">
-											<i class="f7-icons" style="font-size:17px;color:#FFF;margin:13px 12px;">data_fill</i>
-										</div>
-										<div style="padding-top:8px;">大数据报告</div>
+								<a href="pages/bigdata/bigdata.html" class="col-50 aui-text-center">
+									<div style="background:#FFA09D;">
+										<i class="f7-icons">data_fill</i>
+									</div>
+									<div style="padding-top:8px;">大数据报告</div>
 								</a>
-								<a href="javascript:void(0);" class="col-50 aui-text-center no-complete"
-									style="background:#FFFFFF;margin:14px 0px 0px 7px;border-radius:5px;padding:10px 0px;box-shadow: 0 5px 10px rgba(0,0,0,.3);">
-										<div style="width:45px;height:45px;background:#A1BEBC;border-radius:25px;margin:0px auto;">
-											<i class="f7-icons" style="font-size:17px;color:#FFF;margin:13px 12px;">world</i>
-										</div>
-										<div style="padding-top:8px;">我的集团</div>
+								<a href="javascript:void(0);" class="col-50 aui-text-center no-complete">
+									<div style="background:#A1BEBC;">
+										<i class="f7-icons">world</i>
+									</div>
+									<div style="padding-top:8px;">我的集团</div>
 								</a>
 							</div>
 						</div>
@@ -277,5 +273,16 @@
 		<script type="text/javascript" src="lib/aes-min.js" ></script>
 		<!-- Path to require Library JS-->
 		<script type="text/javascript" src="lib/require.js" data-main="js/app"></script>
+		<script type="text/javascript">
+			//避免物理返回
+			if (window.history && window.history.pushState) {
+				window.onpopstate = function(){
+					window.history.pushState('forward', null, '#');
+			　　		window.history.forward(1);
+				};
+			}
+			window.history.pushState('forward', null, '#');
+		　　	window.history.forward(1);
+		</script> 
 	</body>
 </html>

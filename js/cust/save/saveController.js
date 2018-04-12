@@ -41,11 +41,9 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 	
 	function init(query){
 		pageData = {custSeqid:null,custInfo:null,smartAmount:0};
-		
 		require(['cust/save/saveView'], function(saveView) {
 			saveView.render({bindings:bindings});
 		});
-		
 		initCustPageInfo(query);
 	}
 	
@@ -57,8 +55,17 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 		clickAddCustContact();//新增一个联系人信息
 		if(query.custSeqid){
 			pageData.custSeqid = query.custSeqid;//编辑操作
-			$$('.cust-save-page form [name="custSeqid"]').val(query.custSeqid);
-			$$('.cust-save-page-title').html('完善信息');
+			switch (query.ifMatch){
+				case 'T':
+					$$('.cust-save-page-title').html('匹配集团的完善信息');
+					break;
+				case 'Y':
+					$$('.cust-save-page-title').html('预建档集团完善信息');
+					break;
+				default:
+					$$('.cust-save-page-title').html('完善信息');
+					break;
+			}
 			$$('.cust-save-page .cust-save-button').html('提交信息');
 			app.f7.showIndicator();
 			setTimeout(function() {
@@ -260,6 +267,8 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 	 * @param {Object} custInfo
 	 */
 	function execSaveCustInfo(custInfo){
+		custInfo.unitInfo = {custCode:custInfo.unitCode}
+		delete custInfo.unitCode;
 		custInfo.contacts = [];
 		delete custInfo.contactName;
 		delete custInfo.contactPhone;
@@ -270,6 +279,7 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 				custInfo.contacts.push({contactName:contactNameArrays[i].value,contactPhone:contactPhoneArrays[i].value});
 			}
 		}
+		console.log(custInfo);
 		if(!custInfo.longitude || !custInfo.latitude || !custInfo.custAddr
 				|| !(custInfo.images && custInfo.images.length > 0)
 				|| !(custInfo.contacts && custInfo.contacts.length > 0)){
@@ -313,6 +323,8 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 	function loadCustDetailInfo(query){
 		tool.appAjax(tool.appPath.emopPro+'cust/get',{custSeqid:query.custSeqid},function(data){
 			if(data.state){
+				data.info.ifMatch = query.ifMatch ? query.ifMatch : data.info.ifMatch;
+				data.info.unitCode = query.unitCode ? query.unitCode : '';
 				pageData.custInfo = data.info;
 				app.f7.formFromData($$('.cust-save-page form'),data.info);
 				if(data.info.images && data.info.images.length > 0){

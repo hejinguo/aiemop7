@@ -27,7 +27,7 @@ define(['app','tool','cust/search/searchView'],function(app,tool,searchView){
 	
 	function resetCustItem(){
 		app.f7.showIndicator();
-		var formData = {custCode:'',custName:'',custAddr:'',radius:'1000'};//,ifMatch:'',ifLocation:'',createNo:'',serviceNo:''
+		var formData = {custCode:'',custName:'',custAddr:'',ifMatch:'F',radius:'1000'};//,ifLocation:'',createNo:'',serviceNo:''
 		app.f7.formFromData($$('.cust-search-page form'), formData);
 		app.router.load('cust',formData);
 		app.f7.closePanel();

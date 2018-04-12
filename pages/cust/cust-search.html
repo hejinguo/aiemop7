@@ -4,11 +4,6 @@
 	<div class="page cust-search-page" data-page="cust-search">
 		<!-- Scrollable page content -->
 		<div class="page-content">
-			<!--
-			<div class="aui-text-center" style="padding:15px 5px;">
-				集团筛选功能即将上线...
-			</div>
-			-->
 			<form>
 				<div class="content-block-title" style="margin: 14px 15px;">集团筛选</div>
 				<div class="list-block">
@@ -44,6 +39,24 @@
 							</div>
 						</li>
 						<li>
+							<a href="#" class="smart-select" data-page-title="是否匹配"
+								style="color:inherit;" data-open-in="picker" data-picker-close-text="关闭">
+								<select name="ifMatch">
+									<!--<option value="" selected>全部</option>-->
+									<option value="T">已匹配集团</option>
+									<option value="F">未处理集团</option>
+									<option value="Y">预建档集团</option>
+									<option value="N">已删除集团</option>
+								</select>
+								<div class="item-content">
+									<div class="item-inner">
+										<div class="item-title">是否匹配</div>
+										<div class="item-after">未处理集团</div>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
 							<a href="#" class="smart-select" data-page-title="离我最近"
 								style="color:inherit;" data-open-in="picker" data-picker-close-text="关闭">
 								<select name="radius">
@@ -65,22 +78,6 @@
 							</a>
 						</li>
 						<!--<li>
-							<a href="#" class="smart-select" data-page-title="是否匹配"
-								style="color:inherit;" data-open-in="picker" data-picker-close-text="关闭">
-								<select name="ifMatch">
-									<option value="" selected>全部</option>
-									<option value="T">已匹配集团</option>
-									<option value="F">未匹配集团</option>
-								</select>
-								<div class="item-content">
-									<div class="item-inner">
-										<div class="item-title">是否匹配</div>
-										<div class="item-after">全部</div>
-									</div>
-								</div>
-							</a>
-						</li>
-						<li>
 							<a href="#" class="smart-select" data-page-title="是否定位"
 								style="color:inherit;" data-open-in="picker" data-picker-close-text="关闭">
 								<select name="ifLocation">

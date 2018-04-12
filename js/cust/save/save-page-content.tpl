@@ -8,7 +8,7 @@
 				<div class="item-input">
 					<input type="text" name="contactPhone" placeholder="电话" value="{{contactPhone}}">
 				</div>
-				<div style="width:100px;">
+				<div style="width:100px;" class="aui-hidden">
 					<a class="button button-fill bg-button-delete" 
 						style="line-height:19px;height:auto;" 
 						onclick="javascript:Dom7(this).parent().parent().parent().parent().remove();">

@@ -1,7 +1,9 @@
 {{#each this}}
 	<li>
 		<!--<a href="pages/cust/cust-detail.html?custSeqid={{custSeqid}}" class="item-link item-content">-->
-		<a href="pages/cust/cust-map.html?custSeqid={{custSeqid}}" class="item-link item-content">
+		<!--<a href="pages/cust/cust-map.html?custSeqid={{custSeqid}}" class="item-link item-content">-->
+		<a class="item-link item-content" data-cust-seqid="{{custSeqid}}" data-if-match="{{ifMatch}}"
+			data-cust-code="{{custCode}}" data-cust-name="{{custName}}">
 			<!--<div class="item-media">
 				<div class="chip-media {{js "this.ifArchive == 'T' ? 'bg-light-blue' : 'bg-light-gray'"}}">
 					<i class="f7-icons" style="font-size: 20px">ticket</i>
@@ -41,6 +43,12 @@
 						{{js "this.custBelongWidth && this.custBelongWidth.orgLevel >= 2 ? this.custBelongWidth.lvl2OrgName: ''"}}
 						{{js "this.custBelongWidth && this.custBelongWidth.orgLevel >= 3 ? '- '+this.custBelongWidth.lvl3OrgName: ''"}}
 					</div>
+					<!--<div class="row">
+						<div class="col-50">是否个体户：<span>{{js "this.ifMen ? this.ifMen : ''"}}</span></div>
+						<div class="col-50">是否酒店宾馆旅馆：<span>{{js "this.ifHotel ? this.ifHotel : ''"}}</span></div>
+						<div class="col-50">是否国家机构：<span>{{js "this.ifOrganization ? this.ifOrganization : ''"}}</span></div>
+						<div class="col-50">是否事业单位：<span>{{js "this.ifInstitution ? this.ifInstitution : ''"}}</span></div>
+					</div>-->
 				</div>
 			</div>
 		</a>

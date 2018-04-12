@@ -17,6 +17,9 @@ define(['tool'],function(tool) {
 			$$('.home-page .home-person-info .home-person-signed').addClass('disabled');
 			$$('.home-page .home-person-info .home-person-signed').html('今日已签到');
 		}
+		$$.each(model.modules, function (index, module) {
+		    $$("[data-module-mark='"+module.moduleMark+"']").removeClass("aui-hidden");
+		});  
 	}
 	
 	function bindEvents(bindings) {

@@ -291,8 +291,18 @@ body.with-panel-right-reveal .panel-overlay,body.with-panel-right-cover .panel-o
 .home-page .home-person-info .home-person-signed.signed{
 	color:#b1d6f8;
 }
+.home-page .home-main-entrance{
+	margin:7px 14px;
+}
 .home-page .home-main-entrance a{
-	color:#888;
+	border-radius:5px;padding:10px 0px;box-shadow: 0 5px 10px rgba(0,0,0,.3);
+	color:#888;background:#FFFFFF;margin:7px 0px;
+}
+.home-page .home-main-entrance a div:first-child{
+	width:45px;height:45px;border-radius:25px;margin:0px auto;
+}
+.home-page .home-main-entrance a div:first-child i{
+	font-size:17px;color:#FFF;margin:13px 12px;
 }
 
 

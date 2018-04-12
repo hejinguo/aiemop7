@@ -13,6 +13,10 @@ define(['app','tool','cust/custView','coordtransform'],function(app,tool,custVie
 		event: 'infinite',
 		handler: infiniteCustItem
 	},{
+		element: '.cust-page .list-block li',
+		event: 'click',
+		handler: clickCustInfoItem
+	},{
 		element: '.view[data-page="cust"] .location-btn',
 		event: 'click',
 		handler: function(){
@@ -27,6 +31,7 @@ define(['app','tool','cust/custView','coordtransform'],function(app,tool,custVie
 		var qstring = "",tstring="";
 		query = query || {};
 		query.radius = query.radius ? query.radius : (param.radius ? param.radius : '1000');
+		query.ifMatch = query.ifMatch ? query.ifMatch : (param.ifMatch ? param.ifMatch : 'F');
 		$$.each(query,function(k,v){
 			qstring += (v ? "&"+k+"="+v : '');
 		});
@@ -34,7 +39,22 @@ define(['app','tool','cust/custView','coordtransform'],function(app,tool,custVie
 		tstring += query.custName ? ',集团名称('+query.custName+')' : '';
 		tstring += query.custAddr ? ',集团地址('+query.custAddr+')' : '';
 		tstring += query.radius && query.radius >0 ? ",附近"+(query.radius<1000 ? query.radius+'米' : query.radius/1000+'公里') : '';
-//		tstring += query.ifMatch ? (query.ifMatch == 'T' ? ',已匹配集团' : ',未匹配集团') : '';
+		switch (query.ifMatch){
+			case "T":
+				tstring += ",已匹配集团";
+				break;
+			case "F":
+				tstring += ",未处理集团";
+				break;
+			case "Y":
+				tstring += ",预建档集团";
+				break;
+			case "N":
+				tstring += ",已删除集团";
+				break;
+			default:
+				break;
+		}
 //		tstring += query.ifLocation ? (query.ifLocation == 'T' ? ',已定位集团' : ',未定位集团') : '';
 //		tstring += query.serviceNo && query.serviceNo == 'T' ? ',我是客户经理' : '';
 //		tstring += query.createNo && query.createNo == 'T' ? ',我创建的集团' : '';
@@ -49,7 +69,7 @@ define(['app','tool','cust/custView','coordtransform'],function(app,tool,custVie
 		}
 		param.pageNum = 1;
 		param.pageSize = 10;
-		custView.render(bindings);
+//		custView.render(bindings);
 		geolocation(function(){
 			_pullupRefresh(1);
 		});
@@ -87,6 +107,7 @@ define(['app','tool','cust/custView','coordtransform'],function(app,tool,custVie
 					}else{
 						custView.append(data.info.list);
 					}
+					custView.render(bindings);
 //					app.toast('暂不支持!', 'warning').show(true);
 					app.toast.show('共'+data.info.total+'条记录,已加载'+(data.info.hasNextPage ? param.pageNum*param.pageSize+'条' : '完毕'));
 					if(data.info.hasNextPage){
@@ -102,6 +123,20 @@ define(['app','tool','cust/custView','coordtransform'],function(app,tool,custVie
 				app.f7.hideIndicator();
 			});
 		}, 500);
+	}
+	
+	function clickCustInfoItem(e){
+		var custInfo = $$(e.srcElement).parents('a')[0].dataset;
+		if(custInfo.custSeqid && custInfo.ifMatch){
+			switch (custInfo.ifMatch){
+				case "F"://未处理的集团
+					app.view.loadPage('pages/cust/cust-map.html?custSeqid='+custInfo.custSeqid);
+					break;
+				default:
+					app.view.loadPage('pages/cust/cust-detail.html?custSeqid='+custInfo.custSeqid);
+					break;
+			}
+		}
 	}
 	
 	/**

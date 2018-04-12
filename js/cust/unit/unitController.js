@@ -1,4 +1,4 @@
-define(['app','tool','cust/unit/unitView'],function(app,tool,custView){
+define(['app','tool','cust/unit/unitView'],function(app,tool,unitView){
 	
 	var $$ = Dom7;
 	var loading = false;
@@ -24,8 +24,8 @@ define(['app','tool','cust/unit/unitView'],function(app,tool,custView){
 		element: '.view[data-page="cust-unit"] .cust-unit-help',
 		event: 'click',
 		handler: function(){
-			app.f7.confirm('您确定找不到能匹配到的存量集团时,点击确定我们将会立即创建为预建档!',function(){
-				app.view.loadPage('pages/cust/cust-save.html?custSeqid='+custMatch.custSeqid);
+			app.f7.confirm('您确定找不到能匹配的存量集团时,点击确定我们将会立即创建为预建档!',function(){
+				app.view.loadPage('pages/cust/cust-save.html?custSeqid='+custMatch.custSeqid+"&ifMatch=Y");
 			});
 		}
 	}];
@@ -37,7 +37,7 @@ define(['app','tool','cust/unit/unitView'],function(app,tool,custView){
 		$$('.cust-unit-page .page-content').css('background','url("'+tool.appPath.emopPro+'unit/waterMark")');
 		param.pageNum = 1;
 		param.pageSize = 10;
-		custView.render(bindings);
+		unitView.render(bindings);
 		_pullupRefresh(1);
 	}
 	
@@ -70,19 +70,20 @@ define(['app','tool','cust/unit/unitView'],function(app,tool,custView){
 		var unitInfo = $$(e.srcElement).parents('a')[0].dataset;
 		custMatch.custCode = unitInfo.custCode;
 		if(custMatch.custSeqid && custMatch.custCode){
-			app.f7.confirm("是否确定将 "+custMatch.custName+" 与 "+unitInfo.custName+" 完成匹配?<br/>注意匹配操作目前暂不支持撤销！",function(){
-				app.f7.showIndicator();
-				delete custMatch.custName;
-				tool.appJson(tool.appPath.emopPro+'unit/match',JSON.stringify(custMatch),function(data){
-					if(data.state){
-						app.router.load('cust',{});
-						app.view.loadPage('pages/cust/cust-save.html?custSeqid='+custMatch.custSeqid);
-					}
-				},function(){
-	
-				},function(){
-					app.f7.hideIndicator();
-				});
+			app.f7.confirm("是否确定将 "+custMatch.custName+" 与 "+unitInfo.custName+" 完成匹配?",function(){
+				app.view.loadPage('pages/cust/cust-save.html?custSeqid='+custMatch.custSeqid+"&unitCode="+custMatch.custCode+"&ifMatch=T");
+//				app.f7.showIndicator();
+//				delete custMatch.custName;
+//				tool.appJson(tool.appPath.emopPro+'unit/match',JSON.stringify(custMatch),function(data){
+//					if(data.state){
+//						app.router.load('cust',{});
+//						app.view.loadPage('pages/cust/cust-save.html?custSeqid='+custMatch.custSeqid+"&ifMatch=T");
+//					}
+//				},function(){
+//	
+//				},function(){
+//					app.f7.hideIndicator();
+//				});
 			});
 		}
 	}
@@ -97,10 +98,10 @@ define(['app','tool','cust/unit/unitView'],function(app,tool,custView){
 				loading = false;
 				if(data.state){
 					if(1 == type){
-						custView.refresh(data.info.list);
+						unitView.refresh(data.info.list);
 						onCallback();
 					}else{
-						custView.append(data.info.list);
+						unitView.append(data.info.list);
 					}
 //					app.toast('暂不支持!', 'warning').show(true);
 					app.toast.show('共'+data.info.total+'条记录,已加载'+(data.info.hasNextPage ? param.pageNum*param.pageSize+'条' : '完毕'));
