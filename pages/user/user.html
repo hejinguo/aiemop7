@@ -1,0 +1,35 @@
+<!-- Top Navbar-->
+<div class="navbar">
+	<div class="navbar-inner">
+		<div class="left"><a href="#" class="back link"> <i class="icon icon-back color-white"></i><span>返回</span></a></div>
+		<div class="center sliding user-page-title">用户管理</div>
+		<div class="right">
+			<!--<a href="pages/cust/cust-save.html" class="link">匹配</a>-->
+		</div>
+	</div>
+</div>
+<div class="pages navbar-through">
+	<div class="page user-page" data-page="user" data-page-title="用户管理">
+		<!-- Search Bar -->
+	    <form action="." class="searchbar searchbar-init">
+	        <div class="searchbar-input">
+	            <input type="search" placeholder="请按姓名或工号搜索">
+	            <a href="#" class="searchbar-clear"></a>
+	        </div>
+	        <!--<a href="#" class="searchbar-cancel">Cancel</a>-->
+	    </form>
+	    <!-- Search Bar overlay-->
+	    <div class="searchbar-overlay"></div>
+		<!-- Page content -->
+		<div class="page-content pull-to-refresh-content infinite-scroll" data-ptr-distance="55" data-distance="50">
+			<!-- Default pull to refresh layer-->
+			<div class="pull-to-refresh-layer">
+				<div class="preloader"></div>
+				<div class="pull-to-refresh-arrow"></div>
+			</div>
+			<div class="page-pull-content list-block media-list">
+				<div class="aui-preloader-content"><span class="preloader"></span></div>
+			</div>
+		</div>
+	</div>
+</div>
