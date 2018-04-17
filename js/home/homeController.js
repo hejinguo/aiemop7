@@ -53,7 +53,7 @@ define(['app','tool','home/homeView'],function(app,tool,homeView) {
 		var photo = _this.files && _this.files.length > 0 ? _this.files[0] : null;
 		if(photo && /image\/\w+/.test(photo.type)){
 			app.f7.showIndicator();
-			tool.dealImage(window.URL.createObjectURL(photo), {width:60,height:60,quality:1}, function(base) {
+			tool.dealImage(window.URL.createObjectURL(photo), {width:120,height:120,quality:1}, function(base) {
 				console.log(photo.size/1024 +" 压缩后：" + base.length / 1024 + " ");
 				tool.appAjax(tool.appPath.emopPro+'base/h5/saveIcon',{image:base},function(data){
 					if(data.state){

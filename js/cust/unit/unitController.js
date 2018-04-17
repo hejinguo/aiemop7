@@ -34,7 +34,7 @@ define(['app','tool','cust/unit/unitView'],function(app,tool,unitView){
 		custMatch.custSeqid = query.custSeqid;
 		custMatch.custName = query.custName;
 		$$('.cust-unit-page-title').html(custMatch.custName);
-		$$('.cust-unit-page .page-content').css('background','url("'+tool.appPath.emopPro+'unit/waterMark")');
+		$$('.cust-unit-page .page-content').css('background','url("'+tool.appPath.emopPro+'unit/waterMark/'+tool.getUser().lastLoginToken+'")');
 		param.pageNum = 1;
 		param.pageSize = 10;
 		unitView.render(bindings);

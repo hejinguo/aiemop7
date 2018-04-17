@@ -153,6 +153,7 @@ define(['app','tool','cust/custView','coordtransform'],function(app,tool,custVie
 					var wgs84 = coordtransform.bd09towgs84(r.point.lng, r.point.lat);
 					location.longitude = wgs84[0];
 					location.latitude = wgs84[1];
+					$$('.cust-page-title').html('获取地址');
 					//创建地理编码实例并根据坐标得到地址描述 
 					new BMap.Geocoder().getLocation(new BMap.Point(r.point.lng, r.point.lat), function(result){
 					    if (result){

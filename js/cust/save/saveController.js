@@ -225,7 +225,7 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 		var _this = $$('.cust-save-page form [type="file"]')[0];
 		var photo = _this.files && _this.files.length > 0 ? _this.files[0] : null;
 		if(photo && /image\/\w+/.test(photo.type)){//编辑或添加时提交照片数据
-			tool.dealImage(window.URL.createObjectURL(photo), {width:300}, function(base) {
+			tool.dealImage(window.URL.createObjectURL(photo), {width:600,quality:1}, function(base) {
 				$$('.cust-save-page form img').attr('src',base);
 				formData.images = [{
 					imageCode:'adphoto',
@@ -253,7 +253,7 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 		var photo = _this.files && _this.files.length > 0 ? _this.files[0] : null;
 		if(photo && /image\/\w+/.test(photo.type)){
 //			$$('.cust-save-page form img').attr('src',window.URL.createObjectURL(photo));
-			tool.dealImage(window.URL.createObjectURL(photo), {width: 300}, function(base) {
+			tool.dealImage(window.URL.createObjectURL(photo), {width:600,quality:1}, function(base) {
 				$$('.cust-save-page form img').attr('src',base);
 				console.log(photo.size/1024 +" 压缩后：" + base.length / 1024 + " ");
 			});
