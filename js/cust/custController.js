@@ -102,10 +102,10 @@ define(['app','tool','cust/custView','coordtransform'],function(app,tool,custVie
 				loading = false;
 				if(data.state){
 					if(1 == type){
-						custView.refresh(data.info.list);
+						custView.refresh({radius:param.radius,list:data.info.list});
 						onCallback();
 					}else{
-						custView.append(data.info.list);
+						custView.append({radius:param.radius,list:data.info.list});
 					}
 					custView.render(bindings);
 //					app.toast('暂不支持!', 'warning').show(true);
