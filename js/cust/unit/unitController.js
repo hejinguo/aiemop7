@@ -35,8 +35,7 @@ define(['app','tool','cust/unit/unitView'],function(app,tool,unitView){
 		custMatch.custName = query.custName;
 		$$('.cust-unit-page-title').html(custMatch.custName);
 		$$('.cust-unit-page .page-content').css('background','url("'+tool.appPath.emopPro+'unit/waterMark/'+tool.getUser().lastLoginToken+'")');
-		param.pageNum = 1;
-		param.pageSize = 10;
+		param = {pageNum:1,pageSize:10};
 		unitView.render(bindings);
 		_pullupRefresh(1);
 	}
