@@ -1,4 +1,4 @@
-define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,template){
+define(['app','tool','coordtransform','text!cust/save/save-page-content.tpl'],function(app,tool,coordtransform,template){
 	var $$ = Dom7;
 	var bindings = [{
 		element: '.cust-save-page .geolocation-button',
@@ -325,6 +325,9 @@ define(['app','tool','text!cust/save/save-page-content.tpl'],function(app,tool,t
 			if(data.state){
 				data.info.ifMatch = query.ifMatch ? query.ifMatch : data.info.ifMatch;
 				data.info.unitCode = query.unitCode ? query.unitCode : '';
+				var bd09 = coordtransform.wgs84tobd09(data.info.longitude,data.info.latitude);
+				data.info.longitude = bd09[0];
+				data.info.latitude = bd09[1];
 				pageData.custInfo = data.info;
 				app.f7.formFromData($$('.cust-save-page form'),data.info);
 				if(data.info.images && data.info.images.length > 0){

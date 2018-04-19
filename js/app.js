@@ -1,10 +1,11 @@
 require.config({
 	paths: {
-		base64: '../lib/base64',
 		text: '../lib/requirejs-plugins/text',
 		async: '../lib/requirejs-plugins/async',
 		echarts: '../lib/echarts/echarts.common.min',
-		coordtransform: '../lib/coordtransform',
+		jquery: '../lib/common/jquery.min',
+		base64: '../lib/common/base64',
+		coordtransform: '../lib/common/coordtransform',
 //		BMap: 'https://api.map.baidu.com/api?v=3.0&ak=sBRRXwEWp4MoUmugUZ5tBfVe1hrQyyZg'
 		BMap: 'https://api.map.baidu.com/api?v=2.0&ak=sBRRXwEWp4MoUmugUZ5tBfVe1hrQyyZg'
 	},

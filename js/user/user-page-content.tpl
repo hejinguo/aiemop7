@@ -1,6 +1,6 @@
 {{#each this.list}}
 	<li>
-		<a class="item-link item-content">
+		<a href="pages/user/user-manage.html?staffId={{staffId}}&staffCode={{staffCode}}&staffName={{staffName}}" class="item-link item-content">
 			<div class="item-media">
 				<img src="{{js 'this.photoAddr ? @root.emopPro+\"base/h5/getIcon?iconName=\"+this.photoAddr : \"images/temp/timg-none.jpg\"'}}" style="width:60px;"/>
 			</div>

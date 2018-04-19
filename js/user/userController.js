@@ -18,8 +18,7 @@ define(['app','tool','user/userView'],function(app,tool,userView){
 	}];
 	
 	function init(query){
-		param.pageNum = 1;
-		param.pageSize = 10;
+		param = {pageNum:1,pageSize:10};
 		userView.render(bindings);
 		_pullupRefresh(1);
 	}
@@ -56,7 +55,6 @@ define(['app','tool','user/userView'],function(app,tool,userView){
 		var onCallback = arguments[1]?arguments[1]:function(){};//数据加载完毕后的回调函数
 		setTimeout(function() {
 			tool.appJson(tool.appPath.emopPro+'user/parent',JSON.stringify(param),function(data){
-				console.log(data);
 				loading = false;
 				if(data.state){
 					data.info.emopPro = tool.appPath.emopPro;
