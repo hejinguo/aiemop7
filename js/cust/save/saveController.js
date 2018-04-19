@@ -1,5 +1,6 @@
 define(['app','tool','coordtransform','text!cust/save/save-page-content.tpl'],function(app,tool,coordtransform,template){
 	var $$ = Dom7;
+	var defaultImage = 'images/cust/cust-default-image.jpg';
 	var bindings = [{
 		element: '.cust-save-page .geolocation-button',
 		event: 'click',
@@ -235,7 +236,7 @@ define(['app','tool','coordtransform','text!cust/save/save-page-content.tpl'],fu
 				console.log(photo.size/1024 +" 压缩后：" + base.length / 1024 + " ");
 				execSaveCustInfo(formData);
 			});
-		}else if(pageData.custSeqid && $$('.cust-save-page form img').attr('src')){//编辑时未修改照片数据
+		}else if(pageData.custSeqid && $$('.cust-save-page form img').attr('src').indexOf(defaultImage)<0){//编辑时未修改照片数据
 			formData.images = [{
 				imageCode:'adphoto'
 			}];
@@ -258,7 +259,8 @@ define(['app','tool','coordtransform','text!cust/save/save-page-content.tpl'],fu
 				console.log(photo.size/1024 +" 压缩后：" + base.length / 1024 + " ");
 			});
 		}else{
-			$$('.cust-save-page form img').removeAttr('src');
+			$$('.cust-save-page form img').attr('src',defaultImage);
+//			$$('.cust-save-page form img').removeAttr('src');
 		}
 	}
 	
@@ -334,6 +336,8 @@ define(['app','tool','coordtransform','text!cust/save/save-page-content.tpl'],fu
 					$$.each(data.info.images, function (index, element) {
 						$$('.cust-save-page form img').attr('src',tool.appPath.emopPro + 'cust/getShopImage?custSeqid=' + element.custSeqid+"&fileName="+element.imageName+"&k="+new Date().getTime());
 					});    
+				}else{
+					$$('.cust-save-page form img').attr('src',defaultImage);
 				}
 				if(data.info.contacts && data.info.contacts.length > 0){
 //					require(['text!cust/save/save-page-content.tpl'], function(template) {

@@ -100,6 +100,7 @@ define(['base64'],function(base64) {
 		var img = new Image();
 		img.src = path;
 		img.onload = function() {
+			var tfoot = 0;//底部经纬度水印的高度(30)
 			var that = this;
 			// 默认按比例压缩
 			var w = that.width,
@@ -115,9 +116,19 @@ define(['base64'],function(base64) {
 			var anw = document.createAttribute("width");
 			anw.nodeValue = w;
 			var anh = document.createAttribute("height");
-			anh.nodeValue = h;
+			anh.nodeValue = h+tfoot;
 			canvas.setAttributeNode(anw);
 			canvas.setAttributeNode(anh);
+			/*
+			ctx.fillStyle="#FFFFFF";
+			ctx.fillRect(0,0,w,h+tfoot);
+			ctx.font="12px Georgia";
+			ctx.textBaseline="middle";
+			ctx.fillStyle="#FF0000";
+//			ctx.measureText(txt).width;
+			ctx.fillText("智慧政企移动办公管家",10,h+(tfoot/2));
+//			console.log(ctx.measureText("默认图片质量"));
+			*/
 			ctx.drawImage(that, 0, 0, w, h);
 			// 图像质量
 			if(obj.quality && obj.quality <= 1 && obj.quality > 0) {
