@@ -65,10 +65,28 @@
 <div class="content-block-card">
 	{{#js_if "this.images && this.images.length > 0"}}
 		{{#each this.images}}
-			<img src="{{imageName}}" style="width:100%;"/>
+			{{#js_if "this.imageCode == 'adphoto'"}}
+				<img src="{{imageName}}" style="width:100%;"/>
+			{{/js_if}}
 		{{/each}}
-	{{else}}
+	{{/js_if}}
+	{{#js_if "!this.existAdPhoto"}}
 		<span>未上传门头照</span>
+	{{/js_if}}
+</div>
+<div class="content-block-title">
+	三证一章信息
+</div>
+<div class="content-block-card">
+	{{#js_if "this.images && this.images.length > 0"}}
+		{{#each this.images}}
+			{{#js_if "this.imageCode == 'cephoto'"}}
+				<img src="{{imageName}}" style="width:100%;"/>
+			{{/js_if}}
+		{{/each}}
+	{{/js_if}}
+	{{#js_if "!this.existCePhoto"}}
+		<span>未上传三证一章</span>
 	{{/js_if}}
 </div>
 <div class="content-block-title">

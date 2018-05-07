@@ -5,10 +5,10 @@ define(['base64'],function(base64) {
 //			work:'https://hejinguo.win:10029/aiwork/',//挂牌攻坚项目生产环境地址
 //			emopPro:'https://hejinguo.win:10029/aiemopPro/'//政企营销新项目生产环境地址
 //	};
-	var appPath = {download:'http://localhost:8080/emop.apk',//最新安装包发布地址
-			emop:'http://localhost:8080/aiemop/',//政企营销项目开发环境地址
-			work:'http://localhost:8080/aiwork/',//挂牌攻坚项目开发环境地址
-			emopPro:'http://localhost:8080/aiemopPro/'//政企营销新项目开发环境地址
+	var appPath = {download:'http://10.108.226.124:8080/emop.apk',//最新安装包发布地址
+			emop:'http://10.108.226.124:8080/aiemop/',//政企营销项目开发环境地址
+			work:'http://10.108.226.124:8080/aiwork/',//挂牌攻坚项目开发环境地址
+			emopPro:'http://10.108.226.124:8080/aiemopPro/'//政企营销新项目开发环境地址
 	};
 	
 	function setUser(baseUser){
@@ -96,11 +96,11 @@ define(['base64'],function(base64) {
 	 * @param {Object} callback
 	 *   回调函数有一个参数，base64的字符串数据
 	 */
-	function dealImage(path, obj, callback) {
+	function dealImage(path, obj, callback, extend) {
 		var img = new Image();
 		img.src = path;
 		img.onload = function() {
-			var tfoot = 0;//底部经纬度水印的高度(30)
+			var t_height = extend && extend.t_height ? extend.t_height : 0;//底部经纬度水印的高度(30)
 			var that = this;
 			// 默认按比例压缩
 			var w = that.width,
@@ -116,19 +116,21 @@ define(['base64'],function(base64) {
 			var anw = document.createAttribute("width");
 			anw.nodeValue = w;
 			var anh = document.createAttribute("height");
-			anh.nodeValue = h+tfoot;
+			anh.nodeValue = h+t_height;
 			canvas.setAttributeNode(anw);
 			canvas.setAttributeNode(anh);
-			/*
-			ctx.fillStyle="#FFFFFF";
-			ctx.fillRect(0,0,w,h+tfoot);
-			ctx.font="12px Georgia";
-			ctx.textBaseline="middle";
-			ctx.fillStyle="#FF0000";
-//			ctx.measureText(txt).width;
-			ctx.fillText("智慧政企移动办公管家",10,h+(tfoot/2));
-//			console.log(ctx.measureText("默认图片质量"));
-			*/
+			
+			if(extend && extend.t_height){
+				ctx.fillStyle="#FFFFFF";
+				ctx.fillRect(0,0,w,h+t_height);
+				ctx.font="12px Georgia";
+				ctx.textBaseline="middle";
+				ctx.fillStyle="#FF0000";
+//				ctx.measureText(txt).width;
+				ctx.fillText(extend && extend.t_data ? extend.t_data : '',10,h+(t_height/2));
+//				console.log(ctx.measureText("默认图片质量"));
+			}
+			
 			ctx.drawImage(that, 0, 0, w, h);
 			// 图像质量
 			if(obj.quality && obj.quality <= 1 && obj.quality > 0) {

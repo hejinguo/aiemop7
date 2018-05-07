@@ -1,4 +1,4 @@
-define(['app','tool','coordtransform','text!cust/save/save-page-content.tpl'],function(app,tool,coordtransform,template){
+define(['app','tool','coordtransform','text!cust/save/save-page-contact-content.tpl'],function(app,tool,coordtransform,contact){
 	var $$ = Dom7;
 	var defaultImage = 'images/cust/cust-default-image.jpg';
 	var bindings = [{
@@ -12,19 +12,22 @@ define(['app','tool','coordtransform','text!cust/save/save-page-content.tpl'],fu
 	},{
 		element: '.cust-save-page .cust-save-button',
 		event: 'click',
-		handler: clickSaveCustItem
+		handler: clickSaveCustItem2
 	},{
 		element: '.cust-save-page .add-cust-contact-btn',
 		event: 'click',
 		handler: clickAddCustContact
 	},{
-		element: '.cust-save-page form [type="file"]',
+		element: '.cust-save-page form input.select-control',
 		event: 'change',
-		handler: selectCustPhoto
+		handler: selectCustPhoto2//selectCustPhoto2,selectCustPhoto
 	},{
-		element: '.cust-save-page form img',
+		element: '.cust-save-page form a.select-control',
 		event: 'click',
-		handler: function(){$$('.cust-save-page form [type="file"]').click();}
+		handler: function(){
+			var _module = $$(this).hasClass('adphoto') ? 'adphoto' : 'cephoto';
+			$$('.cust-save-page form input.'+_module).click();
+		}
 	},{
 		element: '.cust-save-page form [name="priIndustryCode"]',
 		event: 'change',
@@ -223,11 +226,14 @@ define(['app','tool','coordtransform','text!cust/save/save-page-content.tpl'],fu
 //			app.f7.alert('已建档的集团必须填写集团280编码.');
 //			return;
 //		}
-		var _this = $$('.cust-save-page form [type="file"]')[0];
+		var _this = $$('.cust-save-page form input.adphoto')[0];
 		var photo = _this.files && _this.files.length > 0 ? _this.files[0] : null;
 		if(photo && /image\/\w+/.test(photo.type)){//编辑或添加时提交照片数据
+			var t_data = '('+$$('.cust-save-page form [name="longitude"]').val()+','+
+						$$('.cust-save-page form [name="latitude"]').val()+')'+
+						$$('.cust-save-page form [name="custAddr"]').val();
 			tool.dealImage(window.URL.createObjectURL(photo), {width:600,quality:1}, function(base) {
-				$$('.cust-save-page form img').attr('src',base);
+				$$('.cust-save-page form img.adphoto').attr('src',base);
 				formData.images = [{
 					imageCode:'adphoto',
 					imageName:base,
@@ -235,8 +241,8 @@ define(['app','tool','coordtransform','text!cust/save/save-page-content.tpl'],fu
 				}];
 				console.log(photo.size/1024 +" 压缩后：" + base.length / 1024 + " ");
 				execSaveCustInfo(formData);
-			});
-		}else if(pageData.custSeqid && $$('.cust-save-page form img').attr('src').indexOf(defaultImage)<0){//编辑时未修改照片数据
+			},{t_height:30,t_data:t_data});
+		}else if(pageData.custSeqid && $$('.cust-save-page form img.adphoto').attr('src').indexOf(defaultImage)<0){//编辑时未修改照片数据
 			formData.images = [{
 				imageCode:'adphoto'
 			}];
@@ -245,22 +251,78 @@ define(['app','tool','coordtransform','text!cust/save/save-page-content.tpl'],fu
 			execSaveCustInfo(formData);
 		}
 	}
+	/**
+	 * 封装保存逻辑前验证
+	 */
+	function clickSaveCustItem2(){
+		var formData = app.f7.formToData($$('.cust-save-page form'));
+		var _adphoto = $$('.cust-save-page form div.adphoto-list img.adphoto');
+		var _cephoto = $$('.cust-save-page form div.cephoto-list img.cephoto');
+		formData.images = [];
+		$$.each(_adphoto,function(index,photo){
+			formData.images.push({
+				imageCode:'adphoto',
+				imageName:$$(photo).attr('src'),
+				imageTitle:''+index
+			});
+		});
+		$$.each(_cephoto,function(index,photo){
+			formData.images.push({
+				imageCode:'cephoto',
+				imageName:$$(photo).attr('src'),
+				imageTitle:''+(_adphoto.length+index)
+			});
+		});
+		execSaveCustInfo(formData);
+	}
 	
 	/**
 	 * 选择门头照触发事件
 	 */
 	function selectCustPhoto(){
 		var _this = this;
+		var _module = $$(_this).hasClass('adphoto') ? 'adphoto' : 'cephoto';
 		var photo = _this.files && _this.files.length > 0 ? _this.files[0] : null;
 		if(photo && /image\/\w+/.test(photo.type)){
+			var t_data = '('+$$('.cust-save-page form [name="longitude"]').val()+','+
+						$$('.cust-save-page form [name="latitude"]').val()+')'+
+						$$('.cust-save-page form [name="custAddr"]').val();
 //			$$('.cust-save-page form img').attr('src',window.URL.createObjectURL(photo));
 			tool.dealImage(window.URL.createObjectURL(photo), {width:600,quality:1}, function(base) {
-				$$('.cust-save-page form img').attr('src',base);
+				$$('.cust-save-page form img.'+_module).attr('src',base);
 				console.log(photo.size/1024 +" 压缩后：" + base.length / 1024 + " ");
+			},{t_height:30,t_data:t_data});
+		}else{
+			$$('.cust-save-page form img.'+_module).attr('src',defaultImage);
+//			$$('.cust-save-page form img').removeAttr('src');
+		}
+	}
+	/**
+	 * 选择门头照触发事件
+	 */
+	function selectCustPhoto2(){
+		var _this = this;
+		var _module = $$(_this).hasClass('adphoto') ? 'adphoto' : 'cephoto';
+		if(_this.files && _this.files.length > 0){
+			$$.each(_this.files,function(index,photo){
+				if(photo && /image\/\w+/.test(photo.type)){
+					var t_data = '('+$$('.cust-save-page form [name="longitude"]').val()+','+
+								$$('.cust-save-page form [name="latitude"]').val()+')'+
+								$$('.cust-save-page form [name="custAddr"]').val();
+					tool.dealImage(window.URL.createObjectURL(photo), {width:600,quality:1}, function(base) {
+//						$$('.cust-save-page form img.'+_module).attr('src',base);
+						$$('.cust-save-page form div.'+_module+'-list').append(
+							'<div><i class="f7-icons size-22 color-pink" '+
+									' style="position:absolute;right:10px;" '+
+									' onclick="javascript:Dom7(this).parent().remove();">close_round_fill</i>'+
+							'<img class="'+_module+'" src="'+base+'"/></div>'
+						);
+						console.log(photo.size/1024 +" 压缩后：" + base.length / 1024 + " ");
+					},{t_height:30,t_data:t_data});
+				}
 			});
 		}else{
-			$$('.cust-save-page form img').attr('src',defaultImage);
-//			$$('.cust-save-page form img').removeAttr('src');
+			//$$('.cust-save-page form img.'+_module).attr('src',defaultImage);
 		}
 	}
 	
@@ -281,7 +343,7 @@ define(['app','tool','coordtransform','text!cust/save/save-page-content.tpl'],fu
 				custInfo.contacts.push({contactName:contactNameArrays[i].value,contactPhone:contactPhoneArrays[i].value});
 			}
 		}
-		console.log(custInfo);
+//		console.log(custInfo);
 		if(!custInfo.longitude || !custInfo.latitude || !custInfo.custAddr
 				|| !(custInfo.images && custInfo.images.length > 0)
 				|| !(custInfo.contacts && custInfo.contacts.length > 0)){
@@ -325,6 +387,7 @@ define(['app','tool','coordtransform','text!cust/save/save-page-content.tpl'],fu
 	function loadCustDetailInfo(query){
 		tool.appAjax(tool.appPath.emopPro+'cust/get',{custSeqid:query.custSeqid},function(data){
 			if(data.state){
+//				$$('.cust-save-page form img.select-control').attr('src',defaultImage);
 				data.info.ifMatch = query.ifMatch ? query.ifMatch : data.info.ifMatch;
 				data.info.unitCode = query.unitCode ? query.unitCode : '';
 				var bd09 = coordtransform.wgs84tobd09(data.info.longitude,data.info.latitude);
@@ -334,14 +397,14 @@ define(['app','tool','coordtransform','text!cust/save/save-page-content.tpl'],fu
 				app.f7.formFromData($$('.cust-save-page form'),data.info);
 				if(data.info.images && data.info.images.length > 0){
 					$$.each(data.info.images, function (index, element) {
-						$$('.cust-save-page form img').attr('src',tool.appPath.emopPro + 'cust/getShopImage?custSeqid=' + element.custSeqid+"&fileName="+element.imageName+"&k="+new Date().getTime());
-					});    
-				}else{
-					$$('.cust-save-page form img').attr('src',defaultImage);
-				}
+						$$('.cust-save-page form img.adphoto').attr('src',tool.appPath.emopPro + 'cust/getShopImage?custSeqid=' + element.custSeqid+"&fileName="+element.imageName+"&k="+new Date().getTime());
+					});
+				}/*else{
+					$$('.cust-save-page form img.adphoto').attr('src',defaultImage);
+				}*/
 				if(data.info.contacts && data.info.contacts.length > 0){
-//					require(['text!cust/save/save-page-content.tpl'], function(template) {
-						$$('.cust-save-page form .cust-contacts-list ul').html(Template7.compile(template)(data.info.contacts));
+//					require(['text!cust/save/save-page-content.tpl'], function(contact) {
+						$$('.cust-save-page form .cust-contacts-list ul').html(Template7.compile(contact)(data.info.contacts));
 //					});
 				}
 //				loadSmartSelectOption();
@@ -358,7 +421,7 @@ define(['app','tool','coordtransform','text!cust/save/save-page-content.tpl'],fu
 	function clickAddCustContact(){
 		var contacts = $$('.cust-save-page .cust-contacts-list ul li').length;
 		if(contacts < 5){
-			$$('.cust-save-page .cust-contacts-list ul').append(Template7.compile(template)([{contactName:'',contactPhone:''}]));
+			$$('.cust-save-page .cust-contacts-list ul').append(Template7.compile(contact)([{contactName:'',contactPhone:''}]));
 		}else{
 			app.f7.alert('仅允许添加最多5个联系人信息输入栏');
 		}

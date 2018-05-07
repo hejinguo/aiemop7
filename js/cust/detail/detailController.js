@@ -24,8 +24,15 @@ define(['app','tool','coordtransform'],function(app,tool,coordtransform){
 				pageData.custInfo.longitude = bd09[0];
 				pageData.custInfo.latitude = bd09[1];
 				require(['cust/detail/detailView'], function(detailView) {
+					pageData.custInfo.existAdPhoto = false;//判断是否存在门头照信息
+					pageData.custInfo.existCePhoto = false;//判断是否存在三证一章信息
 					if(pageData.custInfo.images && pageData.custInfo.images.length > 0){
 						$$.each(pageData.custInfo.images, function (index, element) {
+							if(element.imageCode == 'adphoto'){
+								pageData.custInfo.existAdPhoto = true;
+							}else if(element.imageCode == 'cephoto'){
+								pageData.custInfo.existCePhoto = true;
+							}
 						    element.imageName = tool.appPath.emopPro + 'cust/getShopImage?custSeqid=' + element.custSeqid+"&fileName="+element.imageName+"&k="+new Date().getTime();
 						});    
 					}
