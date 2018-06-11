@@ -5,10 +5,10 @@ define(['base64'],function(base64) {
 //			work:'https://hejinguo.win:10029/aiwork/',//挂牌攻坚项目生产环境地址
 //			emopPro:'https://hejinguo.win:10029/aiemopPro/'//政企营销新项目生产环境地址
 //	};
-	var appPath = {download:'http://10.108.226.124:8080/emop.apk',//最新安装包发布地址
-			emop:'http://10.108.226.124:8080/aiemop/',//政企营销项目开发环境地址
-			work:'http://10.108.226.124:8080/aiwork/',//挂牌攻坚项目开发环境地址
-			emopPro:'http://10.108.226.124:8080/aiemopPro/'//政企营销新项目开发环境地址
+	var appPath = {download:'http://10.108.226.153:8080/emop.apk',//最新安装包发布地址
+			emop:'http://10.108.226.153:8080/aiemop/',//政企营销项目开发环境地址
+			work:'http://10.108.226.153:8080/aiwork/',//挂牌攻坚项目开发环境地址
+			emopPro:'http://10.108.226.153:8080/aiemopPro/'//政企营销新项目开发环境地址
 	};
 	
 	function setUser(baseUser){
