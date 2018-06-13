@@ -16,17 +16,75 @@
 		<link rel="stylesheet" href="lib/framework7/css/framework7.ios.min.css">
 		<!-- Path to Framework7 iOS related color styles -->
 		<link rel="stylesheet" href="lib/framework7/css/framework7.ios.colors.min.css">
+		<!-- Path to Framework7 icons styles -->
+		<link rel="stylesheet" href="lib/framework7-icons/css/framework7-icons.css">
+		<!-- Path to Framework7 toast styles -->
+		<link rel="stylesheet" href="lib/framework7-plugins/toast/toast.css">
+		<!-- Path to zTree styles -->
+		<link rel="stylesheet" href="lib/ztree/zTreeStyle.css" />
+		<!-- Path to your custom app styles-->
+		<link rel="stylesheet" href="css/app.css">
+		<style type="text/css">
+			.pages{
+				background:#FFFFFF;
+			}
+		</style>
 	</head>
 
-	<body style="text-align:center;">
-		<div id="_integrate_info" style="color:#25C6FC;padding:2px;font-size:12px;margin:2px;">
-			正在载入，请稍后...
+	<body class="layout-asiainfo theme-asiainfo">
+		<!-- Status bar overlay for full screen mode (PhoneGap) -->
+		<div class="statusbar-overlay"></div>
+		<!-- Panels overlay-->
+		<div class="panel-overlay"></div>
+		<div class="panel panel-left panel-reveal">
+			<!--panel-reveal，panel-cover -->
+			<div class="content-block">
+				<p>Left panel content goes here</p>
+			</div>
 		</div>
+		<div class="panel panel-right panel-cover">
+			<!-- panel-reveal、panel-cover -->
+			<div class="view view-right">
+				<div class="pages"></div>
+			</div>
+		</div>
+		<!-- Views -->
+		<div class="views">
+			<!-- Your first view, it is also a .tab and should have "active" class to make it visible by default-->
+			<div class="view view-main">
+				<!-- Top Navbar-->
+				<div class="navbar">
+					<div class="navbar-inner">
+						<div class="left"></div>
+						<div class="center sliding" id="_integrate_info"></div>
+						<div class="right">
+						</div>
+					</div>
+				</div>
+				<!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+				<div class="pages navbar-through"></div>
+			</div>
+		</div>
+
 		<!-- Path to Framework7 Library JS-->
 		<script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
+		<!-- Path to Framework7 toast JS-->
+		<script type="text/javascript" src="lib/framework7-plugins/toast/toast.js"></script>
 		<!-- Path to aes-min JS -->
-		<script type="text/javascript" src="lib/common/aes-min.js" ></script>
+		<script type="text/javascript" src="lib/common/aes-min.js"></script>
+		<!-- Path to require Library JS-->
 		<script type="text/javascript" src="lib/require.js" data-main="js/integrate"></script>
+		<script type="text/javascript">
+			//避免物理返回
+			if(window.history && window.history.pushState) {
+				window.onpopstate = function() {
+					window.history.pushState('forward', null, '#');　　
+					window.history.forward(1);
+				};
+			}
+			window.history.pushState('forward', null, '#');　　
+			window.history.forward(1);
+		</script>
 	</body>
 
 </html>

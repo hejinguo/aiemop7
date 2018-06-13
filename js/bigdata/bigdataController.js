@@ -16,7 +16,10 @@ define(['app','tool','bigdata/bigdataView'],function(app,tool,bigdataView){
 		handler: infiniteUnitItem
 	}];
 	
-	function init(){
+	function init(query){
+		if(query.integrate){//如果属于功能集成时需要屏蔽返回按钮
+			$$('.bigdata-page-left').html('<div style="width:53px;"></div>');
+		}
 		bigdataView.render(bindings);
 		param.unitIdName = '';
 		param.pageNum = 1;
